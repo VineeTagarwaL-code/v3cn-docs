@@ -21,8 +21,8 @@ FROM node:18-alpine AS runner
 WORKDIR /app
 
 # Copy the build files from the builder stage
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/package.json ./
 
 # Install only production dependencies (optional)

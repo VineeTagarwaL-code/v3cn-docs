@@ -33,6 +33,7 @@ const withNextra = require("nextra")({
 });
 
 module.exports = withNextra({
+  output: "standalone",
   swcMinify: true,
   eslint: {
     ignoreDuringBuilds: true,
