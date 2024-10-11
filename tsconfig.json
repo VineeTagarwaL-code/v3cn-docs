@@ -25,7 +25,7 @@
     "**/*.tsx",
     "pages/index.mdx", 
     "theme.config.jsx"  
-  ],
+, "pages/components/cursor.mdx"  ],
   "exclude": [
     "node_modules"
   ]

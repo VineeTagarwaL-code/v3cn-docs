@@ -1,0 +1,125 @@
+import { Cursor } from "../../components/Cursor";
+
+<Cursor cursorClass="border-purple-500 hidden md:inline-block" />
+
+# Cursor Follower
+
+The `Cursor` component creates a customizable animated cursor that follows the user's mouse movement, with an interactive scaling effect based on the type of element being hovered over.
+
+#### Usage
+
+```tsx
+// Import the Component
+import { Cursor } from "@/components/ui/cursor.tsx";
+
+// Pass custom styles easily
+<Cursor cursorClass="border-purple-500 hidden md:inline-block" />;
+```
+
+### Cursor Component Properties
+
+| Prop Name   | Type     | Description                                                                         | Default Value |
+| ----------- | -------- | ----------------------------------------------------------------------------------- | ------------- |
+| cursorClass | `string` | Additional tailwind CSS classes for customizing the cursor appearance and behavior. | `""`          |
+
+### Features
+
+- **Follow Cursor**: The custom cursor follows the user's mouse movement.
+- **Smooth Animation**: Follows the mouse smoothly, and reacts to click events with a slight shrinking effect.
+
+#### How to Use the Component
+
+1. Import the `Cursor` component into your project:
+
+   ```tsx
+   import { Cursor } from "@/components/ui/cursor.tsx";
+   ```
+
+2. Add the component in your layout or any component where you want the custom cursor:
+
+   ```tsx
+   <Cursor cursorClass="border-purple-500 hidden md:inline-block" />
+   ```
+
+3. Customize the `cursorClass` prop for specific styling or visual customization.
+
+### Code
+
+```tsx
+"use client";
+import { cn } from "../utils/cn";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
+type cursorProp = {
+  cursorClass?: string;
+};
+export const Cursor = ({ cursorClass }: cursorProp) => {
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const cursorRef = useRef(null);
+  const animateTrailer = (e: any) => {
+    const x =
+      e.clientX - (cursorRef.current as unknown as HTMLElement).offsetWidth / 2;
+    const y =
+      e.clientY -
+      (cursorRef.current as unknown as HTMLElement).offsetHeight / 2;
+
+    const keyframes = {
+      transform: `translate(${x}px, ${y}px) scale(${isInteracting ? 3 : 1})`,
+    };
+
+    (cursorRef.current as unknown as HTMLElement)?.animate(keyframes, {
+      duration: 100,
+      fill: "forwards",
+    });
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const interactable = (e.target as HTMLElement).closest(".interactable");
+      const interacting = interactable !== null;
+
+      animateTrailer(e);
+
+      setIsInteracting(interacting);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isInteracting]);
+  useEffect(() => {
+    const handleClick = () => {
+      setIsClicked(true);
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 100);
+    };
+
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
+  return (
+    <>
+      <motion.div
+        whileTap={{ scale: 0.9 }}
+        id="trailer"
+        style={{ top: `0px`, left: `0px` }}
+        className={cn(
+          "bg-transparent rounded-full fixed z-50 pointer-events-none border-[3px] border-slate-500 border-solid w-10 h-10 transition-all",
+          isClicked && "w-8 h-8",
+          cursorClass
+        )}
+        ref={cursorRef}
+      ></motion.div>
+    </>
+  );
+};
+```

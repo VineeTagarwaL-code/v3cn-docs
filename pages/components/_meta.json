@@ -1,10 +1,4 @@
 {
-  "index": "Overview",
-  "get_started": "Getting started",
-  "config": "Configuration",
-  "comparison": "Comparison",
-  "inner_workings": "How does it work?",
-  "faq": "FAQ",
-  "common_issues": "Troubleshooting",
-  "contribute": "Contributing"
+ "cursor":"Cursor",
+ "card":"3d-Card"
 }

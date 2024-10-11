@@ -14,15 +14,13 @@ export default {
   project: {
     link: SITE.github,
   },
-  chat: {
-    link: SITE.discord,
-  },
+
   footer: {
     text: <Footer />,
   },
   navigation: {
-    prev: false,
-    next: false,
+    prev: true,
+    next: true,
   },
   feedback: {
     useLink: () => SITE.github,
@@ -37,11 +35,11 @@ export default {
           rel: "icon",
         },
       ],
-      titleTemplate: "%s - OpenNext",
+      titleTemplate: "%s - V3cn",
       description:
-        frontMatter.description || "Open-source Next.js adapters",
+        frontMatter.description || "V3cn a modern portfolio component ui library",
       openGraph: {
-        titleTemplate: "%s - OpenNext",
+        titleTemplate: "%s - V3cn",
         images: [
           {
             url: frontMatter.image || "/share.png",
