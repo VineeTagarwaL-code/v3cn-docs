@@ -18,6 +18,19 @@ npx v3cn add cursor
   introduction.
 </Callout>
 
+### Utility File
+
+```tsx
+// Util/cn.ts
+
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(...inputs));
+}
+```
+
 #### Usage
 
 ```tsx
@@ -59,7 +72,7 @@ import { Cursor } from "@/components/ui/cursor.tsx";
 
 ```tsx
 "use client";
-import { cn } from "../utils/cn";
+import { cn } from "@/utils/cn";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 

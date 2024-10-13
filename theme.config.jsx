@@ -31,7 +31,7 @@ export default {
     return {
       additionalLinkTags: [
         {
-          href: "/favicon-light.png",
+          href: "/V-removebg-preview.png",
           rel: "icon",
         },
       ],
@@ -42,7 +42,7 @@ export default {
         titleTemplate: "%s - V3cn",
         images: [
           {
-            url: frontMatter.image || "/share.png",
+            url: frontMatter.image || "/V.png",
           },
         ],
       },
