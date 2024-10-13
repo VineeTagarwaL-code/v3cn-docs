@@ -1,14 +1,290 @@
-import { DiscordPresence } from "../../components/discord";
+import { Callout } from "nextra/components";
 
-<DiscordPresence
+# Discord Presence
+
+The `DiscordPresence` displays a rich Discord presence for a given user, showing their current activity such as listening to Spotify, playing a game, or their online status. This component integrates well with React & Next.Js applications and requires the user’s Discord ID to function.
+
+import { Discord } from "../../components/discord";
+
+<Callout emoji="👾">
+  Join this discord server to make your presence appear
+  https://discord.gg/lanyard
+</Callout>
+
+<Discord
   userId="1018532712455352330"
-  username={"vineet"}
-  acitivityImageContainer="h-[100px] w-[100px]"
-  acitivityContainer="bg-transparent px-0 px-2"
-  activityClass="text-cyan-300"
-  detailsClass="text-[#ffbe6f]"
-  progressBar="bg-[#ffbe6f]"
-  stateClass="text-[#BF9DEA]"
-  userClass="text-[#ffbe6f]"
-  timeClass="text-green-300"
+  userName="vineet"
+  activityDetailClass="dark:text-cyan-300"
+  activityDescriptionClass="dark:text-[#ffbe6f]"
+  progressBarClassName="dark:bg-[#ffbe6f]"
+  localTimeClass="dark:text-green-500"
 />
+
+#### Installation
+
+```shell
+# v3cn Utility
+npx v3cn add discord
+
+# extra package
+npm i @radix-ui/react-progress
+```
+
+### Utility File
+
+```tsx
+// Util/cn.ts
+
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(...inputs));
+}
+```
+
+#### Usage
+
+```tsx
+// Import the Component
+import { Discord } from "@/components/ui/discord";
+
+// Pass custom styles easily
+
+<Discord
+  userId="1018532712455352330"
+  userName="vineet"
+  activityDetailClass="dark:text-cyan-300"
+  activityDescriptionClass="dark:text-[#ffbe6f]"
+  progressBarClassName="dark:bg-[#ffbe6f]"
+  localTimeClass="dark:text-green-500"
+/>;
+```
+
+# Discord Props
+
+| Prop Name                | Type   | Description                                                         |
+| ------------------------ | ------ | ------------------------------------------------------------------- |
+| userId                   | string | The unique identifier for the Discord user.                         |
+| userName                 | string | The display name of the Discord user.                               |
+| activityDescriptionClass | string | CSS class for styling the activity description.                     |
+| activityImageClassName   | string | CSS class for styling the activity image.                           |
+| activityDetailClass      | string | CSS class for styling the activity details.                         |
+| progressBarClassName     | string | CSS class for styling the progress bar (used for Spotify playback). |
+| localTimeClass           | string | CSS class for styling the local time display.                       |
+
+### Code
+
+```tsx
+"use client";
+
+import React, { use, useEffect, useState } from "react";
+import { cn } from "../utils/cn";
+import * as ProgressPrimitive from "@radix-ui/react-progress";
+
+type TDiscord = {
+  userId: string;
+  userName: string;
+  activityDetailClass?: string;
+  activityDescriptionClass?: string;
+  activityImageClassName?: string;
+  progressBarClassName?: string;
+  localTimeClass?: string;
+};
+type TActivityImage = {
+  largeActivityImage: string;
+  smallActivityImage: string;
+  isActivity: boolean;
+  isSpotifyPlaying: boolean;
+};
+/**
+ * visual studio code activity
+ */
+type TActivity = {
+  application_id: string;
+  assets: {
+    large_image: string;
+    large_text: string;
+    small_image: string;
+    small_text: string;
+  };
+  details: string;
+  id: string;
+  name: string;
+  state: string;
+};
+type TDiscordUser = {
+  details: string;
+  discord_status: string;
+  username: string;
+  avatar: string;
+  id: string;
+};
+type TSpotifyData = {
+  album: string;
+  album_art_url: string;
+  artist: string;
+  song: string;
+  timestamps: {
+    start: number;
+    end: number;
+  };
+  track_id: string;
+};
+
+              : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp?size=512`;
+            setActivityImage({
+              largeActivityImage: largeImage,
+              smallActivityImage: smallImage,
+              isActivity: true,
+              isSpotifyPlaying: false,
+            });
+            setActivityDetails({
+              detail: activity.details,
+              description: activity.state,
+            });
+            setIsLoading(false);
+          } else {
+            let user = data;
+            let largeImage = `https://cdn.discordapp.com/avatars/${user.discord_user.id}/${user.discord_user?.avatar}.png?size=512`;
+
+            setActivityImage({
+              largeActivityImage: largeImage,
+              smallActivityImage: largeImage,
+              isActivity: false,
+              isSpotifyPlaying: false,
+            });
+            let status =
+              user.discord_status.charAt(0).toUpperCase() +
+              user.discord_status.slice(1);
+            status = status === "Dnd" ? "Do Not Disturb" : status;
+
+            setActivityDetails({
+              detail: user.discord_user.username,
+              description: status,
+            });
+
+            setIsLoading(false);
+          }
+        }
+      };
+    };
+    connect();
+  });
+};
+type TImageCont = {
+  activityImageClassName?: string;
+  activityImage: TActivityImage;
+};
+const ImageCont: React.FC<TImageCont> = ({
+  activityImageClassName,
+  activityImage,
+}: TImageCont) => {
+  return (
+    <div
+      className={cn(
+        "relative mt-1  max-w-[100px] h-[100px] ",
+        activityImageClassName
+      )}
+    >
+      {activityImage.largeActivityImage == "" ? (
+        <div className="animate-pulse bg-gray-500 w-[100px] h-[100px] rounded-2xl"></div>
+      ) : (
+        <img
+          src={activityImage.largeActivityImage}
+          className={cn(
+            "rounded-2xl relative select-none",
+            `${
+              activityImage.isSpotifyPlaying &&
+              "animate-[spin_40s_linear_infinite] rounded-full"
+            }`
+          )}
+          alt="Activity Image"
+        />
+      )}
+
+      {!activityImage.isSpotifyPlaying && activityImage.isActivity && (
+        <img
+          src={activityImage.smallActivityImage}
+          height={40}
+          width={40}
+          className={cn(
+            "rounded-full bottom-[-10px] right-0 select-none absolute p-2 bg-black/90",
+            {}
+          )}
+          alt="Activity Image"
+        />
+      )}
+    </div>
+  );
+};
+
+type TLocalTime = {
+  localTimeClass?: string;
+};
+const LocalTime: React.FC<TLocalTime> = ({ localTimeClass }: TLocalTime) => {
+  const [localTime, setLocalTime] = useState<string>("");
+
+  const setLocalTimeState = () => {
+    setLocalTime(new Date().toLocaleTimeString());
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const intervalId = window.setInterval(setLocalTimeState, 1000); // Update local time every second
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return <span className={localTimeClass}>{localTime}</span>;
+};
+
+type progressProps = {
+  progressBarClassName?: string;
+  value?: number;
+};
+const Progress = React.forwardRef<
+  React.ElementRef<typeof ProgressPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> & progressProps
+>(({ className, progressBarClassName, value, ...props }, ref) => (
+  <ProgressPrimitive.Root
+    ref={ref}
+    className={cn(
+      "relative h-4 w-full overflow-hidden rounded-full bg-secondary",
+      className
+    )}
+    {...props}
+  >
+    <ProgressPrimitive.Indicator
+      className={cn(
+        "h-full w-full flex-1 bg-purple-400 transition-all ",
+        progressBarClassName
+      )}
+      style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+    />
+  </ProgressPrimitive.Root>
+));
+
+/**
+ *
+ * @description Clean skeleton component for discordPresence
+ */
+const DiscordSkeleton: React.FC = () => {
+  return (
+    <div className="flex justify-start items-center gap-4">
+      <div className="w-24  h-24 bg-gray-700 animate-pulse rounded-2xl"></div>
+      <div className="flex flex-col  gap-3 items-start">
+        <div className="w-32  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+        <div className="w-36  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+        <div className="flex justify-start items-center gap-3">
+          <div className="w-16  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+          <div className="w-16  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { Discord };
+```

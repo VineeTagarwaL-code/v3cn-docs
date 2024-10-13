@@ -1,361 +1,352 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { use, useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 
-interface DiscordPresenceProp {
+type TDiscord = {
   userId: string;
-  username: string;
-  progressBar?: string;
-  activityClass?: string;
-  detailsClass?: string;
-  timeClass?: string;
-  userClass?: string;
-  acitivityContainer?: string;
-  acitivityImageContainer?: string;
-}
-
-const DiscordPresence: React.FC<DiscordPresenceProp> = ({
-  userId,
-  username,
-  progressBar,
-  activityClass,
-  userClass,
-  detailsClass,
-  timeClass,
-  acitivityContainer,
-  acitivityImageContainer,
-}) => {
-  const [name, setName] = useState(username);
-  const [state, setState] = useState("");
-  const [details, setDetails] = useState("Fetching....");
-  const [Elapsed, setElapsed] = useState("");
-  const [isSpotify, setIsSpotify] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [largeImage, setLargeImage] = useState("");
-  const [smallImage, setSmallImage] = useState("");
-  const [time, setTime] = useState("");
-  const [spotifyTotal, setSpotifyTotal] = useState(0);
-
-  const [userName, setUsername] = useState("");
-
-  const localtime = () => {
-    setTime(
-      new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata" })
-    );
+  userName: string;
+  activityDetailClass?: string;
+  activityDescriptionClass?: string;
+  activityImageClassName?: string;
+  progressBarClassName?: string;
+  localTimeClass?: string;
+};
+type TActivityImage = {
+  largeActivityImage: string;
+  smallActivityImage: string;
+  isActivity: boolean;
+  isSpotifyPlaying: boolean;
+};
+/**
+ * visual studio code activity
+ */
+type TActivity = {
+  application_id: string;
+  assets: {
+    large_image: string;
+    large_text: string;
+    small_image: string;
+    small_text: string;
   };
+  details: string;
+  id: string;
+  name: string;
+  state: string;
+};
+type TDiscordUser = {
+  details: string;
+  discord_status: string;
+  username: string;
+  avatar: string;
+  id: string;
+};
+type TSpotifyData = {
+  album: string;
+  album_art_url: string;
+  artist: string;
+  song: string;
+  timestamps: {
+    start: number;
+    end: number;
+  };
+  track_id: string;
+};
 
-  const [songLink, setSongLink] = useState("");
-  const {
-    isListeningToSpotify,
-    isActivity,
-    activity,
-    discordUser,
-    isNoActivity,
-  } = useDiscord(userId);
+type TActivityDetail = {
+  detail: string;
+  description: string;
+};
+const Discord: React.FC<TDiscord> = ({
+  userId,
+  userName,
+  activityDescriptionClass,
+  activityImageClassName,
+  activityDetailClass,
+  progressBarClassName,
+  localTimeClass,
+}: TDiscord) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [activityImage, setActivityImage] = useState<TActivityImage>({
+    largeActivityImage: "",
+    smallActivityImage: "",
+    isActivity: true,
+    isSpotifyPlaying: false,
+  });
+  const [activityDetais, setActivityDetails] = useState<TActivityDetail>({
+    detail: "",
+    description: "",
+  });
 
-  function elapsedTime(timestampStart: number) {
-    const elapsedMs = new Date().getTime() - timestampStart;
-    let elapsedTimeString = new Date(elapsedMs).toISOString().slice(14, 19);
-    setElapsed(elapsedTimeString);
-  }
-
-  useEffect(() => {
-    if (discordUser) {
-      setUsername(discordUser.username);
-    }
-    if (isListeningToSpotify) {
-      const { track_id, artist, song, album_art_url } = activity;
-
-      const details = artist.replace(/;/g, ", ");
-      setSongLink(`https://open.spotify.com/track/${track_id}`);
-      setName(song);
-      setDetails(details);
-      setLargeImage(album_art_url);
-      musicProgress(activity);
-      setIsSpotify(true);
-    }
-    if (isActivity) {
-      const { name, details, assets, timestamps, state, application_id } =
-        activity;
-
-      const largeImage = assets?.large_image.includes("http")
-        ? "https://" +
-          assets.large_image.replace(/^mp:external\/[^\/]+\/https\//, "")
-        : `https://cdn.discordapp.com/app-assets/${application_id}/${assets.large_image}.webp?size=512`;
-      const smallImage = assets?.small_image.includes("http")
-        ? "https://" +
-          assets.small_image.replace(/^mp:external\/[^\/]+\/https\//, "")
-        : `https://cdn.discordapp.com/app-assets/${application_id}/${assets.small_image}.webp?size=512`;
-      setName(name);
-      setDetails(details);
-      setState(state);
-
-      setLargeImage(largeImage);
-      setSmallImage(smallImage);
-      elapsedTime(timestamps.start);
-      setIsSpotify(false);
-    }
-    if (isNoActivity) {
-      console.log(discordUser);
-      let details =
-        discordUser?.discord_status.charAt(0).toUpperCase() +
-        discordUser?.discord_status.slice(1);
-      details = details === "Dnd" ? "Do Not Disturb" : details;
-      console.log(details, "detilsd");
-      setDetails(details);
-      setLargeImage(
-        `https://cdn.discordapp.com/avatars/${userId}/${discordUser?.discord_user.avatar}.png?size=512`
-      );
-      setName(discordUser?.discord_user.username);
-      setIsSpotify(false);
-    }
-  }, [
-    isListeningToSpotify,
-    activity,
-    discordUser,
-    isNoActivity,
-    isActivity,
-    userId,
-  ]);
-
-  function musicProgress(spotify: any) {
-    let spotifyTotal = spotify?.timestamps?.end - spotify?.timestamps?.start;
+  const [progress, setProgress] = useState<number>(0);
+  function musicProgress(spotify: Pick<TSpotifyData, "timestamps">) {
+    let totalTime = spotify.timestamps.end - spotify.timestamps.start;
     let progress =
-      100 -
-      (100 * (spotify?.timestamps?.end - new Date().getTime())) / spotifyTotal;
-
-    setSpotifyTotal(spotifyTotal);
+      100 - (100 * (spotify.timestamps.end - new Date().getTime())) / totalTime;
     setProgress(progress);
   }
+  const data = useDiscord({
+    userId,
+    setIsLoading,
+    setActivityImage,
+    musicProgress,
+    setActivityDetails,
+  });
 
-  useEffect(() => {
-    localtime();
-    const intervalId = setInterval(localtime, 1000); // Update local time every second
-    return () => clearInterval(intervalId);
-  }, []);
   return (
-    <div
-      className={cn(
-        "bg-black/90 px-4 py-6 rounded-2xl text-white flex justify-start items-center gap-6 min-w-[320px]",
-        acitivityContainer
-      )}
-    >
-      <div
-        className={cn(
-          "relative mt-1  min-w-[100px] h-[100px] ",
-          acitivityImageContainer
-        )}
-      >
-        {largeImage == "" ? (
-          <div className="animate-pulse bg-gray-500 w-[100px] h-[100px] rounded-2xl"></div>
-        ) : (
-          <img
-            src={largeImage}
-            className={cn("rounded-2xl relative select-none", {
-              "animate-[spin_40s_linear_infinite] rounded-full": isSpotify,
-            })}
-            alt="Activity Image"
+    <div className="my-6">
+      {isLoading ? (
+        <DiscordSkeleton />
+      ) : (
+        <div className="flex gap-2">
+          <ImageCont
+            activityImage={activityImage}
+            activityImageClassName={activityImageClassName}
           />
-        )}
-
-        {isActivity && (
-          <img
-            src={smallImage}
-            height={40}
-            width={40}
-            className={cn(
-              "rounded-full bottom-[-10px] right-0 select-none absolute p-2 bg-black/90",
-              {}
-            )}
-            alt="Activity Image"
-          />
-        )}
-      </div>
-      <div className="flex  flex-col justify-start items-start w-full">
-        <h1
-          className={cn(
-            "font-grotesk text-lg md:text-2xl cursor-pointer  ",
-            activityClass
-          )}
-        >
-          {isSpotify ? (
-            <a href={songLink} target="_blank" rel="noreferrer">
-              {name}
-            </a>
-          ) : (
-            !isActivity && name
-          )}
-        </h1>
-        <h3
-          className={cn(
-            "md:text-xl text-md mb-2",
-            isSpotify && "mb-3",
-            isNoActivity && "mb-0",
-            detailsClass
-          )}
-        >
-          {isSpotify
-            ? details.length > 20
-              ? `by ${details.slice(0, 20)}...`
-              : `by ${details}`
-            : isActivity
-            ? details.length > 20
-              ? `${details
-                  .slice(0, 30)
-                  .replace(/In\s+(\w)/, (_, char) => char.toUpperCase())}...`
-              : details
-            : details}
-        </h3>
-        <div
-          className={cn(
-            "w-full mb-2",
-            isSpotify && "mb-2",
-            isNoActivity && "mb-0"
-          )}
-        >
-          {/* {isSpotify ? (
-            <Progress
-              value={progress}
-              className=" w-[100px] md:w-[200px] h-[3px] text-red-500"
-              progressBar={progressBar}
+          <div className="flex flex-col justify-center items-start gap-2">
+            <AcitvityInfo
+              activityDetais={activityDetais}
+              activityDescriptionClass={activityDescriptionClass}
+              activityDetailClass={activityDetailClass}
             />
-          ) : isActivity ? (
-            state
-          ) : (
-            ""
-          )} */}
+            {activityImage.isSpotifyPlaying ? (
+              <Progress
+                value={progress}
+                className=" w-[100px] md:w-[200px] h-[3px] text-red-500 "
+                progressBarClassName={progressBarClassName}
+              />
+            ) : null}
+            <div className="flex flex-row flex-nowrap gap-2">
+              <span className="capitalize">{userName}</span> •{" "}
+              <LocalTime localTimeClass={localTimeClass} />
+            </div>
+          </div>
         </div>
-        <div>
-          {isActivity ? (
-            <span className="mb-2">Elapsed : {Elapsed}</span>
-          ) : (
-            isNoActivity && (
-              <div className="flex flex-row gap-1 justify-start items-center">
-                <span>Workspace</span>
-                <span className="text-sm md:text-xl hidden sm:inline-block">
-                  •
-                </span>
-                <span>Home</span>
-              </div>
-            )
-          )}
-        </div>
-        <div className="flex flex-nowrap gap-1  flex-row ">
-          {!isNoActivity && (
-            <>
-              <p className={cn("text-sm md:text-xl", userClass)}>{userName}</p>
-              <span className="text-sm md:text-xl hidden sm:inline-block">
-                •
-              </span>
-            </>
-          )}
-          <p className={cn("text-sm md:text-xl", timeClass)}>{time}</p>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
-const useDiscord = (userId: string) => {
-  const [userActivity, setUserActivity] = useState<any>(null);
-  const [discordUser, setDiscordUser] = useState<any>({});
-  const [isListeningToSpotify, setIsListeningToSpotify] = useState(false);
-  const [isActivity, setIsActivity] = useState(false);
-  const [isNoActivity, setNoActivity] = useState(false);
-  const [activity, setActivity] = useState<any>({});
-  console.log(userId);
+const AcitvityInfo = ({
+  activityDetais,
+  activityDetailClass,
+  activityDescriptionClass,
+}: {
+  activityDetais: TActivityDetail;
+  activityDetailClass?: string;
+  activityDescriptionClass?: string;
+}) => {
+  return (
+    <div className="flex flex-col gap-1">
+      <span className={cn("text-base font-semibold mb-1", activityDetailClass)}>
+        {activityDetais.detail}
+      </span>
+      <span className={cn("text-sm", activityDescriptionClass)}>
+        {activityDetais.description}
+      </span>
+    </div>
+  );
+};
+
+type TUseDiscord = {
+  userId: string;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setActivityImage: React.Dispatch<React.SetStateAction<TActivityImage>>;
+  musicProgress: (spotify: Pick<TSpotifyData, "timestamps">) => void;
+  setActivityDetails: React.Dispatch<React.SetStateAction<TActivityDetail>>;
+};
+
+const useDiscord = ({
+  userId,
+  setIsLoading,
+  setActivityImage,
+  musicProgress,
+  setActivityDetails,
+}: TUseDiscord) => {
   useEffect(() => {
     let lanyard: WebSocket | null = null;
-    let heartbeatInterval: NodeJS.Timeout | null = null;
-
     const connect = () => {
-      console.log("hi");
-      lanyard = new WebSocket("wss://api.lanyard.rest/socket");
-      console.log("lanyard is called ");
+      lanyard = new WebSocket(`wss://api.lanyard.rest/socket`);
+      if (!lanyard) {
+        return;
+      }
       lanyard.onmessage = (event) => {
-        const jsonData = JSON.parse(event.data);
-        const opcode = jsonData.op;
-        const data: any = jsonData.d;
+        const json = JSON.parse(event.data);
+        const opCode = json.op;
+        const data: {
+          discord_user: TDiscordUser;
+          discord_status: string;
+          heartbeat_interval: number;
+          activities: TActivity[];
+          listening_to_spotify: boolean;
+          spotify: TSpotifyData;
+        } = json.d;
 
-        if (!lanyard) {
-          return;
-        }
-
-        if (opcode === 1) {
-          let heartbeatInterval = data.heartbeat_interval;
-          lanyard.send(
+        if (opCode === 1) {
+          let heartbeatInterval: NodeJS.Timer | number =
+            data.heartbeat_interval;
+          lanyard?.send(
             JSON.stringify({
               op: 2,
               d: { subscribe_to_id: userId },
             })
           );
 
-          // Set up heartbeat
           if (heartbeatInterval) {
             heartbeatInterval = setInterval(() => {
-              lanyard?.send(JSON.stringify({ op: 3 }));
+              lanyard?.send(
+                JSON.stringify({
+                  op: 3,
+                })
+              );
             }, heartbeatInterval);
           }
-        } else if (opcode === 0) {
+        } else if (opCode === 0) {
           if (data.listening_to_spotify) {
-            const spotify = data.spotify;
-            setIsListeningToSpotify(true);
-            setActivity(spotify);
-            setIsActivity(false);
-            setNoActivity(false);
-            setDiscordUser(data.discord_user);
+            let spotifyData = data.spotify;
+            setActivityImage({
+              largeActivityImage: spotifyData.album_art_url,
+              smallActivityImage: spotifyData.album_art_url,
+              isActivity: true,
+              isSpotifyPlaying: true,
+            });
+            musicProgress(spotifyData);
+            setActivityDetails({
+              detail: spotifyData.artist,
+              description: spotifyData.song,
+            });
+            setIsLoading(false);
           } else if (data.activities && data.activities[0]) {
-            setActivity(data.activities[0]);
-            setIsActivity(true);
-            setNoActivity(false);
-            setDiscordUser(data.discord_user);
-            setIsListeningToSpotify(false);
+            let activity = data.activities[0];
+            let largeImage = activity.assets?.large_image.includes("http")
+              ? "https://" +
+                activity.assets.large_image.replace(
+                  /^mp:external\/[^\/]+\/https\//,
+                  ""
+                )
+              : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.webp?size=512`;
+            const smallImage = activity.assets?.small_image.includes("http")
+              ? "https://" +
+                activity.assets.small_image.replace(
+                  /^mp:external\/[^\/]+\/https\//,
+                  ""
+                )
+              : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp?size=512`;
+            setActivityImage({
+              largeActivityImage: largeImage,
+              smallActivityImage: smallImage,
+              isActivity: true,
+              isSpotifyPlaying: false,
+            });
+            setActivityDetails({
+              detail: activity.details,
+              description: activity.state,
+            });
+            setIsLoading(false);
           } else {
-            setIsActivity(false);
-            setIsListeningToSpotify(false);
-            setNoActivity(true);
-            setDiscordUser(data);
+            let user = data;
+            let largeImage = `https://cdn.discordapp.com/avatars/${user.discord_user.id}/${user.discord_user?.avatar}.png?size=512`;
+
+            setActivityImage({
+              largeActivityImage: largeImage,
+              smallActivityImage: largeImage,
+              isActivity: false,
+              isSpotifyPlaying: false,
+            });
+            let status =
+              user.discord_status.charAt(0).toUpperCase() +
+              user.discord_status.slice(1);
+            status = status === "Dnd" ? "Do Not Disturb" : status;
+
+            setActivityDetails({
+              detail: user.discord_user.username,
+              description: status,
+            });
+
+            setIsLoading(false);
           }
         }
       };
-
-      lanyard.onclose = () => {
-        if (heartbeatInterval) {
-          clearInterval(heartbeatInterval);
-        }
-        setTimeout(connect, 2500);
-      };
     };
-
     connect();
-
-    return () => {
-      if (lanyard) {
-        lanyard.close();
-      }
-      if (heartbeatInterval) {
-        clearInterval(heartbeatInterval);
-      }
-    };
-  }, [userId]);
-
-  return {
-    userActivity,
-    isListeningToSpotify,
-    isActivity,
-    isNoActivity,
-    activity,
-    discordUser,
-  };
+  });
 };
+type TImageCont = {
+  activityImageClassName?: string;
+  activityImage: TActivityImage;
+};
+const ImageCont: React.FC<TImageCont> = ({
+  activityImageClassName,
+  activityImage,
+}: TImageCont) => {
+  return (
+    <div
+      className={cn(
+        "relative mt-1  max-w-[100px] h-[100px] ",
+        activityImageClassName
+      )}
+    >
+      {activityImage.largeActivityImage == "" ? (
+        <div className="animate-pulse bg-gray-500 w-[100px] h-[100px] rounded-2xl"></div>
+      ) : (
+        <img
+          src={activityImage.largeActivityImage}
+          className={cn(
+            "rounded-2xl relative select-none",
+            `${
+              activityImage.isSpotifyPlaying &&
+              "animate-[spin_40s_linear_infinite] rounded-full"
+            }`
+          )}
+          alt="Activity Image"
+        />
+      )}
+
+      {!activityImage.isSpotifyPlaying && activityImage.isActivity && (
+        <img
+          src={activityImage.smallActivityImage}
+          height={40}
+          width={40}
+          className={cn(
+            "rounded-full bottom-[-10px] right-0 select-none absolute p-2 bg-black/90",
+            {}
+          )}
+          alt="Activity Image"
+        />
+      )}
+    </div>
+  );
+};
+
+type TLocalTime = {
+  localTimeClass?: string;
+};
+const LocalTime: React.FC<TLocalTime> = ({ localTimeClass }: TLocalTime) => {
+  const [localTime, setLocalTime] = useState<string>("");
+
+  const setLocalTimeState = () => {
+    setLocalTime(new Date().toLocaleTimeString());
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const intervalId = window.setInterval(setLocalTimeState, 1000); // Update local time every second
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return <span className={localTimeClass}>{localTime}</span>;
+};
+
 type progressProps = {
-  progressBar?: string;
+  progressBarClassName?: string;
   value?: number;
 };
 const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> & progressProps
->(({ className, progressBar, value, ...props }, ref) => (
+>(({ className, progressBarClassName, value, ...props }, ref) => (
   <ProgressPrimitive.Root
     ref={ref}
     className={cn(
@@ -366,12 +357,32 @@ const Progress = React.forwardRef<
   >
     <ProgressPrimitive.Indicator
       className={cn(
-        "h-full w-full flex-1 bg-white transition-all ",
-        progressBar
+        "h-full w-full flex-1 bg-purple-400 transition-all ",
+        progressBarClassName
       )}
-      style={{ transform: `translateX(-${100 - 0}%)` }}
+      style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
     />
   </ProgressPrimitive.Root>
 ));
-Progress.displayName = ProgressPrimitive.Root.displayName;
-export { DiscordPresence };
+
+/**
+ *
+ * @description Clean skeleton component for discordPresence
+ */
+const DiscordSkeleton: React.FC = () => {
+  return (
+    <div className="flex justify-start items-center gap-4">
+      <div className="w-24  h-24 bg-gray-700 animate-pulse rounded-2xl"></div>
+      <div className="flex flex-col  gap-3 items-start">
+        <div className="w-32  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+        <div className="w-36  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+        <div className="flex justify-start items-center gap-3">
+          <div className="w-16  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+          <div className="w-16  h-5 bg-gray-700 animate-pulse rounded-2xl"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { Discord };
