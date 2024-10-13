@@ -155,7 +155,7 @@ const Card = () => {
                 Here you will get components which you wont get anywhere.
               </h4>
 
-              <p className="text-purple-400">Made by Vineet & Team</p>
+              <p className="text-purple-400">Made by Vineet</p>
             </div>
           </div>
         </CardContainer>

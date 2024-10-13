@@ -9,7 +9,20 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        smooth: {
+          "0%": { transform: "translateY(-5px)" },
+
+          "50%": { transform: "translateY(5px)" },
+
+          "100%": { transform: "translateY(-5px)" },
+        },
+      },
+      animation: {
+        float: "smooth 3s ease-in-out infinite",
+      },
+    },
   },
   plugins: [],
 };
