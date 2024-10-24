@@ -300,16 +300,13 @@ const TerminalCommand: React.FC<TerminalInputProps> = ({
                 onKeyDown={handleKeyDown}
                 onChange={handleCommand}
                 className={cn(
-                  "bg-transparent w-[180px] outline-none border-none text-gray-200 font-medium text-xl"
+                  "bg-transparent w-full outline-none focus-none  border-none text-gray-200 font-medium text-xl ring-transparent"
                 )}
               />
             </form>
           </div>
           <p className="text-cyan-300 text-xs md:text-base">{time}</p>
         </div>
-        {/* {
-                    isEmpty && <p className='text-red-200'>enter a command please</p>
-                } */}
       </div>
     </div>
   );
