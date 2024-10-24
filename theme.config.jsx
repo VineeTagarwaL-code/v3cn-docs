@@ -25,7 +25,9 @@ export default {
   feedback: {
     useLink: () => SITE.github,
   },
-  head: null,
+  head: (
+    <script defer src="https://unmani-vercel.vercel.app/script.js" data-website-id="5aa79a6c-9caf-4649-a641-512c273fbe98"></script>
+  ),
   useNextSeoProps() {
     const { frontMatter } = useConfig();
     return {
