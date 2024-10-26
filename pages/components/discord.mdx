@@ -33,8 +33,6 @@ npm i @radix-ui/react-progress
 ### Utility File
 
 ```tsx
-// Util/cn.ts
-
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -373,7 +371,7 @@ const ImageCont: React.FC<TImageCont> = ({
       {activityImage.largeActivityImage == "" ? (
         <div className="animate-pulse bg-gray-500 w-[100px] h-[100px] rounded-2xl"></div>
       ) : (
-        <img
+        <Image
           src={activityImage.largeActivityImage}
           className={cn(
             "rounded-2xl relative select-none",
@@ -387,7 +385,7 @@ const ImageCont: React.FC<TImageCont> = ({
       )}
 
       {!activityImage.isSpotifyPlaying && activityImage.isActivity && (
-        <img
+        <Image
           src={activityImage.smallActivityImage}
           height={40}
           width={40}
