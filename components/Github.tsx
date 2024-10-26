@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import Calendar, { ActivityCalendar } from "react-activity-calendar";
+import Calendar, { Activity, ActivityCalendar } from "react-activity-calendar";
 
 type GithubGraphProps = {
   username: string;
@@ -14,22 +14,24 @@ export const GithubGraph = ({
   blockMargin,
   colorPallete,
 }: GithubGraphProps) => {
-  const [contribution, setContribution] = useState([]);
-  const [loading, setIsLoading] = useState(true);
+  const [contribution, setContribution] = useState<Activity[]>([]);
+  const [loading, setIsLoading] = useState<boolean>(true);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const contributions = await fetchContributionData(username);
+      setContribution(contributions);
+    } catch (error) {
+      throw Error("Error fetching contribution data");
+    } finally {
+      setIsLoading(false);
+    }
+  }, [username]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const contributions = await fetchContributionData(username);
-        setContribution(contributions);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Failed to fetch contribution data:", error);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, [fetchData]);
+
   const label = {
     totalCount: `{{count}} contributions in the last year`,
   };
@@ -39,20 +41,23 @@ export const GithubGraph = ({
       <ActivityCalendar
         data={contribution}
         maxLevel={4}
-        blockMargin={blockMargin ? blockMargin : 2}
+        blockMargin={blockMargin ?? 2}
         loading={loading}
         labels={label}
         theme={{
-          dark: colorPallete
-            ? colorPallete
-            : ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+          dark: colorPallete ?? [
+            "#ebedf0",
+            "#9be9a8",
+            "#40c463",
+            "#30a14e",
+            "#216e39",
+          ],
         }}
       />
     </>
   );
 };
-
-async function fetchContributionData(username: string): Promise<any> {
+async function fetchContributionData(username: string): Promise<Activity[]> {
   let response = await fetch(`https://github.vineet.tech/api/${username}`);
   let responseBody = await response.json();
 
