@@ -59,6 +59,32 @@ import { Discord } from "@/components/ui/discord";
 />;
 ```
 
+#### Next.config
+
+```tsx
+
+//rest of the settings
+// add this in your image config object
+
+ images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+        port: "",
+        pathname: "/image/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+        port: "",
+        pathname: "**",
+      },
+    ],
+  },
+// rest of the settings
+```
+
 # Discord Props
 
 | Prop Name                | Type   | Description                                                         |
