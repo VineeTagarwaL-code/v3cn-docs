@@ -289,7 +289,7 @@ const ImageCont: React.FC<TImageCont> = ({
       {activityImage.largeActivityImage == "" ? (
         <div className="animate-pulse bg-gray-500 rounded-2xl"></div>
       ) : (
-        <Image
+        <img
           src={activityImage.largeActivityImage}
           className={cn(
             "rounded-2xl relative select-none",
@@ -305,7 +305,7 @@ const ImageCont: React.FC<TImageCont> = ({
       )}
 
       {!activityImage.isSpotifyPlaying && activityImage.isActivity && (
-        <Image
+        <img
           src={activityImage.smallActivityImage}
           height={40}
           width={40}

@@ -105,7 +105,7 @@ import { Discord } from "@/components/ui/discord";
 import React, { use, useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
-
+import Image from "next/image";
 type TDiscord = {
   userId: string;
   userName: string;
@@ -389,9 +389,9 @@ const ImageCont: React.FC<TImageCont> = ({
       )}
     >
       {activityImage.largeActivityImage == "" ? (
-        <div className="animate-pulse bg-gray-500 w-[100px] h-[100px] rounded-2xl"></div>
+        <div className="animate-pulse bg-gray-500 rounded-2xl"></div>
       ) : (
-        <img
+        <Image
           src={activityImage.largeActivityImage}
           className={cn(
             "rounded-2xl relative select-none",
@@ -400,12 +400,14 @@ const ImageCont: React.FC<TImageCont> = ({
               "animate-[spin_40s_linear_infinite] rounded-full"
             }`
           )}
+          width={100}
+          height={100}
           alt="Activity Image"
         />
       )}
 
       {!activityImage.isSpotifyPlaying && activityImage.isActivity && (
-        <img
+        <Image
           src={activityImage.smallActivityImage}
           height={40}
           width={40}
@@ -424,7 +426,9 @@ type TLocalTime = {
   localTimeClass?: string;
 };
 const LocalTime: React.FC<TLocalTime> = ({ localTimeClass }: TLocalTime) => {
-  const [localTime, setLocalTime] = useState<string>("");
+  const [localTime, setLocalTime] = useState<string>(
+    new Date().toLocaleTimeString()
+  );
 
   const setLocalTimeState = () => {
     setLocalTime(new Date().toLocaleTimeString());
