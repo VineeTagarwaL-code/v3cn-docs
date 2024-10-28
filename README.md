@@ -24,11 +24,10 @@ The next gen ui library you need for your portfolio, has custom built discord, c
 ## Built With
 NextJs, Nextra, Typescript & Some code.
 
-
 ## Getting Started
 Use our custom utility 
 ```bash
-npx v3cn add discord
+npx v3cn add <component_name>
 ```
 or you can visit https://v3cn.me
 
