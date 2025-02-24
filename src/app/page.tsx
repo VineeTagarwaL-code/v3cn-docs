@@ -10,7 +10,12 @@ export default function Home() {
           backgroundColor: "rgb(165 122 201 / 10%)",
         }}
       />
-      <section>
+      <section
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 60% 10%, #ff00002e, #fff0 11%), radial-gradient(circle at 70% 15%, #ab40ff2e, #faf3ff03 10%, #fff0)",
+        }}
+      >
         <Navbar />
         <Hero />
       </section>
