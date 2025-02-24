@@ -118,24 +118,89 @@ export const Hero = () => {
       </div>
       <div className="relative w-full h-[200vh]">
         <div className="top-0 sticky flex justify-center items-center w-full h-screen">
-          <div className="relative h-fit overflow-hidden">
-            <Image
-              src="/image/phone.png"
-              alt="hero"
-              width={600}
-              height={400}
-              className="w-auto h-[600px]"
-            />
-            <Image
-              src="/image/mockup.jpeg"
-              alt="mockup"
-              width={600}
-              height={400}
-              className="top-[50px] left-[15px] absolute w-auto h-[485px]"
-            />
+          <div className="flex justify-center items-start gap-8">
+            <div className="flex items-end h-[300px]">
+              <div
+                className="flex flex-col justify-between p-4 rounded-2xl w-[300px] h-[200px]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(355deg, rgb(166 131 131) 20.37%, #993150 81.25%)",
+                }}
+              >
+                <div className="flex justify-between items-start w-full">
+                  <h1 className="font-medium text-white text-lg">
+                    One Library for all <br /> your UI needs.
+                  </h1>
+                  <Image
+                    src="/icons/star.svg"
+                    alt="star"
+                    width={32}
+                    height={32}
+                    className="mt-0"
+                  />
+                </div>
+                <button
+                  className="flex items-center gap-1 p-2 px-3 border border-[#5c58673d] rounded-2xl w-fit font-medium text-white hover:text-gray-300 text-sm"
+                  style={{
+                    background:
+                      "linear-gradient(rgb(21 21 21) 0%, rgba(34, 34, 35, 0.6) 68.75%)",
+                  }}
+                >
+                  Build with V3CN
+                </button>
+              </div>
+            </div>
+            <div className="relative h-fit overflow-hidden">
+              <Image
+                src="/image/phone.png"
+                alt="hero"
+                width={600}
+                height={400}
+                className="w-auto h-[600px]"
+              />
+              <Image
+                src="/image/mockup.jpeg"
+                alt="mockup"
+                width={600}
+                height={400}
+                className="top-[50px] left-[15px] absolute w-auto h-[485px]"
+              />
+            </div>
+            <div className="flex items-end h-[500px]">
+              <div
+                className="flex flex-col justify-between p-4 rounded-2xl w-[300px] h-[200px]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(355deg, rgb(166, 131, 131) 20.37%, rgb(124 49 153) 81.25%)",
+                }}
+              >
+                <div className="flex justify-between items-start w-full">
+                  <h1 className="font-medium text-white text-lg">
+                    Seamless UI, Limitless Possibilities.
+                  </h1>
+                  <Image
+                    src="/icons/star.svg"
+                    alt="star"
+                    width={32}
+                    height={32}
+                    className="mt-0"
+                  />
+                </div>
+                <button
+                  className="flex items-center gap-1 p-2 px-3 border border-[#5c58673d] rounded-2xl w-fit font-medium text-white hover:text-gray-300 text-sm"
+                  style={{
+                    background:
+                      "linear-gradient(rgb(21 21 21) 0%, rgba(34, 34, 35, 0.6) 68.75%)",
+                  }}
+                >
+                  Create Bueatiful UIs
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div className="h-screen" />
     </div>
   );
 };
