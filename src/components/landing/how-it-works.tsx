@@ -17,6 +17,7 @@ interface GlowingEffectProps {
   disabled?: boolean;
   movementDuration?: number;
   borderWidth?: number;
+  borderColor?: string;
 }
 const GlowingEffect = memo(
   ({
@@ -28,7 +29,8 @@ const GlowingEffect = memo(
     glow = false,
     className,
     movementDuration = 2,
-    borderWidth = 1,
+    borderWidth = 0.5,
+    borderColor = "border-gray-800",
     disabled = true,
   }: GlowingEffectProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -125,9 +127,11 @@ const GlowingEffect = memo(
           className={cn(
             "pointer-events-none absolute -inset-px hidden rounded-[inherit] border opacity-0 transition-opacity",
             glow && "opacity-100",
+            borderColor,
             variant === "white" && "border-white",
             disabled && "!block"
           )}
+          style={{ borderWidth: `${borderWidth}px` }}
         />
         <div
           ref={containerRef}
@@ -211,6 +215,8 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
         glow={true}
         proximity={64}
         inactiveZone={0.01}
+        borderColor="border-gray-800"
+        borderWidth={0.5}
       />
       <div className="text-sm font-medium text-gray-400">{number}</div>
       <h3 className="mt-6 text-2xl font-bold text-white">{title}</h3>
