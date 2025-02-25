@@ -5,6 +5,7 @@ import { memo, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { animate } from "motion/react";
 import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface GlowingEffectProps {
   blur?: number;
@@ -205,7 +206,7 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
 
   return (
     <div
-      className="relative rounded-xl p-6 bg-black/40 backdrop-blur-sm transition-all duration-300"
+      className="relative rounded-xl p-6 bg-black/40 backdrop-blur-sm transition-all duration-300 transform-gpu"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -227,6 +228,15 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
 }
 
 export default function FeaturesSection() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
+
   const features = [
     {
       number: "01",
@@ -274,6 +284,18 @@ export default function FeaturesSection() {
     },
   ];
 
+  const [featureScales] = useState(() => {
+    return features.map((_, index) => {
+      return (progress: number) => {
+        const start = 0.1 * index;
+        const end = 0.2 + 0.1 * index;
+        if (progress < start) return 0.95;
+        if (progress > end) return 1;
+        return 0.95 + ((progress - start) / (end - start)) * 0.05;
+      };
+    });
+  });
+
   return (
     <>
       <style jsx global>{`
@@ -290,8 +312,8 @@ export default function FeaturesSection() {
         }
       `}</style>
 
-      <section className="px-4 py-16 md:py-24 bg-black">
-        <div className="mx-auto max-w-7xl">
+      <section ref={sectionRef} className="px-4 py-16 md:py-24 bg-black">
+        <motion.div className="mx-auto max-w-7xl" style={{ opacity, y }}>
           {/* Header */}
           <div className="text-center">
             <div className="inline-block rounded-full bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-100">
@@ -309,17 +331,35 @@ export default function FeaturesSection() {
 
           {/* Features Grid */}
           <div className="mt-24 grid gap-12 md:grid-cols-3">
-            {features.map((feature) => (
-              <FeatureCard
+            {features.map((feature, index) => (
+              <motion.div
                 key={feature.number}
-                number={feature.number}
-                title={feature.title}
-                description={feature.description}
-                visual={feature.visual}
-              />
+                style={{ scale: featureScales[index](scrollYProgress.get()) }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 12,
+                  mass: 0.9,
+                }}
+              >
+                <FeatureCard
+                  number={feature.number}
+                  title={feature.title}
+                  description={feature.description}
+                  visual={feature.visual}
+                />
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );
