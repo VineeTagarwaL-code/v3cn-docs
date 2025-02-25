@@ -13,7 +13,11 @@ export const Hero = () => {
     offset: ["start end", "end end"],
   });
   const opacity = useTransform(scrollYProgress, [0.5, 0.9], [0, 1]);
-  const imageShiftToTop = useTransform(scrollYProgress, [0, 0.6], [485, -0]);
+  const imageShiftToTop = useTransform(
+    scrollYProgress,
+    [0, 0.5, 0.8],
+    [485, 485, -0]
+  );
   const imageOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const yLeft = useTransform(scrollYProgress, [0.5, 0.7], [300, 0]);
   const yRight = useTransform(scrollYProgress, [0.5, 0.7], [-300, 0]);
@@ -175,28 +179,32 @@ export const Hero = () => {
                 height={400}
                 className="w-auto h-[600px]"
               />
-              <Image
-                src="/image/mockup.jpeg"
-                alt="mockup"
-                width={600}
-                height={400}
-                className="top-[50px] left-[15px] absolute w-auto h-[485px]"
-              />
-              <motion.div
-                style={{
-                  y: imageShiftToTop,
-                  opacity: imageOpacity,
-                }}
-                className="top-[50px] left-[15px] z-[10] absolute w-auto h-[485px]"
-              >
-                <Image
-                  src="/image/mockup-2.png"
-                  alt="mockup-2"
-                  width={600}
-                  height={400}
-                  className="w-auto h-full"
-                />
-              </motion.div>
+              <div className="top-[50px] left-[15px] absolute w-full h-[485px] overflow-hidden">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/image/mockup.jpeg"
+                    alt="mockup"
+                    width={600}
+                    height={400}
+                    className="top-[0 left-0 absolute w-auto h-[485px]"
+                  />
+                  <motion.div
+                    style={{
+                      y: imageShiftToTop,
+                      opacity: imageOpacity,
+                    }}
+                    className="top-0 left-0 z-[10] absolute w-auto h-[485px]"
+                  >
+                    <Image
+                      src="/image/mockup-2.png"
+                      alt="mockup-2"
+                      width={600}
+                      height={400}
+                      className="w-auto h-full"
+                    />
+                  </motion.div>
+                </div>
+              </div>
             </div>
             <motion.div
               style={{ opacity, y: yRight }}
