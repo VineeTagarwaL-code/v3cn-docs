@@ -1,8 +1,22 @@
+"use client";
+
+import { useScroll, useTransform, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 export const Hero = () => {
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"],
+  });
+  const opacity = useTransform(scrollYProgress, [0.5, 0.9], [0, 1]);
+  const imageShiftToTop = useTransform(scrollYProgress, [0, 0.6], [485, -0]);
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const yLeft = useTransform(scrollYProgress, [0.5, 0.7], [300, 0]);
+  const yRight = useTransform(scrollYProgress, [0.5, 0.7], [-300, 0]);
   return (
     <div className="flex flex-col items-center pt-24 w-full">
       <div className="flex flex-col items-center gap-2 w-fit text-center">
@@ -116,10 +130,13 @@ export const Hero = () => {
           </Link>
         </div>
       </div>
-      <div className="relative w-full h-[200vh]">
+      <div className="relative w-full h-[200vh]" ref={containerRef}>
         <div className="top-0 sticky flex justify-center items-center w-full h-screen">
           <div className="flex justify-center items-start gap-8">
-            <div className="flex items-end h-[300px]">
+            <motion.div
+              style={{ opacity, y: yLeft }}
+              className="flex items-end h-[300px]"
+            >
               <div
                 className="flex flex-col justify-between p-4 rounded-2xl w-[300px] h-[200px]"
                 style={{
@@ -149,7 +166,7 @@ export const Hero = () => {
                   Build with V3CN
                 </button>
               </div>
-            </div>
+            </motion.div>
             <div className="relative h-fit overflow-hidden">
               <Image
                 src="/image/phone.png"
@@ -165,8 +182,26 @@ export const Hero = () => {
                 height={400}
                 className="top-[50px] left-[15px] absolute w-auto h-[485px]"
               />
+              <motion.div
+                style={{
+                  y: imageShiftToTop,
+                  opacity: imageOpacity,
+                }}
+                className="top-[50px] left-[15px] z-[10] absolute w-auto h-[485px]"
+              >
+                <Image
+                  src="/image/mockup-2.png"
+                  alt="mockup-2"
+                  width={600}
+                  height={400}
+                  className="w-auto h-full"
+                />
+              </motion.div>
             </div>
-            <div className="flex items-end h-[500px]">
+            <motion.div
+              style={{ opacity, y: yRight }}
+              className="flex items-end h-[500px]"
+            >
               <div
                 className="flex flex-col justify-between p-4 rounded-2xl w-[300px] h-[200px]"
                 style={{
@@ -196,7 +231,7 @@ export const Hero = () => {
                   Create Bueatiful UIs
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
