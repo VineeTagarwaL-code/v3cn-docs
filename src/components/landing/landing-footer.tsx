@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function LandingFooter() {
   return (
-    <footer className="w-full border-t border-gray-800 bg-black py-4">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 sm:flex-row">
-        <p className="text-sm text-gray-400">
+    <footer className="py-4 border-gray-800 border-t w-full">
+      <div className="flex sm:flex-row flex-col justify-between items-center gap-4 mx-auto px-4 container">
+        <p className="text-gray-400 text-sm">
           Designed by{" "}
           <Link href="#" className="hover:text-gray-300">
             Radiant Templates
@@ -18,19 +18,19 @@ export default function LandingFooter() {
         <div className="flex items-center gap-4">
           <Link
             href="#"
-            className="rounded-full border border-gray-700 px-4 py-1 text-sm text-gray-400 transition-colors hover:border-gray-600 hover:text-gray-300"
+            className="px-4 py-1 border border-gray-700 hover:border-gray-600 rounded-full text-gray-400 hover:text-gray-300 text-sm transition-colors"
           >
             Facebook
           </Link>
           <Link
             href="#"
-            className="rounded-full border border-gray-700 px-4 py-1 text-sm text-gray-400 transition-colors hover:border-gray-600 hover:text-gray-300"
+            className="px-4 py-1 border border-gray-700 hover:border-gray-600 rounded-full text-gray-400 hover:text-gray-300 text-sm transition-colors"
           >
             Twitter
           </Link>
           <Link
             href="#"
-            className="rounded-full border border-gray-700 px-4 py-1 text-sm text-gray-400 transition-colors hover:border-gray-600 hover:text-gray-300"
+            className="px-4 py-1 border border-gray-700 hover:border-gray-600 rounded-full text-gray-400 hover:text-gray-300 text-sm transition-colors"
           >
             LinkedIn
           </Link>

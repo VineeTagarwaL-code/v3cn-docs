@@ -206,7 +206,7 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
 
   return (
     <div
-      className="relative rounded-xl p-6 bg-black/40 backdrop-blur-sm transition-all duration-300 transform-gpu"
+      className="relative backdrop-blur-sm p-6 rounded-xl transform-gpu transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -219,8 +219,8 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
         borderColor="border-gray-800"
         borderWidth={0.5}
       />
-      <div className="text-sm font-medium text-gray-400">{number}</div>
-      <h3 className="mt-6 text-2xl font-bold text-white">{title}</h3>
+      <div className="font-medium text-gray-400 text-sm">{number}</div>
+      <h3 className="mt-6 font-bold text-white text-2xl">{title}</h3>
       <p className="mt-4 text-gray-300 leading-relaxed">{description}</p>
       <div className="mt-8">{visual}</div>
     </div>
@@ -244,11 +244,11 @@ export default function FeaturesSection() {
       description:
         "Beautiful components built with React, TypeScript, and Tailwind CSS. From buttons to complex data tables, we've got you covered with our battle-tested designs.",
       visual: (
-        <div className="grid grid-cols-2 gap-4">
-          <div className="h-12 rounded-lg bg-gray-700/50"></div>
-          <div className="h-12 rounded-lg bg-gray-700/50"></div>
-          <div className="h-12 rounded-lg bg-gray-700/50"></div>
-          <div className="h-12 rounded-lg bg-gray-700/50"></div>
+        <div className="gap-4 grid grid-cols-2">
+          <div className="bg-gray-700/50 rounded-lg h-12"></div>
+          <div className="bg-gray-700/50 rounded-lg h-12"></div>
+          <div className="bg-gray-700/50 rounded-lg h-12"></div>
+          <div className="bg-gray-700/50 rounded-lg h-12"></div>
         </div>
       ),
     },
@@ -259,12 +259,12 @@ export default function FeaturesSection() {
         "Landing pages, dashboards, and app templates ready for production. From marketing sites to admin panels, we've got everything you need to ship products faster.",
       visual: (
         <div className="space-y-4">
-          <div className="h-4 w-3/4 rounded bg-gray-700/50"></div>
-          <div className="h-4 w-full rounded bg-gray-700/50"></div>
-          <div className="h-4 w-2/3 rounded bg-gray-700/50"></div>
+          <div className="bg-gray-700/50 rounded w-3/4 h-4"></div>
+          <div className="bg-gray-700/50 rounded w-full h-4"></div>
+          <div className="bg-gray-700/50 rounded w-2/3 h-4"></div>
           <div className="flex gap-4">
-            <div className="h-8 w-24 rounded bg-gray-700/50"></div>
-            <div className="h-8 w-24 rounded bg-gray-700/50"></div>
+            <div className="bg-gray-700/50 rounded w-24 h-8"></div>
+            <div className="bg-gray-700/50 rounded w-24 h-8"></div>
           </div>
         </div>
       ),
@@ -276,9 +276,9 @@ export default function FeaturesSection() {
         "Focus on your product, not on building UI components. From startups to enterprises, our battle-tested designs help you convert visitors into happy customers.",
       visual: (
         <div className="flex justify-center gap-6">
-          <div className="h-16 w-16 rounded-full bg-gray-700/50"></div>
-          <div className="h-16 w-16 rounded-full bg-gray-700/50"></div>
-          <div className="h-16 w-16 rounded-full bg-gray-700/50"></div>
+          <div className="bg-gray-700/50 rounded-full w-16 h-16"></div>
+          <div className="bg-gray-700/50 rounded-full w-16 h-16"></div>
+          <div className="bg-gray-700/50 rounded-full w-16 h-16"></div>
         </div>
       ),
     },
@@ -312,17 +312,17 @@ export default function FeaturesSection() {
         }
       `}</style>
 
-      <section ref={sectionRef} className="px-4 py-16 md:py-24 bg-black">
+      <section ref={sectionRef} className="px-4 py-16 md:py-24">
         <motion.div className="mx-auto max-w-7xl" style={{ opacity, y }}>
           {/* Header */}
           <div className="text-center">
-            <div className="inline-block rounded-full bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-100">
+            <div className="inline-block bg-gray-800 px-4 py-1.5 rounded-full font-medium text-gray-100 text-sm">
               How it works
             </div>
-            <h2 className="mt-8 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            <h2 className="mt-8 font-bold text-white text-4xl sm:text-6xl tracking-tight">
               Ship beautiful products in half the time
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-300">
+            <p className="mx-auto mt-6 max-w-2xl text-gray-300 text-lg leading-relaxed">
               50+ beautiful sections and templates built with React, TypeScript,
               Tailwind CSS, and Framer Motion. Save thousands of hours and
               convert your visitors into customers.
@@ -330,7 +330,7 @@ export default function FeaturesSection() {
           </div>
 
           {/* Features Grid */}
-          <div className="mt-24 grid gap-12 md:grid-cols-3">
+          <div className="gap-12 grid md:grid-cols-3 mt-24">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.number}
