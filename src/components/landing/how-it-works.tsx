@@ -30,7 +30,7 @@ const GlowingEffect = memo(
     glow = false,
     className,
     movementDuration = 2,
-    borderWidth = 0.5,
+    borderWidth = 1,
     borderColor = "border-gray-800",
     disabled = true,
   }: GlowingEffectProps) => {
