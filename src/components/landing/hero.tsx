@@ -1,9 +1,9 @@
 "use client";
 
-import { useScroll, useTransform, motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export const Hero = () => {
   const containerRef = useRef(null);
