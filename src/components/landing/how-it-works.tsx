@@ -227,7 +227,7 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
   );
 }
 
-export default function FeaturesSection() {
+export function FeaturesSection() {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -312,7 +312,14 @@ export default function FeaturesSection() {
         }
       `}</style>
 
-      <section ref={sectionRef} className="px-4 py-16 md:py-24">
+      <section
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 35% 25%, #ab40ff2e, #fff0 23%), radial-gradient(circle at 25% 35%, #ff000014, #fff0 18%)",
+        }}
+        ref={sectionRef}
+        className="px-4 py-16 md:py-24"
+      >
         <motion.div className="mx-auto max-w-7xl" style={{ opacity, y }}>
           {/* Header */}
           <div className="flex flex-col items-center text-center">
@@ -333,7 +340,7 @@ export default function FeaturesSection() {
                 How it works
               </span>
             </div>
-            <h2 className="mt-8 font-bold text-white text-4xl sm:text-6xl tracking-tight">
+            <h2 className="bg-clip-text bg-gradient-stop bg-gradient-to-br from-white via-30% via-white to-white/30 text-transparent mt-8 font-bold text-4xl sm:text-6xl tracking-tight">
               Ship beautiful products in half the time
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-gray-300 text-lg leading-relaxed">
