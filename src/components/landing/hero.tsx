@@ -142,15 +142,17 @@ export const Hero = () => {
                 <Card
                   title="One Library for all your UI needs."
                   buttonText="Build with V3CN"
-                  gradient={"linear-gradient(325deg, rgb(67 61 70) 23.37%, rgb(0 0 0) 60.25%)"}
+                  gradient={
+                    "linear-gradient(325deg, rgb(67 61 70) 23.37%, rgb(0 0 0) 60.25%)"
+                  }
                   iconSrc="/icons/star.svg"
                   bgPath="/image/noise.png"
                 />
               </motion.div>
               <motion.div style={{ y: yBottom }} className="flex items-end">
                 <Card
-                  title="One Library for all your UI needs."
-                  buttonText="Build with V3CN"
+                  title="Beautiful components, ready to use."
+                  buttonText="Explore Components"
                   gradient={
                     "linear-gradient(325deg, rgb(186 186 186 / 57%) 23.37%, rgb(102 57 185) 60.25%)"
                   }

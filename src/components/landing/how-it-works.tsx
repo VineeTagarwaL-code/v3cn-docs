@@ -371,6 +371,7 @@ export function FeaturesSection() {
                   damping: 12,
                   mass: 0.9,
                 }}
+                className="h-full"
               >
                 <CardSpotlight>
                   <FeatureCard

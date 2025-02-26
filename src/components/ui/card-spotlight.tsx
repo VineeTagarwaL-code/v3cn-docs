@@ -71,7 +71,7 @@ export const CardSpotlight = ({
           transform: "translateY(-4px)",
         }}
       />
-      <div className="z-10 relative">{children}</div>
+      <div className="z-10 relative h-full">{children}</div>
     </div>
   );
 };

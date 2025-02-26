@@ -30,12 +30,11 @@ export const Card = ({
     <div
       className={`top-0 left-0 absolute w-full h-full`}
       style={{
-       backgroundImage: `url(${bgPath})`,
+        backgroundImage: `url(${bgPath})`,
       }}
     />
     <div className="flex justify-between items-start w-full">
       <h1 className="font-medium text-white text-lg">{title}</h1>
-      <Image src={iconSrc} alt="icon" width={32} height={32} className="mt-0" />
     </div>
     <button
       className="z-[10] flex items-center gap-1 p-2 px-3 border border-[#5c58673d] rounded-2xl w-fit font-medium text-white hover:text-gray-300 text-sm"
