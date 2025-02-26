@@ -6,13 +6,13 @@ export default function LandingFooter() {
       <div className="flex sm:flex-row flex-col justify-between items-center gap-4 mx-auto px-4 container">
         <p className="text-gray-400 text-sm">
           Designed by{" "}
-          <Link href="#" className="hover:text-gray-300">
-            Radiant Templates
+          <Link href="//www.vineet.tech/" className="hover:text-gray-300">
+            Vineet
           </Link>
-          . Powered by{" "}
+          {/* . Powered by{" "}
           <Link href="#" className="hover:text-gray-300">
             Webflow
-          </Link>
+          </Link> */}
           .
         </p>
         <div className="flex items-center gap-4">
