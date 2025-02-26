@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export const Navbar = () => {
-  const [stars, setStars] = useState("10.2k");
+  const [stars, setStars] = useState("0");
   const repoUrl = "https://github.com/VineeTagarwaL-code/v3cn-docs";
   useEffect(() => {
     const fetchStars = async () => {
@@ -20,7 +20,11 @@ export const Navbar = () => {
         }
 
         const data = await response.json();
-        setStars(data.stargazers_count.toLocaleString());
+        const stars = data.stargazers_count;
+
+        // Format the number of stars
+        const formattedStars = formatNumber(stars);
+        setStars(formattedStars);
       } catch (error) {
         console.error("Error fetching stars:", error);
       }
@@ -28,6 +32,17 @@ export const Navbar = () => {
 
     fetchStars();
   }, []);
+
+  // Helper function to format the number
+  const formatNumber = (num: number) => {
+    if (num >= 1_000_000) {
+      return `${(num / 1_000_000).toFixed(1)}M`; // Convert to millions (e.g., 1.2M)
+    } else if (num >= 1_000) {
+      return `${(num / 1_000).toFixed(1)}k`; // Convert to thousands (e.g., 1.5k)
+    } else {
+      return num.toString(); // Return as is for numbers less than 1000
+    }
+  };
 
   return (
     <header className="relative flex justify-between items-center p-3 w-full text-white">
