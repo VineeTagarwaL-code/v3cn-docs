@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { animate } from "motion/react";
 import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { CardSpotlight } from "../ui/card-spotlight";
 
 interface GlowingEffectProps {
   blur?: number;
@@ -371,12 +372,14 @@ export function FeaturesSection() {
                   mass: 0.9,
                 }}
               >
-                <FeatureCard
-                  number={feature.number}
-                  title={feature.title}
-                  description={feature.description}
-                  visual={feature.visual}
-                />
+                <CardSpotlight>
+                  <FeatureCard
+                    number={feature.number}
+                    title={feature.title}
+                    description={feature.description}
+                    visual={feature.visual}
+                  />
+                </CardSpotlight>
               </motion.div>
             ))}
           </div>

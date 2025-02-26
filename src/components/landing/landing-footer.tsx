@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function LandingFooter() {
+export function LandingFooter() {
   return (
     <footer className="py-4 border-gray-800 border-t w-full">
       <div className="flex sm:flex-row flex-col justify-between items-center gap-4 mx-auto px-4 container">
