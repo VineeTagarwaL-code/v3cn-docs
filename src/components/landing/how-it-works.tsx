@@ -206,7 +206,7 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
 
   return (
     <div
-      className="relative backdrop-blur-sm p-6 rounded-xl transform-gpu transition-all duration-300"
+      className="relative backdrop-blur-sm p-6 rounded-xl h-full transform-gpu transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

@@ -65,7 +65,7 @@ export const Hero = () => {
         <div className="flex flex-col items-center mb-1 md:mb-3">
           <h1
             className="bg-clip-text font-medium text-transparent text-4xl lg:text-6xl sm:text-left leading-none tracking-tighter"
-            style={{ backgroundImage: gradientStyles.backgroundGradient }}
+            style={{ backgroundImage: "linear-gradient(355deg, #A8A8A8 20.37%, #9a519e 81.25%)" }}
           >
             The Modern Way to Build
           </h1>
