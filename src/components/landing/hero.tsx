@@ -25,12 +25,13 @@ export const Hero = () => {
     [485, 485, 0]
   );
   const imageOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const yTop = useTransform(scrollYProgress, [0.5, 0.7], [700, 0]);
+  const yTop = useTransform(scrollYProgress, [0.5, 0.6], [700, 0]);
   const circleScale = useTransform(scrollYProgress, [0.5, 0.7], [1, 30]);
   const circleScale2 = useTransform(scrollYProgress, [0.7, 0.8], [1, 30]);
   const circleScale3 = useTransform(scrollYProgress, [0.8, 0.9], [1, 30]);
   const circleOpacity = useTransform(scrollYProgress, [0.7, 0.8], [1, 0]);
   const circleOpacity2 = useTransform(scrollYProgress, [0.8, 0.9], [1, 0]);
+  const circleOpacity3 = useTransform(scrollYProgress, [0.9, 1], [1, 0.5]);
   const opacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0]);
   const yBottom = useTransform(scrollYProgress, [0.7, 0.9], [700, 0]);
   return (
@@ -116,20 +117,21 @@ export const Hero = () => {
               scale: circleScale,
               opacity: circleOpacity,
             }}
-            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 transform"
+            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
           />
           <motion.div
             style={{
               scale: circleScale2,
               opacity: circleOpacity2,
             }}
-            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 transform"
+            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
           />
           <motion.div
             style={{
               scale: circleScale3,
+              opacity: circleOpacity3,
             }}
-            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 transform"
+            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
           />
           <div className="flex justify-center items-start gap-8">
             <div className="flex flex-col gap-8 mt-10">

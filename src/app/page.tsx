@@ -1,8 +1,12 @@
-import { Navbar, Hero } from "@/components/landing";
+"use client";
+
+import { Navbar, Hero, Examples } from "@/components/landing";
 import FeaturesSection from "@/components/landing/how-it-works";
 import LandingFooter from "@/components/landing/landing-footer";
+import { useLenis } from "@/hooks/use-lenis";
 
 export default function Home() {
+  useLenis();
   return (
     <div className="relative bg-[#0C0E10]">
       <div
@@ -21,6 +25,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <FeaturesSection />
+        <Examples />
         <LandingFooter />
       </div>
     </div>
