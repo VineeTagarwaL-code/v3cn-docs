@@ -1,8 +1,8 @@
 "use client";
 
 import { Examples, Hero, Navbar } from "@/components/landing";
-import FeaturesSection from "@/components/landing/how-it-works";
-import LandingFooter from "@/components/landing/landing-footer";
+import { FeaturesSection } from "@/components/landing/how-it-works";
+import { LandingFooter } from "@/components/landing/landing-footer";
 import { useLenis } from "@/hooks/use-lenis";
 
 export default function Home() {

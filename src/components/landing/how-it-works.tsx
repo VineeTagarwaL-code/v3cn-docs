@@ -341,7 +341,7 @@ export function FeaturesSection() {
                 How it works
               </span>
             </div>
-            <h2 className="bg-clip-text bg-gradient-stop bg-gradient-to-br from-white via-30% via-white to-white/30 text-transparent mt-8 font-bold text-4xl sm:text-6xl tracking-tight">
+            <h2 className="bg-clip-text bg-gradient-stop bg-gradient-to-br from-white via-30% via-white to-white/30 mt-8 font-bold text-transparent text-4xl sm:text-6xl tracking-tight">
               Ship beautiful products in half the time
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-gray-300 text-lg leading-relaxed">
@@ -352,7 +352,7 @@ export function FeaturesSection() {
           </div>
 
           {/* Features Grid */}
-          <div className="gap-12 grid md:grid-cols-3 mt-24">
+          <div className="gap-12 grid md:grid-cols-3 mt-12 lg:mt-24">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.number}

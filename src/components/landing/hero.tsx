@@ -65,7 +65,10 @@ export const Hero = () => {
         <div className="flex flex-col items-center mb-1 md:mb-3">
           <h1
             className="bg-clip-text font-medium text-transparent text-4xl lg:text-6xl sm:text-left leading-none tracking-tighter"
-            style={{ backgroundImage: "linear-gradient(355deg, #A8A8A8 20.37%, #9a519e 81.25%)" }}
+            style={{
+              backgroundImage:
+                "linear-gradient(355deg, #A8A8A8 20.37%, #9a519e 81.25%)",
+            }}
           >
             The Modern Way to Build
           </h1>
@@ -83,7 +86,7 @@ export const Hero = () => {
         <div className="flex justify-center items-center gap-4 mt-2">
           <Link
             href="/docs"
-            className="flex justify-center items-center gap-1 py-[6px] pr-2 pl-[10px] rounded-2xl text-black text-base"
+            className="flex justify-center items-center gap-1 py-[6px] pr-2 pl-[10px] rounded-2xl text-black text-base hover:scale-105 transition-all duration-150 ease-in-out"
             style={{
               background:
                 "linear-gradient(355deg, #c8a0dbf0 20.37%, rgb(242, 241, 241) 81.25%), linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))",
@@ -99,7 +102,7 @@ export const Hero = () => {
           </Link>
           <Link
             href="/docs"
-            className="flex justify-center items-center gap-1 bg-clip-text px-3 py-2 rounded-xl text-transparent text-base"
+            className="flex justify-center items-center gap-1 bg-clip-text px-3 py-2 rounded-xl text-transparent text-base hover:scale-105 transition-all duration-150 ease-in-out"
             style={{
               backgroundImage:
                 "linear-gradient(355deg, rgb(201 151 224 / 94%) 20.37%, rgb(242 241 241) 81.25%), linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))",
@@ -117,24 +120,24 @@ export const Hero = () => {
               scale: circleScale,
               opacity: circleOpacity,
             }}
-            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
+            className="hidden top-1/2 left-1/2 absolute lg:flex blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
           />
           <motion.div
             style={{
               scale: circleScale2,
               opacity: circleOpacity2,
             }}
-            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
+            className="hidden top-1/2 left-1/2 absolute lg:flex blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
           />
           <motion.div
             style={{
               scale: circleScale3,
               opacity: circleOpacity3,
             }}
-            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
+            className="hidden top-1/2 left-1/2 absolute lg:flex blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 circle transform"
           />
           <div className="flex justify-center items-start gap-8">
-            <div className="flex flex-col gap-8 mt-10">
+            <div className="hidden lg:flex flex-col gap-8 mt-10">
               <motion.div style={{ y: yTop }} className="flex items-end">
                 <Card
                   title="One Library for all your UI needs."
@@ -204,19 +207,19 @@ export const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-8 mt-10">
+            <div className="hidden lg:flex flex-col gap-8 mt-10">
               <motion.div style={{ y: yTop }} className="flex items-end">
                 <Card
-                  title="Seamless UI, Limitless Possibilities."
-                  buttonText="Create Beautiful UIs"
+                  title="A Curated Library of Unique Components."
+                  buttonText="Discover Components"
                   gradient="linear-gradient(355deg, rgb(166, 131, 131) 20.37%, rgb(124 49 153) 81.25%)"
                   iconSrc="/icons/star.svg"
                 />
               </motion.div>
               <motion.div style={{ y: yBottom }} className="flex items-end">
                 <Card
-                  title="Seamless UI, Limitless Possibilities."
-                  buttonText="Create Beautiful UIs"
+                  title="Build Stunning Interfaces with Ease."
+                  buttonText="Start Creating"
                   gradient="linear-gradient(355deg, rgb(166 161 131) 20.37%, rgb(128 153 49) 81.25%)"
                   iconSrc="/icons/star.svg"
                 />

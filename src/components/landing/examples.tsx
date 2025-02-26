@@ -67,7 +67,7 @@ export const Examples = (props: Props) => {
         </div>
         <motion.div
           ref={containerRef}
-          className="gap-8 grid grid-cols-2 mt-10"
+          className="gap-8 grid grid-cols-1 lg:grid-cols-2 mt-10"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -84,16 +84,16 @@ export const Examples = (props: Props) => {
               />
             </div>
             <div>
-              <h1 className="font-medium text-[28px] text-white leading-[38px]">
+              <h1 className="font-medium text-[20px] text-white leading-[30px]">
                 Discord Presence
               </h1>
-              <h1 className="font-medium text-[28px] text-white leading-[38px]">
+              <h1 className="font-medium text-[#ffffffaf] text-[22px] leading-[32px]">
                 Live Discord Status Display
               </h1>
             </div>
           </motion.div>
           <motion.div className="flex flex-col gap-6" variants={itemVariants}>
-            <div className="group relative rounded-3xl h-[550px] overflow-hidden">
+            <div className="group relative rounded-3xl h-[450px] lg:h-[550px] overflow-hidden">
               <div className="group-hover:bg-transparent top-0 left-0 z-[10] absolute bg-[#00000039] w-full h-full transition-all duration-700 ease-in-out" />
               <Image
                 src="/image/showcase-2.png"
@@ -104,10 +104,10 @@ export const Examples = (props: Props) => {
               />
             </div>
             <div>
-              <h1 className="font-medium text-[28px] text-white leading-[38px]">
+              <h1 className="font-medium text-[20px] text-white leading-[30px]">
                 Hovering Card
               </h1>
-              <h1 className="font-medium text-[28px] text-white leading-[38px]">
+              <h1 className="font-medium text-[#ffffffaf] text-[22px] leading-[32px]">
                 Interactive 3D Hover Card
               </h1>
             </div>
