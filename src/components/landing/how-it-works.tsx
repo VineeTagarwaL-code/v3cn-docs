@@ -315,9 +315,23 @@ export default function FeaturesSection() {
       <section ref={sectionRef} className="px-4 py-16 md:py-24">
         <motion.div className="mx-auto max-w-7xl" style={{ opacity, y }}>
           {/* Header */}
-          <div className="text-center">
-            <div className="inline-block bg-gray-800 px-4 py-1.5 rounded-full font-medium text-gray-100 text-sm">
-              How it works
+          <div className="flex flex-col items-center text-center">
+            <div
+              className="flex items-center gap-1 px-[10px] py-1 border border-[#5c58673d] rounded-[100px] w-fit text-base"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(25, 25, 27, 0.4) 19.09%, #19191B 100%)",
+              }}
+            >
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #5a606c, #fff 50%, #5a606c)",
+                }}
+              >
+                How it works
+              </span>
             </div>
             <h2 className="mt-8 font-bold text-white text-4xl sm:text-6xl tracking-tight">
               Ship beautiful products in half the time
