@@ -17,19 +17,19 @@ export default function LandingFooter() {
         </p>
         <div className="flex items-center gap-4">
           <Link
-            href="#"
+            href="//x.com/vineetwts#"
             className="px-4 py-1 border border-gray-700 hover:border-gray-600 rounded-full text-gray-400 hover:text-gray-300 text-sm transition-colors"
           >
-            Facebook
+            X
           </Link>
           <Link
-            href="#"
+            href="//github.com/vineeTagarwaL-code"
             className="px-4 py-1 border border-gray-700 hover:border-gray-600 rounded-full text-gray-400 hover:text-gray-300 text-sm transition-colors"
           >
-            Twitter
+            Github
           </Link>
           <Link
-            href="#"
+            href="//www.linkedin.com/in/vineetagarwal2004/"
             className="px-4 py-1 border border-gray-700 hover:border-gray-600 rounded-full text-gray-400 hover:text-gray-300 text-sm transition-colors"
           >
             LinkedIn
