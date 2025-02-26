@@ -24,7 +24,7 @@ export default function Home() {
         >
           <Navbar />
           <Hero />
-          <Examples />
+          {/* <Examples /> */}
           <FeaturesSection />
           <LandingFooter />
         </div>

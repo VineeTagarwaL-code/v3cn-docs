@@ -13,19 +13,32 @@ type CardProps = {
   buttonText: string;
   gradient: string;
   iconSrc: string;
+  bgPath: string;
 };
 
-export const Card = ({ title, buttonText, gradient, iconSrc }: CardProps) => (
+export const Card = ({
+  title,
+  buttonText,
+  gradient,
+  iconSrc,
+  bgPath,
+}: CardProps) => (
   <div
-    className="flex flex-col justify-between p-4 rounded-2xl w-[300px] h-[200px]"
+    className="relative flex flex-col justify-between p-4 rounded-2xl w-[300px] h-[200px]"
     style={{ backgroundImage: gradient }}
   >
+    <div
+      className={`top-0 left-0 absolute w-full h-full`}
+      style={{
+       backgroundImage: `url(${bgPath})`,
+      }}
+    />
     <div className="flex justify-between items-start w-full">
       <h1 className="font-medium text-white text-lg">{title}</h1>
       <Image src={iconSrc} alt="icon" width={32} height={32} className="mt-0" />
     </div>
     <button
-      className="flex items-center gap-1 p-2 px-3 border border-[#5c58673d] rounded-2xl w-fit font-medium text-white hover:text-gray-300 text-sm"
+      className="z-[10] flex items-center gap-1 p-2 px-3 border border-[#5c58673d] rounded-2xl w-fit font-medium text-white hover:text-gray-300 text-sm"
       style={{ background: gradientStyles.buttonGradient }}
     >
       {buttonText}

@@ -142,8 +142,9 @@ export const Hero = () => {
                 <Card
                   title="One Library for all your UI needs."
                   buttonText="Build with V3CN"
-                  gradient={gradientStyles.cardGradient}
+                  gradient={"linear-gradient(325deg, rgb(67 61 70) 23.37%, rgb(0 0 0) 60.25%)"}
                   iconSrc="/icons/star.svg"
+                  bgPath="/image/noise.png"
                 />
               </motion.div>
               <motion.div style={{ y: yBottom }} className="flex items-end">
@@ -151,8 +152,9 @@ export const Hero = () => {
                   title="One Library for all your UI needs."
                   buttonText="Build with V3CN"
                   gradient={
-                    "linear-gradient(355deg, rgb(131 166 144) 20.37%, #31998a 81.25%)"
+                    "linear-gradient(325deg, rgb(186 186 186 / 57%) 23.37%, rgb(102 57 185) 60.25%)"
                   }
+                  bgPath="/image/purple.png"
                   iconSrc="/icons/star.svg"
                 />
               </motion.div>
@@ -212,16 +214,18 @@ export const Hero = () => {
                 <Card
                   title="A Curated Library of Unique Components."
                   buttonText="Discover Components"
-                  gradient="linear-gradient(355deg, rgb(166, 131, 131) 20.37%, rgb(124 49 153) 81.25%)"
+                  gradient="linear-gradient(325deg, rgb(242 242 242 / 50%) 9.37%, #942446)"
                   iconSrc="/icons/star.svg"
+                  bgPath="/image/orange.png"
                 />
               </motion.div>
               <motion.div style={{ y: yBottom }} className="flex items-end">
                 <Card
                   title="Build Stunning Interfaces with Ease."
                   buttonText="Start Creating"
-                  gradient="linear-gradient(355deg, rgb(166 161 131) 20.37%, rgb(128 153 49) 81.25%)"
+                  gradient="linear-gradient(325deg, rgb(67 61 70) 23.37%, rgb(0 0 0) 60.25%)"
                   iconSrc="/icons/star.svg"
+                  bgPath="/image/noise.png"
                 />
               </motion.div>
             </div>

@@ -1,65 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 
 export const Navbar = () => {
-  const links = [
-    {
-      name: "Home",
-      href: "#",
-    },
-    {
-      name: "About Us",
-      href: "#about",
-    },
-    {
-      name: "Workflow",
-      href: "#work",
-    },
-    {
-      name: "Examples",
-      href: "#examples",
-    },
-  ];
   return (
     <header className="relative flex justify-between items-center p-3 w-full text-white">
       <div className="flex items-center gap-1">
         <Image src="/logo.webp" alt="logo" width={60} height={60} className="grayscale-[100%]" />
       </div>
-      <nav
-        className="hidden top-1/2 left-1/2 absolute md:flex items-center gap-4 py-2 pr-3 pl-6 border border-[#5c58673d] rounded-[100px] -translate-x-1/2 -translate-y-1/2"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(25, 25, 27, 0.4) 19.09%, #19191B 100%)",
-        }}
-      >
-        <div className="flex items-center gap-2">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="p-2 font-medium text-white hover:text-gray-300 text-sm"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <button
-            className="flex items-center gap-1 ml-5 p-2 pl-4 border border-[#5c58673d] rounded-full font-medium text-white hover:text-gray-300 text-sm"
-            style={{
-              background:
-                "linear-gradient(180deg, #222223 0%, rgba(34, 34, 35, 0.6) 68.75%)",
-            }}
-          >
-            Contact Us
-            <Image
-              src="/icons/arrow-up.svg"
-              alt="arrow"
-              width={20}
-              height={20}
-            />
-          </button>
-        </div>
-      </nav>
       <button
         className="flex items-center gap-1 ml-10 px-4 py-2 border border-[#5c58673d] rounded-full font-medium text-white hover:text-gray-300 text-sm"
         style={{

@@ -29,12 +29,12 @@ export const CardSpotlight = ({
 
   return (
     <div
-      className={cn("group/spotlight  relative  ", className)}
+      className={cn("group/spotlight  h-full relative  ", className)}
       onMouseMove={handleMouseMove}
       {...props}
     >
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
+        className="absolute -inset-px opacity-0 group-hover/spotlight:opacity-100 rounded-md transition duration-300 pointer-events-none"
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -46,7 +46,7 @@ export const CardSpotlight = ({
         }}
       />
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
+        className="absolute -inset-px opacity-0 group-hover/spotlight:opacity-100 rounded-md transition duration-300 pointer-events-none"
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -59,7 +59,7 @@ export const CardSpotlight = ({
         }}
       />
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
+        className="absolute -inset-px opacity-0 group-hover/spotlight:opacity-100 rounded-md transition duration-300 pointer-events-none"
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -71,7 +71,7 @@ export const CardSpotlight = ({
           transform: "translateY(-4px)",
         }}
       />
-      <div className="relative z-10">{children}</div>
+      <div className="z-10 relative">{children}</div>
     </div>
   );
 };
