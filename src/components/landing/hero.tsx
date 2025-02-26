@@ -26,11 +26,21 @@ export const Hero = () => {
   );
   const imageOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const yTop = useTransform(scrollYProgress, [0.5, 0.7], [700, 0]);
+  const circleScale = useTransform(scrollYProgress, [0.5, 0.7], [1, 30]);
+  const circleScale2 = useTransform(scrollYProgress, [0.7, 0.8], [1, 30]);
+  const circleScale3 = useTransform(scrollYProgress, [0.8, 0.9], [1, 30]);
+  const circleOpacity = useTransform(scrollYProgress, [0.7, 0.8], [1, 0]);
+  const circleOpacity2 = useTransform(scrollYProgress, [0.8, 0.9], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0]);
   const yBottom = useTransform(scrollYProgress, [0.7, 0.9], [700, 0]);
-
   return (
     <div className="flex flex-col items-center pt-24 w-full">
-      <div className="flex flex-col items-center gap-2 w-fit text-center">
+      <motion.div
+        style={{
+          opacity,
+        }}
+        className="flex flex-col items-center gap-2 w-fit text-center"
+      >
         <div
           className="flex items-center gap-1 px-[10px] py-1 border border-[#5c58673d] rounded-[100px] text-xs"
           style={{
@@ -98,15 +108,32 @@ export const Hero = () => {
             Visit Docs
           </Link>
         </div>
-      </div>
+      </motion.div>
       <div className="relative w-full h-[200vh]" ref={containerRef}>
         <div className="top-0 sticky flex justify-center items-center w-full h-screen">
+          <motion.div
+            style={{
+              scale: circleScale,
+              opacity: circleOpacity,
+            }}
+            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 transform"
+          />
+          <motion.div
+            style={{
+              scale: circleScale2,
+              opacity: circleOpacity2,
+            }}
+            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 transform"
+          />
+          <motion.div
+            style={{
+              scale: circleScale3,
+            }}
+            className="top-1/2 left-1/2 absolute blur-[3px] border border-[#892aca] rounded-full size-10 -translate-x-1/2 -translate-y-1/2 transform"
+          />
           <div className="flex justify-center items-start gap-8">
             <div className="flex flex-col gap-8 mt-10">
-              <motion.div
-                style={{ y: yTop }}
-                className="flex items-end"
-              >
+              <motion.div style={{ y: yTop }} className="flex items-end">
                 <Card
                   title="One Library for all your UI needs."
                   buttonText="Build with V3CN"
@@ -114,19 +141,18 @@ export const Hero = () => {
                   iconSrc="/icons/star.svg"
                 />
               </motion.div>
-              <motion.div
-                style={{ y: yBottom }}
-                className="flex items-end"
-              >
+              <motion.div style={{ y: yBottom }} className="flex items-end">
                 <Card
                   title="One Library for all your UI needs."
                   buttonText="Build with V3CN"
-                  gradient={"linear-gradient(355deg, rgb(131 166 144) 20.37%, #31998a 81.25%)"}
+                  gradient={
+                    "linear-gradient(355deg, rgb(131 166 144) 20.37%, #31998a 81.25%)"
+                  }
                   iconSrc="/icons/star.svg"
                 />
               </motion.div>
             </div>
-            <div className="relative h-fit overflow-hidden">
+            <div className="relative rounded-[52px] h-fit overflow-hidden">
               <Image
                 src="/image/phone.png"
                 alt="hero"
@@ -177,10 +203,7 @@ export const Hero = () => {
               </div>
             </div>
             <div className="flex flex-col gap-8 mt-10">
-              <motion.div
-                style={{ y: yTop }}
-                className="flex items-end"
-              >
+              <motion.div style={{ y: yTop }} className="flex items-end">
                 <Card
                   title="Seamless UI, Limitless Possibilities."
                   buttonText="Create Beautiful UIs"
@@ -188,10 +211,7 @@ export const Hero = () => {
                   iconSrc="/icons/star.svg"
                 />
               </motion.div>
-              <motion.div
-                style={{ y: yBottom }}
-                className="flex items-end"
-              >
+              <motion.div style={{ y: yBottom }} className="flex items-end">
                 <Card
                   title="Seamless UI, Limitless Possibilities."
                   buttonText="Create Beautiful UIs"
