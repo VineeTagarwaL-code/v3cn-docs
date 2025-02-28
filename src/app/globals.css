@@ -75,8 +75,9 @@
   }
 
   html.dark {
-    transition: background-color var(--transition-duration) ease, 
-                color var(--transition-duration) ease;
+    transition:
+      background-color var(--transition-duration) ease,
+      color var(--transition-duration) ease;
   }
 
   body {
@@ -85,11 +86,12 @@
 
   /* Only apply transitions to specific properties that change with theme */
   .transition-theme {
-    transition: background-color var(--transition-duration) ease,
-                border-color var(--transition-duration) ease,
-                color var(--transition-duration) ease,
-                fill var(--transition-duration) ease,
-                stroke var(--transition-duration) ease;
+    transition:
+      background-color var(--transition-duration) ease,
+      border-color var(--transition-duration) ease,
+      color var(--transition-duration) ease,
+      fill var(--transition-duration) ease,
+      stroke var(--transition-duration) ease;
   }
 }
 
@@ -109,4 +111,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.circle {
+  will-change: transform, opacity;
 }

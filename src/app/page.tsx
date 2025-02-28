@@ -1,32 +1,33 @@
-import { ArrowRight, Coffee, Github } from "lucide-react";
+"use client";
 
-import Link from "next/link";
-import { Metadata } from "next";
-import { ModeToggle } from "@/components/toggle-theme";
-
-export const metadata: Metadata = {
-  title: "V3CN- Components like never before",
-  description:
-    "V3CN is a modern React component library that helps you build the best UI for your web applications.",
-  keywords: [
-    "React",
-    "Next.js",
-    "Shadcn UI",
-    "NextUI",
-    "UI Library",
-    "Components",
-    "TypeScript",
-    "Component Library",
-    "Motion",
-    "Framer Motion",
-  ],
-  authors: [{ name: "Karrix Lee", url: "https://github.com/vineetagarwal-code" }],
-};
+import { Examples, Hero, Navbar } from "@/components/landing";
+import { FeaturesSection } from "@/components/landing/how-it-works";
+import { LandingFooter } from "@/components/landing/landing-footer";
+import { useLenis } from "@/hooks/use-lenis";
 
 export default function Home() {
+  useLenis();
   return (
-    <section>
-       <div className="text-red-500">Hi</div> 
-    </section>
+      <div className="relative bg-[#0C0E10]">
+        <div
+          className="top-0 left-0 z-[10] absolute w-full h-[200px] rotate-180"
+          style={{
+            maskImage: "linear-gradient(transparent, black 85%)",
+            backgroundColor: "rgb(165 122 201 / 10%)",
+          }}
+        />
+        <div
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 60% 10%, #ff00002e, #fff0 11%), radial-gradient(circle at 70% 15%, #ab40ff2e, #faf3ff03 10%, #fff0)",
+          }}
+        >
+          <Navbar />
+          <Hero />
+          {/* <Examples /> */}
+          <FeaturesSection />
+          <LandingFooter />
+        </div>
+      </div>
   );
 }
