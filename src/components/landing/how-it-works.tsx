@@ -196,18 +196,17 @@ const GlowingEffect = memo(
 GlowingEffect.displayName = "GlowingEffect";
 
 interface FeatureCardProps {
-  number: string;
+  number: string | React.ReactNode;
   title: string;
   description: string;
-  visual: React.ReactNode;
 }
 
-function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
+function FeatureCard({ number, title, description }: FeatureCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="relative backdrop-blur-sm p-6 rounded-xl h-full transform-gpu transition-all duration-300"
+      className="relative backdrop-blur-sm p-6 rounded-xl h-full transform-gpu transition-all duration-300 flex flex-col items-center justify-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -220,10 +219,14 @@ function FeatureCard({ number, title, description, visual }: FeatureCardProps) {
         borderColor="border-gray-800"
         borderWidth={0.5}
       />
-      <div className="font-medium text-gray-400 text-sm">{number}</div>
-      <h3 className="mt-6 font-bold text-white text-2xl">{title}</h3>
-      <p className="mt-4 text-gray-300 leading-relaxed">{description}</p>
-      <div className="mt-8">{visual}</div>
+
+      <div className="flex items-center justify-center relative w-16 h-16 rounded-2xl bg-white border border-gray-300 shadow-sm my-4">
+        <span className="text-2xl font-medium text-center w-full">
+          {number}
+        </span>
+      </div>
+      <h3 className="font-bold text-white text-2xl mb-4">{title}</h3>
+      <p className="text-gray-300 leading-relaxed text-center">{description}</p>
     </div>
   );
 }
@@ -241,47 +244,21 @@ export function FeaturesSection() {
   const features = [
     {
       number: "01",
-      title: "Beautiful Components",
+      title: "Install Your Modules",
       description:
-        "Beautiful components built with React, TypeScript, and Tailwind CSS. From buttons to complex data tables, we've got you covered with our battle-tested designs.",
-      visual: (
-        <div className="gap-4 grid grid-cols-2">
-          <div className="bg-gray-700/50 rounded-lg h-12"></div>
-          <div className="bg-gray-700/50 rounded-lg h-12"></div>
-          <div className="bg-gray-700/50 rounded-lg h-12"></div>
-          <div className="bg-gray-700/50 rounded-lg h-12"></div>
-        </div>
-      ),
+        "Begin by installing the necessary modules using: npm install.",
     },
     {
       number: "02",
-      title: "Ready-to-use Templates",
+      title: "Use Our Utility",
       description:
-        "Landing pages, dashboards, and app templates ready for production. From marketing sites to admin panels, we've got everything you need to ship products faster.",
-      visual: (
-        <div className="space-y-4">
-          <div className="bg-gray-700/50 rounded w-3/4 h-4"></div>
-          <div className="bg-gray-700/50 rounded w-full h-4"></div>
-          <div className="bg-gray-700/50 rounded w-2/3 h-4"></div>
-          <div className="flex gap-4">
-            <div className="bg-gray-700/50 rounded w-24 h-8"></div>
-            <div className="bg-gray-700/50 rounded w-24 h-8"></div>
-          </div>
-        </div>
-      ),
+        "After installation, run our npx utility. It automatically detects your node modules to assess which type of project you are using (React or Next.js).",
     },
     {
       number: "03",
-      title: "Ship Faster",
+      title: "Compatibility",
       description:
-        "Focus on your product, not on building UI components. From startups to enterprises, our battle-tested designs help you convert visitors into happy customers.",
-      visual: (
-        <div className="flex justify-center gap-6">
-          <div className="bg-gray-700/50 rounded-full w-16 h-16"></div>
-          <div className="bg-gray-700/50 rounded-full w-16 h-16"></div>
-          <div className="bg-gray-700/50 rounded-full w-16 h-16"></div>
-        </div>
-      ),
+        "We are compatible with all routing and folder structures in both React and Next.js, making integration seamless.",
     },
   ];
 
@@ -341,13 +318,14 @@ export function FeaturesSection() {
                 How it works
               </span>
             </div>
-            <h2 className="bg-clip-text bg-gradient-stop bg-gradient-to-br from-white via-30% via-white to-white/30 mt-8 font-bold text-transparent text-4xl sm:text-6xl tracking-tight">
-              Ship beautiful products in half the time
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-gray-300 text-lg leading-relaxed">
-              50+ beautiful sections and templates built with React, TypeScript,
-              Tailwind CSS, and Framer Motion. Save thousands of hours and
-              convert your visitors into customers.
+            <div className="bg-clip-text bg-gradient-stop bg-gradient-to-br from-white via-30% via-white to-white/30   py-9 font-bold leading-relaxed  text-transparent text-4xl sm:text-6xl  ">
+              Build stunning products at lightning ⚡️ speed.
+            </div>
+            <p className="mx-auto max-w-2xl text-gray-300 text-lg leading-relaxed">
+              Welcome to V3CN! We provide components that are easily available
+              for use in the market elsewhere. Combined with our npx utility, it
+              is very easy to get started in any type of project, whether it is
+              React or Next.js.
             </p>
           </div>
 
@@ -355,7 +333,7 @@ export function FeaturesSection() {
           <div className="gap-12 grid md:grid-cols-3 mt-12 lg:mt-24">
             {features.map((feature, index) => (
               <motion.div
-                key={feature.number}
+                key={`feature-${index}`}
                 style={{ scale: featureScales[index](scrollYProgress.get()) }}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{
@@ -378,7 +356,6 @@ export function FeaturesSection() {
                     number={feature.number}
                     title={feature.title}
                     description={feature.description}
-                    visual={feature.visual}
                   />
                 </CardSpotlight>
               </motion.div>
