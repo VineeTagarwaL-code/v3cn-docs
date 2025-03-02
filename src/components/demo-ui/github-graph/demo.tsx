@@ -1,7 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 
-import Calendar, { Activity, ActivityCalendar } from "react-activity-calendar";
+import  { Activity, ActivityCalendar } from "react-activity-calendar";
 
 type GithubGraphProps = {
   username: string;
