@@ -1,11 +1,8 @@
 import { Discord } from "@/components/demo-ui/discord/demo";
-import GithubCode from "@/components/demo-ui/github-graph/code-block";
-import { GithubInstallation } from "@/components/demo-ui/github-graph/installation";
-import { GithubGraph } from "@/components/Github";
+import { InfoCardInstallationCode } from "@/components/demo-ui/discord/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
 import PropItem from "@/components/prop";
-import { Variant } from "@/types/types";
-import { AlertTriangle } from "lucide-react";
+
 const propItemData: {
   name: string;
   type: string;
@@ -13,19 +10,38 @@ const propItemData: {
   default?: string;
 }[] = [
   {
-    name: "username",
+    name: "userId",
     type: "string",
-    description: "GitHub username for which to fetch the contribution data.",
+    description: "The unique identifier for the Discord user.",
   },
   {
-    name: "blockMargin",
-    type: "number	",
-    description: "Margin between blocks in the contribution graph.",
+    name: "userName",
+    type: "string	",
+    description: "The display name of the Discord user.",
   },
   {
-    name: "colorPallete",
-    type: "string[]",
-    description: "Custom color scheme for the light theme.",
+    name: "activityDescriptionClass",
+    type: "string",
+    description: "CSS class for styling the activity description.",
+  },
+  {
+    name: "activityImageClassName",
+    type: "string",
+    description: "CSS class for styling the activity image.",
+  },
+  {
+    name: "activityDetailClass",
+    type: "string",
+    description: "CSS class for styling the activity details.",
+  }, {
+    name: "progressBarClassName",
+    type: "string",
+    description: "CSS class for styling the progress bar (used for Spotify playback).",
+  },
+  {
+    name: "localTimeClass",
+    type: "string",
+    description: "CSS class for styling the local time display.",
   },
 ];
 
@@ -56,7 +72,7 @@ export default async function DiscordPresencePage() {
             <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <Discord
                 userId="1018532712455352330"
-                userName="vineet"
+                userName="VineeTagarwaL-code"
                 activityDetailClass="dark:text-cyan-300"
                 activityDescriptionClass="dark:text-[#ffbe6f]"
                 progressBarClassName="dark:bg-[#ffbe6f]"
@@ -72,7 +88,7 @@ export default async function DiscordPresencePage() {
             <h2 className="text-2xl font-semibold mb-4" id="installation">
               Installation
             </h2>
-            <GithubInstallation command={""} variant={Variant.add} />
+            <InfoCardInstallationCode/>
           </section>
 
           <hr className="border-t border-gray-200 dark:border-gray-700" />
@@ -87,7 +103,7 @@ export default async function DiscordPresencePage() {
               {/* Default Usage */}
               <div className="space-y-4 md:p-4">
                 <h3 className="ml-2 text-md font-medium">Default Usage</h3>
-                <GithubCode />
+                {/* <GithubCode /> */}
               </div>
               <div className="bg-yellow-50 dark:bg-yellow-950/50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
                 <div className="flex items-start gap-4">
