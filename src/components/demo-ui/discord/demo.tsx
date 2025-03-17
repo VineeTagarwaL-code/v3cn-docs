@@ -1,6 +1,6 @@
 "use client";
  
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import Image from "next/image";

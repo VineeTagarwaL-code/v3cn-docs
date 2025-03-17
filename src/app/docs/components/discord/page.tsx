@@ -1,7 +1,8 @@
 import { Discord } from "@/components/demo-ui/discord/demo";
-import { InfoCardInstallationCode } from "@/components/demo-ui/discord/installation";
+import { DiscordInstallationCode } from "@/components/demo-ui/discord/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
 import PropItem from "@/components/prop";
+import { CodeBlock } from "@/components/ui/code-block";
 
 const propItemData: {
   name: string;
@@ -88,7 +89,7 @@ export default async function DiscordPresencePage() {
             <h2 className="text-2xl font-semibold mb-4" id="installation">
               Installation
             </h2>
-            <InfoCardInstallationCode/>
+            <DiscordInstallationCode/>
           </section>
 
           <hr className="border-t border-gray-200 dark:border-gray-700" />
@@ -103,7 +104,8 @@ export default async function DiscordPresencePage() {
               {/* Default Usage */}
               <div className="space-y-4 md:p-4">
                 <h3 className="ml-2 text-md font-medium">Default Usage</h3>
-                {/* <GithubCode /> */}
+              <h3 className="ml-2 text-md font-medium">Default Usage</h3>
+                             {/* <CodeBlock html={basicUsageCode} /> */}
               </div>
               <div className="bg-yellow-50 dark:bg-yellow-950/50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
                 <div className="flex items-start gap-4">
@@ -138,7 +140,7 @@ export default async function DiscordPresencePage() {
               </h2>
               <div className="flex flex-col gap-6 border rounded-lg    ">
                 <h2 className="bg-zinc-800 py-2 px-2">
-                  GithubGraph Component Properties
+                  Discord Component Properties
                 </h2>
                 <div className="ml-4">
                   {propItemData.map((item, index) => (

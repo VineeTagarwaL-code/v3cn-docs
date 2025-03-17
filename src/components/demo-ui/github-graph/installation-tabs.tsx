@@ -106,7 +106,7 @@ export function InstallationTabs({
             <Step
               step={3}
               title="Ready to Use"
-              description="You can now use the Info Card component in your project"
+              description="You can now use the Github Graph component in your project"
               isCompleted={activeStep > 3}
               isActive={activeStep === 3}
               onClick={() => setActiveStep(3)}

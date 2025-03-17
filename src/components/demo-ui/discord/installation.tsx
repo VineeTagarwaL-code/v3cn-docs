@@ -154,7 +154,7 @@ export default Progress;
 export { Discord };
 `;
 
-export async function InfoCardInstallationCode() {
+export async function DiscordInstallationCode() {
   const html = await codeToHtml(installationCode, {
     lang: "bash",
     theme: "min-dark",

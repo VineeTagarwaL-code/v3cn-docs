@@ -70,7 +70,7 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
   return responseBody.data;
 }`;
 
-export async function InfoCardInstallationCode() {
+export async function GithubGraphInstallationCode() {
   const html = await codeToHtml(installationCode, {
     lang: "bash",
     theme: "min-dark",

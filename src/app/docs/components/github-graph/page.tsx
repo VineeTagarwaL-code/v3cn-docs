@@ -1,6 +1,6 @@
-import { basicUsageRawCode, InfoCardDemoCode, stepsUsageRawCode } from "@/components/demo-ui/github-graph/code";
-import { InfoCardInstallationCode } from "@/components/demo-ui/github-graph/installation";
-import { GithubGraph } from "@/components/Github";
+import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
+import { GithubGraphInstallationCode } from "@/components/demo-ui/github-graph/installation";
+import { DemoGithubGraph } from "@/components/demo-ui/github-graph/demo";
 import { NavigationMenu } from "@/components/navigation-menu";
 import { CodeBlock } from "@/components/ui/code-block";
 import { PropTable } from "@/components/ui/prop-table";
@@ -65,7 +65,7 @@ export default async function GithubGraphPage() {
               Playground
             </h2>
             <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
-              <GithubGraph
+              <DemoGithubGraph
                 username="VineeTagarwaL-code"
                 blockMargin={2}
                 colorPallete={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
@@ -78,7 +78,7 @@ export default async function GithubGraphPage() {
             <h2 className="text-2xl font-semibold mb-4" id="installation">
               Installation
             </h2>
-            <InfoCardInstallationCode/>
+            <GithubGraphInstallationCode/>
           </section>
 
           <hr className="border-t border-gray-200 dark:border-gray-700" />
