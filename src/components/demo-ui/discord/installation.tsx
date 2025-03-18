@@ -1,5 +1,5 @@
 import { codeToHtml } from "shiki";
-import { InstallationTabs } from "../discord/installation-tabs";
+import { InstallationTabs } from "@/components/demo-ui/github-graph/installation-tabs";
 
 const installationCode = `
 "use client";
