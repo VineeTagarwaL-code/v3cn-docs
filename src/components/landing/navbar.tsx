@@ -1,9 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export const Navbar = () => {
   const [stars, setStars] = useState("0");
@@ -56,6 +57,7 @@ export const Navbar = () => {
         />
       </div>
       <div className="z-[999] flex items-center gap-2">
+        <Link href="/docs/installation" className="hidden md:block">
         <button
           className="flex items-center gap-1 px-4 py-2 border border-[#5c58673d] rounded-full font-medium text-white hover:text-gray-300 text-sm"
           style={{
@@ -102,6 +104,7 @@ export const Navbar = () => {
           </svg>
           Open docs
         </button>
+        </Link>
         <Link
           href={repoUrl}
           className="group flex items-center gap-1 hover:bg-gray-800 px-3 py-1 border border-[#5c58673d] rounded-full h-[38px] font-medium text-white text-sm transition-colors duration-200 cursor-pointer"
