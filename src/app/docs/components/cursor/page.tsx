@@ -1,11 +1,11 @@
-import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
-import { GithubGraphInstallationCode } from "@/components/demo-ui/github-graph/installation";
-import { DemoGithubGraph } from "@/components/demo-ui/github-graph/demo";
+import { basicUsageRawCode } from "@/components/demo-ui/cursor/code";
+import { CursorInstallationCode } from "@/components/demo-ui/cursor/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
 import { CodeBlock } from "@/components/ui/code-block";
 import { PropTable } from "@/components/ui/prop-table";
 import { AlertTriangle } from "lucide-react";
 import { codeToHtml } from "shiki";
+import { DemoCursor } from "@/components/demo-ui/cursor/demo";
 
 // Define the PropDefinition type
 type PropDefinition = {
@@ -15,70 +15,44 @@ type PropDefinition = {
   description: string;
 };
 
-const GithubGraphProps: PropDefinition[] = [
+const cursorFollowerProps: PropDefinition[] = [
   {
-    prop: "username",
+    prop: "cursorClass",
     type: "string",
-    default: ` " "required`,
+    default: ` " "`,
     description:
-      "GitHub username for which to fetch the contribution data.",
-  },
-  {
-    prop: "blockMargin",
-    type: "number",
-    default: "'once'",
-    description:
-      "Margin between blocks in the contribution graph.",
-  },
-  {
-    prop: "colorPalette",
-    type: "string[]",
-    default: '["#ebedf0", "#c6e48b", "#7bc96f", "#239a3b", "#196127"]',
-    description: "Custom color scheme for the light theme.",
+      "Additional tailwind CSS classes for customizing the cursor appearance and behavior.",
   },
 ];
 
-
-
-export default async function GithubGraphPage() {
+export default async function CursorPage() {
   const basicUsageCode = await codeToHtml(basicUsageRawCode, {
     lang: "tsx",
     theme: "min-dark",
   });
-
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12">
           <section>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">GithubGraph</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              Cursor Follower
+            </h1>
             <p className="text-muted-foreground/90 leading-relaxed">
-              The GithubGraph component is designed to display a GitHub
-              contribution graph for a specified user. It uses the
-              react-activity-calendar package to render the contribution graph.
+              The Cursor component creates a customizable animated cursor that
+              follows the user's mouse movement, with an interactive scaling
+              effect based on the type of element being hovered over.
             </p>
           </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4" id="playground">
-              Playground
-            </h2>
-            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
-              <DemoGithubGraph
-                username="VineeTagarwaL-code"
-                blockMargin={2}
-                colorPallete={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
-              />
-            </div>
-          </section>
+          <DemoCursor cursorClass="border-purple-500 hidden md:inline-block" />
           <hr className="border-t border-gray-200 dark:border-gray-700" />
 
           <section>
             <h2 className="text-2xl font-semibold mb-4" id="installation">
               Installation
             </h2>
-            <GithubGraphInstallationCode/>
+            <CursorInstallationCode />
           </section>
 
           <hr className="border-t border-gray-200 dark:border-gray-700" />
@@ -113,7 +87,10 @@ export default async function GithubGraphPage() {
                 </div>
               </div>
               <div className="grid gap-6">
-                <PropTable title="<Github Graph />" props={GithubGraphProps} />
+                <PropTable
+                  title="<Cursor Follower />"
+                  props={cursorFollowerProps}
+                />
               </div>
             </div>
           </section>

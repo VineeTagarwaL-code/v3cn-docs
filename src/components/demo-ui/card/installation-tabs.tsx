@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { PackageManagerTabs } from "@/components/ui/package-manager-tabs";
 import { CodeBlock } from "@/components/ui/code-block";
-import { Step,Steps } from "@/components/ui/steps";
+import { Step, Steps } from "@/components/ui/steps";
 import { CodeSnippet } from "@/components/ui/code-snippet";
-
 interface TabOption {
   id: "cli" | "manual";
   label: string;
@@ -79,21 +78,27 @@ export function InstallationTabs({
           <Steps>
             <Step
               step={1}
-              title="Install Dependencies"
-              description="Install the required dependencies"
+              title="Create a `cn.ts` File in the `utils` Folder"
+              description="Add the following code to the newly created file."
               isCompleted={activeStep > 1}
               isActive={activeStep === 1}
               onClick={() => setActiveStep(1)}
             >
-              <PackageManagerTabs
-                command="react-activity-calendar"
-                variant="add"
-                layoutId={`${layoutIdPrefix}-package-manager`}
-              />
+              <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
             </Step>
 
             <Step
               step={2}
+              title="Set Up `tailwind.config.ts`"
+              description="Add this config to enable Tailwind and custom animations."
+              isCompleted={activeStep > 2}
+              isActive={activeStep === 2}
+              onClick={() => setActiveStep(2)}
+            >
+              <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
+            </Step>
+            <Step
+              step={3}
               title="Add Component Code"
               description="Copy and paste the following code into your project"
               isCompleted={activeStep > 2}
@@ -102,23 +107,20 @@ export function InstallationTabs({
             >
               <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
             </Step>
-
             <Step
-              step={3}
+              step={4}
               title="Ready to Use"
-              description="You can now use the Github Graph component in your project"
-              isCompleted={activeStep > 3}
-              isActive={activeStep === 3}
-              onClick={() => setActiveStep(3)}
+              description="Import and use the component in your project:
+"
+              isCompleted={activeStep > 4}
+              isActive={activeStep === 4}
+              onClick={() => setActiveStep(4)}
             >
-              <div className="text-sm text-muted-foreground">
-                Import and use the component in your project:
-                <CodeSnippet
-                  code={importCode}
-                  layoutId={`${layoutIdPrefix}-import-code`}
-                  className="mt-2"
-                />
-              </div>
+              <CodeSnippet
+                code={importCode}
+                layoutId={`${layoutIdPrefix}-import-code`}
+                className="mt-2"
+              />
             </Step>
           </Steps>
         )}

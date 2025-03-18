@@ -86,7 +86,7 @@ export function InstallationTabs({
               onClick={() => setActiveStep(1)}
             >
               <PackageManagerTabs
-                command=" @radix-ui/react-progress"
+                command="framer-motion"
                 variant="add"
                 layoutId={`${layoutIdPrefix}-package-manager`}
               />
@@ -106,7 +106,7 @@ export function InstallationTabs({
             <Step
               step={3}
               title="Ready to Use"
-              description="You can now use the Dicord  component in your project"
+              description="You can now use the Cursor component in your project"
               isCompleted={activeStep > 3}
               isActive={activeStep === 3}
               onClick={() => setActiveStep(3)}

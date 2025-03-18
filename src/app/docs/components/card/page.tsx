@@ -1,11 +1,11 @@
-import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
-import { GithubGraphInstallationCode } from "@/components/demo-ui/github-graph/installation";
-import { DemoGithubGraph } from "@/components/demo-ui/github-graph/demo";
+import { basicUsageRawCode } from "@/components/demo-ui/card/code";
 import { NavigationMenu } from "@/components/navigation-menu";
 import { CodeBlock } from "@/components/ui/code-block";
 import { PropTable } from "@/components/ui/prop-table";
 import { AlertTriangle } from "lucide-react";
 import { codeToHtml } from "shiki";
+import { Card } from "@/components/demo-ui/card/demo";
+import { CardInstallationCode } from "@/components/demo-ui/card/installation";
 
 // Define the PropDefinition type
 type PropDefinition = {
@@ -15,48 +15,46 @@ type PropDefinition = {
   description: string;
 };
 
-const GithubGraphProps: PropDefinition[] = [
+const CardProps: PropDefinition[] = [
   {
-    prop: "username",
+    prop: "children",
+    type: "React.ReactNode",
+    default: "undefined",
+    description: "The content to be displayed within the card container.",
+  },
+  {
+    prop: "className",
     type: "string",
-    default: ` " "required`,
+    default: "undefined",
     description:
-      "GitHub username for which to fetch the contribution data.",
+      "Custom CSS classes to apply to the card container for styling.",
   },
   {
-    prop: "blockMargin",
-    type: "number",
-    default: "'once'",
+    prop: "containerClassName",
+    type: "string",
+    default: "undefined",
     description:
-      "Margin between blocks in the contribution graph.",
-  },
-  {
-    prop: "colorPalette",
-    type: "string[]",
-    default: '["#ebedf0", "#c6e48b", "#7bc96f", "#239a3b", "#196127"]',
-    description: "Custom color scheme for the light theme.",
+      "Custom CSS classes to apply to the outer container that manages the perspective effect.",
   },
 ];
 
-
-
-export default async function GithubGraphPage() {
+export default async function CardPage() {
   const basicUsageCode = await codeToHtml(basicUsageRawCode, {
     lang: "tsx",
     theme: "min-dark",
   });
-
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12">
           <section>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">GithubGraph</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              Hovering Card
+            </h1>
             <p className="text-muted-foreground/90 leading-relaxed">
-              The GithubGraph component is designed to display a GitHub
-              contribution graph for a specified user. It uses the
-              react-activity-calendar package to render the contribution graph.
+              The hovering card provides an interactive 3D card effect that
+              responds to mouse movements, creating an engaging user experience.
             </p>
           </section>
 
@@ -64,12 +62,8 @@ export default async function GithubGraphPage() {
             <h2 className="text-2xl font-semibold mb-4" id="playground">
               Playground
             </h2>
-            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
-              <DemoGithubGraph
-                username="VineeTagarwaL-code"
-                blockMargin={2}
-                colorPallete={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
-              />
+            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[700px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
+              <Card />
             </div>
           </section>
           <hr className="border-t border-gray-200 dark:border-gray-700" />
@@ -78,7 +72,7 @@ export default async function GithubGraphPage() {
             <h2 className="text-2xl font-semibold mb-4" id="installation">
               Installation
             </h2>
-            <GithubGraphInstallationCode/>
+            <CardInstallationCode />
           </section>
 
           <hr className="border-t border-gray-200 dark:border-gray-700" />
@@ -99,21 +93,15 @@ export default async function GithubGraphPage() {
                     <p className="font-medium text-yellow-800 dark:text-yellow-200">
                       When using compound components:
                     </p>
-                    <ul className="list-disc ml-4 text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
-                      <li>
-                        Make sure that you have installed the dependencies and
-                        configured your project accordingly.
-                      </li>
-                      <li>
-                        Note: The code for the self-hosted API used to fetch
-                        contribution data is available here.
-                      </li>
-                    </ul>
+                    <p className="list-disc ml-4 text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+                      Make sure that you have installed your modules first and
+                      followed the introduction.
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="grid gap-6">
-                <PropTable title="<Github Graph />" props={GithubGraphProps} />
+                <PropTable title="<Card />" props={CardProps} />
               </div>
             </div>
           </section>
