@@ -167,7 +167,16 @@ export function MySidebar({
           <h2 className="text-xs text-muted-foreground mb-2 font-medium">
             Components
           </h2>
-         
+          <NavButton
+            path="/docs/components/github-graph"
+            icon={<Book className="w-4 h-4 mr-2" />}
+            label="Github Graph"
+          />
+          <NavButton
+            path="/docs/components/discord"
+            icon={<DownloadCloudIcon className="w-4 h-4 mr-2" />}
+            label="Discord Presence"
+          />
         </div>
 
         {/* footer */}
