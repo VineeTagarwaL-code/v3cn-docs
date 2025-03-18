@@ -1,11 +1,13 @@
 "use client";
 
+import { Step, Steps } from "@/components/ui/steps";
+
+import { CodeBlock } from "@/components/ui/code-block";
+import { CodeSnippet } from "@/components/ui/code-snippet";
+import { PackageManagerTabs } from "@/components/ui/package-manager-tabs";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { PackageManagerTabs } from "@/components/ui/package-manager-tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { Step, Steps } from "@/components/ui/steps";
-import { CodeSnippet } from "@/components/ui/code-snippet";
+
 interface TabOption {
   id: "cli" | "manual";
   label: string;
@@ -14,6 +16,8 @@ interface TabOption {
 interface InstallationTabsProps {
   layoutIdPrefix: string;
   cliCommand: string;
+  cnHtml: string;
+  tailwindHtml: string;
   codeHtml: string;
   importCode: string;
 }
@@ -22,6 +26,8 @@ export function InstallationTabs({
   layoutIdPrefix,
   cliCommand,
   codeHtml,
+  cnHtml,
+  tailwindHtml,
   importCode,
 }: InstallationTabsProps) {
   const [selected, setSelected] = useState<TabOption["id"]>("cli");
@@ -84,7 +90,7 @@ export function InstallationTabs({
               isActive={activeStep === 1}
               onClick={() => setActiveStep(1)}
             >
-              <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
+              <CodeBlock html={cnHtml} maxHeight={300} expandedHeight={500} />
             </Step>
 
             <Step
@@ -95,7 +101,7 @@ export function InstallationTabs({
               isActive={activeStep === 2}
               onClick={() => setActiveStep(2)}
             >
-              <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
+              <CodeBlock html={tailwindHtml} maxHeight={300} expandedHeight={500} />
             </Step>
             <Step
               step={3}

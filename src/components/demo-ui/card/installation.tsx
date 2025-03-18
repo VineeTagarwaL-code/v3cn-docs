@@ -1,5 +1,5 @@
-import { codeToHtml } from "shiki";
 import { InstallationTabs } from "@/components/demo-ui/card/installation-tabs";
+import { codeToHtml } from "shiki";
 
 const installationCode = `
 "use client";
@@ -216,9 +216,20 @@ export async function CardInstallationCode() {
     theme: "min-dark",
   });
 
+  const cnHtml = await codeToHtml(cnCode, {
+    lang: "bash",
+    theme: "min-dark",
+  });
+
+  const tailwindHtml = await codeToHtml(tailwindConfigCode, {
+    lang: "bash",
+    theme: "min-dark",
+  });   
   return (
     <InstallationTabs
       codeHtml={html}
+      cnHtml={cnHtml}
+      tailwindHtml={tailwindHtml}
       layoutIdPrefix="card"
       cliCommand="v3cn add card"
       importCode="import { Card  } from '@/components/card';"
