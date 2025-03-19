@@ -1,14 +1,4 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { codeToHtml } from "shiki";
-
-// export async function GithubGraphDemoCode() {
-//   const html = await codeToHtml(githubGraphDemoCode, {
-//     lang: "tsx",
-//     theme: "min-dark",
-//   });
-
-//   return html;
-// }
 
 // Create a client component for rendering the code
 export function CodeDisplay({ html }: { html: string }) {
@@ -22,70 +12,6 @@ export function CodeDisplay({ html }: { html: string }) {
   );
 }
 
-// export const githubGraphDemoCode = `import {
-//   InfoCard,
-//   InfoCardContent,
-//   InfoCardTitle,
-//   InfoCardDescription,
-//   InfoCardMedia,
-//   InfoCardFooter,
-//   InfoCardDismiss,
-//   InfoCardAction,
-// } from "@/components/kl-ui/info-card";
-// import {
-//   Sidebar,
-//   SidebarProvider,
-//   SidebarContent,
-//   SidebarGroup,
-//   SidebarGroupLabel,
-//   SidebarGroupContent,
-//   SidebarMenu,
-//   SidebarMenuItem,
-//   SidebarMenuButton,
-//   SidebarFooter,
-//   SidebarTrigger,
-// } from "@/components/ui/sidebar";
-// import {
-//   ExternalLink,
-//   User,
-//   ChevronsUpDown,
-//   Calendar,
-//   Home,
-//   Inbox,
-//   Search,
-//   Settings,
-// } from "lucide-react";
-// import Link from "next/link";
-// // Menu items.
-// const items = [
-//   {
-//     title: "Home",
-//     url: "#",
-//     icon: Home,
-//   },
-//   {
-//     title: "Inbox",
-//     url: "#",
-//     icon: Inbox,
-//   },
-//   {
-//     title: "Calendar",
-//     url: "#",
-//     icon: Calendar,
-//   },
-//   {
-//     title: "Search",
-//     url: "#",
-//     icon: Search,
-//   },
-//   {
-//     title: "Settings",
-//     url: "#",
-//     icon: Settings,
-//   },
-// ];
-
-// `;
 export const basicUsageRawCode = `// Import the Component 
    import { GithubGraph } from "@/components/GithubGraph";
  

@@ -116,8 +116,7 @@ export function InstallationTabs({
             <Step
               step={4}
               title="Ready to Use"
-              description="Import and use the component in your project:
-"
+              description="Import and use the Card component in your project:"
               isCompleted={activeStep > 4}
               isActive={activeStep === 4}
               onClick={() => setActiveStep(4)}

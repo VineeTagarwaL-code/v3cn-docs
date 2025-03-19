@@ -106,13 +106,13 @@ export function InstallationTabs({
             <Step
               step={3}
               title="Ready to Use"
-              description="You can now use the Dicord  component in your project"
+              description="You can now use the Discord component in your project"
               isCompleted={activeStep > 3}
               isActive={activeStep === 3}
               onClick={() => setActiveStep(3)}
             >
               <div className="text-sm text-muted-foreground">
-                Import and use the component in your project:
+                Import and use the Discord component in your project:
                 <CodeSnippet
                   code={importCode}
                   layoutId={`${layoutIdPrefix}-import-code`}
