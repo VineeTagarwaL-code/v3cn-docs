@@ -90,7 +90,7 @@ export function InstallationTabs({
               isActive={activeStep === 1}
               onClick={() => setActiveStep(1)}
             >
-              <CodeBlock html={cnHtml} maxHeight={300} expandedHeight={500} />
+              <CodeBlock html={cnHtml} maxHeight={100} expandedHeight={200} />
             </Step>
 
             <Step
