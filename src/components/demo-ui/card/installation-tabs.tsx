@@ -90,7 +90,7 @@ export function InstallationTabs({
               isActive={activeStep === 1}
               onClick={() => setActiveStep(1)}
             >
-              <CodeBlock html={cnHtml} maxHeight={300} expandedHeight={500} />
+              <CodeBlock html={cnHtml} maxHeight={100} expandedHeight={200} />
             </Step>
 
             <Step
@@ -116,8 +116,7 @@ export function InstallationTabs({
             <Step
               step={4}
               title="Ready to Use"
-              description="Import and use the component in your project:
-"
+              description="Import and use the Card component in your project:"
               isCompleted={activeStep > 4}
               isActive={activeStep === 4}
               onClick={() => setActiveStep(4)}

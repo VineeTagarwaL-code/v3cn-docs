@@ -1,4 +1,3 @@
-import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
 import { GithubGraphInstallationCode } from "@/components/demo-ui/github-graph/installation";
 import { DemoGithubGraph } from "@/components/demo-ui/github-graph/demo";
 import { NavigationMenu } from "@/components/navigation-menu";
@@ -6,6 +5,7 @@ import { CodeBlock } from "@/components/ui/code-block";
 import { PropTable } from "@/components/ui/prop-table";
 import { AlertTriangle } from "lucide-react";
 import { codeToHtml } from "shiki";
+import { basicUsageRawCode } from "@/components/demo-ui/github-graph/code";
 
 // Define the PropDefinition type
 type PropDefinition = {
@@ -54,7 +54,7 @@ export default async function GithubGraphPage() {
           <section>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">GithubGraph</h1>
             <p className="text-muted-foreground/90 leading-relaxed">
-              The GithubGraph component is designed to display a GitHub
+              The GithubGraph component is designed to display a Github
               contribution graph for a specified user. It uses the
               react-activity-calendar package to render the contribution graph.
             </p>
@@ -106,8 +106,7 @@ export default async function GithubGraphPage() {
                       </li>
                       <li>
                         Note: The code for the self-hosted API used to fetch
-                        contribution data is available here.
-                      </li>
+                        contribution data is available <a href="https://github.com/VineeTagarwaL-code/go-github-api" className="underline font-semibold text-blue-600">here.</a>                      </li>
                     </ul>
                   </div>
                 </div>

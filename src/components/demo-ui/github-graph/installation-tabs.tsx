@@ -112,7 +112,7 @@ export function InstallationTabs({
               onClick={() => setActiveStep(3)}
             >
               <div className="text-sm text-muted-foreground">
-                Import and use the component in your project:
+                Import and use the Github Graph component in your project:
                 <CodeSnippet
                   code={importCode}
                   layoutId={`${layoutIdPrefix}-import-code`}

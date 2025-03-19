@@ -1,5 +1,4 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { codeToHtml } from "shiki";
 
 export function CodeDisplay({ html }: { html: string }) {
   return (

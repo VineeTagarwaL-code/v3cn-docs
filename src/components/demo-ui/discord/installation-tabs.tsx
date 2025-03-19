@@ -16,6 +16,8 @@ interface InstallationTabsProps {
   layoutIdPrefix: string;
   cliCommand: string;
   codeHtml: string;
+  cnHtml:string;
+  nextConfigHtml:string;
   importCode: string;
 }
 
@@ -23,6 +25,8 @@ export function InstallationTabs({
   layoutIdPrefix,
   cliCommand,
   codeHtml,
+  cnHtml,
+  nextConfigHtml,
   importCode,
 }: InstallationTabsProps) {
   const [selected, setSelected] = useState<TabOption["id"]>("cli");
@@ -91,28 +95,50 @@ export function InstallationTabs({
                 layoutId={`${layoutIdPrefix}-package-manager`}
               />
             </Step>
-
+               
             <Step
               step={2}
-              title="Add Component Code"
-              description="Copy and paste the following code into your project"
+              title="Create a `cn.ts` File in the `utils` Folder"
+              description="Add the following code to the newly created file."
               isCompleted={activeStep > 2}
               isActive={activeStep === 2}
               onClick={() => setActiveStep(2)}
+            >
+           <CodeBlock html={cnHtml} maxHeight={100} expandedHeight={200} />
+            </Step>
+
+            <Step
+              step={3}
+               title="Update next.config.ts Configuration"
+              description="Add the specified code snippet to your next.config.ts file for necessary configurations."
+              isCompleted={activeStep > 3}
+              isActive={activeStep === 3}
+              onClick={() => setActiveStep(3)}
+            >
+           <CodeBlock html={nextConfigHtml} maxHeight={300} expandedHeight={500} />
+            </Step>
+
+            <Step
+              step={4}
+              title="Add Component Code"
+              description="Copy and paste the following code into your project"
+              isCompleted={activeStep > 4}
+              isActive={activeStep === 4}
+              onClick={() => setActiveStep(4)}
             >
               <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
             </Step>
 
             <Step
-              step={3}
+              step={5}
               title="Ready to Use"
-              description="You can now use the Dicord  component in your project"
-              isCompleted={activeStep > 3}
-              isActive={activeStep === 3}
-              onClick={() => setActiveStep(3)}
+              description="You can now use the Discord component in your project"
+              isCompleted={activeStep >5}
+              isActive={activeStep === 5}
+              onClick={() => setActiveStep(5)}
             >
               <div className="text-sm text-muted-foreground">
-                Import and use the component in your project:
+                Import and use the Discord component in your project:
                 <CodeSnippet
                   code={importCode}
                   layoutId={`${layoutIdPrefix}-import-code`}

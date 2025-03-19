@@ -1,5 +1,5 @@
 import { codeToHtml } from "shiki";
-import { InstallationTabs } from "@/components/demo-ui/github-graph/installation-tabs";
+import { InstallationTabs } from "@/components/demo-ui/discord/installation-tabs";
 
 const installationCode = `
 "use client";
@@ -154,15 +154,53 @@ export default Progress;
 export { Discord };
 `;
 
+const cnCode=`import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+ 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(...inputs));
+}`;
+
+const nextConfigCode=` //rest of the settings
+// add this in your image config object
+ 
+ images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+        port: "",
+        pathname: "/image/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+        port: "",
+        pathname: "**",
+      },
+    ],
+  },
+// rest of the settings
+`;
 export async function DiscordInstallationCode() {
   const html = await codeToHtml(installationCode, {
     lang: "bash",
     theme: "min-dark",
   });
+const cnHtml = await codeToHtml(cnCode, {
+    lang: "bash",
+    theme: "min-dark",
+  });
 
+  const nextConfigHtml = await codeToHtml(nextConfigCode, {
+    lang: "bash",
+    theme: "min-dark",
+  });  
   return (
     <InstallationTabs
       codeHtml={html}
+      cnHtml={cnHtml}
+      nextConfigHtml={nextConfigHtml}
       layoutIdPrefix="discord-presence"
       cliCommand="v3cn add discord"
       importCode="import { Discord  } from '@/components/discord';"

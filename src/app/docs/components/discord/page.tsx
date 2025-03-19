@@ -1,8 +1,10 @@
+import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
 import { Discord } from "@/components/demo-ui/discord/demo";
 import { DiscordInstallationCode } from "@/components/demo-ui/discord/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
 import PropItem from "@/components/prop";
 import { CodeBlock } from "@/components/ui/code-block";
+import { codeToHtml } from "shiki/bundle/full";
 
 const propItemData: {
   name: string;
@@ -46,7 +48,12 @@ const propItemData: {
   },
 ];
 
+  
 export default async function DiscordPresencePage() {
+  const basicUsageCode = await codeToHtml(basicUsageRawCode, {
+    lang: "tsx",
+    theme: "min-dark",
+  });
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col lg:flex-row gap-8">
@@ -104,8 +111,7 @@ export default async function DiscordPresencePage() {
               {/* Default Usage */}
               <div className="space-y-4 md:p-4">
                 <h3 className="ml-2 text-md font-medium">Default Usage</h3>
-              <h3 className="ml-2 text-md font-medium">Default Usage</h3>
-                             {/* <CodeBlock html={basicUsageCode} /> */}
+                <CodeBlock html={basicUsageCode} />
               </div>
               <div className="bg-yellow-50 dark:bg-yellow-950/50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
                 <div className="flex items-start gap-4">
