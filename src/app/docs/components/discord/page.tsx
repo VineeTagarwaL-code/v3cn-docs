@@ -55,7 +55,7 @@ export default async function DiscordPresencePage() {
     theme: "min-dark",
   });
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container py-8">
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12">
           {/* Title */}
@@ -77,7 +77,7 @@ export default async function DiscordPresencePage() {
             <h2 className="text-2xl font-semibold mb-4" id="playground">
               Playground
             </h2>
-            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
+            <div className=" border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <Discord
                 userId="1018532712455352330"
                 userName="VineeTagarwaL-code"
