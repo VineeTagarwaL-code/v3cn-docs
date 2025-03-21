@@ -1,6 +1,7 @@
 "use client";
 
-import { Examples, Hero, Navbar } from "@/components/landing";
+import { Examples, Navbar } from "@/components/landing";
+import HeroSection from "@/components/landing/hero";
 import { FeaturesSection } from "@/components/landing/how-it-works";
 import { LandingFooter } from "@/components/landing/landing-footer";
 import { useLenis } from "@/hooks/use-lenis";
@@ -22,8 +23,8 @@ export default function Home() {
               "radial-gradient(circle at 60% 10%, #ff00002e, #fff0 11%), radial-gradient(circle at 70% 15%, #ab40ff2e, #faf3ff03 10%, #fff0)",
           }}
         >
-          <Navbar />
-          <Hero />
+       
+          <HeroSection/>
           {/* <Examples /> */}
           <FeaturesSection />
           <LandingFooter />
