@@ -1,66 +1,22 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Heading } from "../heading";
 import Link from "next/link";
-import MagneticWrapper from "./magnetic-wrapper";
-
-export function LandingFooter() {
-  const currentYear = new Date().getFullYear();
-
+export const LandingFooter = () => {
   return (
-    <footer className="py-6 border-gray-800 border-t w-full">
-      <div className="flex sm:flex-row flex-col justify-between items-center gap-6 mx-auto px-6 container">
-        <div>
-          <p className="text-gray-400 text-sm">
-            © {currentYear} V3CN Team. All rights reserved.
-          </p>
-          <p className="mt-1 text-gray-500 text-xs">
-            Designed and developed by{" "}
-            <Link
-              href="//www.vineet.tech/"
-              className="hover:text-gray-300 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              V3CN Team
-            </Link>
-          </p>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <MagneticWrapper>
-            <Link
-              href="//x.com/vineetwts"
-              className="py-1.5 rounded-full text-gray-400 hover:text-white text-sm transition-colors ease-in-out"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X"
-            >
-              <Twitter size={16} />
-            </Link>
-          </MagneticWrapper>
-          <MagneticWrapper>
-            <Link
-              href="//github.com/vineeTagarwaL-code"
-              className="py-1.5 rounded-full text-gray-400 hover:text-white text-sm transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <Github size={16} />
-            </Link>
-          </MagneticWrapper>
-          <MagneticWrapper>
-            <Link
-              href="//www.linkedin.com/in/vineetagarwal2004/"
-              className="py-1.5 rounded-full text-gray-400 hover:text-white text-sm transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={16} />
-            </Link>
-          </MagneticWrapper>
-        </div>
-      </div>
-    </footer>
+    <div className=" text-white min-h-[300px] flex flex-col items-center justify-center px-4  text-center bg-gradient-to-b from-background/95 to-background">
+      <Link
+        href="mailto:your-email@example.com"
+        className="inline-block bg-gray-300 dark:bg-gray-700 text-foreground px-3 py-1 rounded-full text-sm font-medium mb-6 cursor-pointer"
+      >
+        <span className="text-foreground ">Contact</span>
+      </Link>
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+        Get in Touch
+      </h2>
+      <p className="max-w-2xl text-gray-400 text-lg">
+        Want to chat? Just shoot me a dm{" "}
+        <Link href={"https://x.com/vineetwts"}>on twitter</Link>
+      </p>
+      <Heading classname="my-8">V3CN</Heading>
+    </div>
   );
-}
+};
