@@ -99,7 +99,7 @@ const Discord: React.FC<TDiscord> = ({
       {isLoading ? (
         <DiscordSkeleton />
       ) : (
-        <div className="flex gap-2">
+        <div className="flex gap-2 ">
           <ImageCont
             activityImage={activityImage}
             activityImageClassName={activityImageClassName}
@@ -113,13 +113,18 @@ const Discord: React.FC<TDiscord> = ({
             {activityImage.isSpotifyPlaying ? (
               <Progress
                 value={progress}
-                className=" w-[100px] md:w-[200px] h-[3px] text-red-500 "
+                className=" w-[100px] md:w-[200px] h-[3px] text-red-500"
                 progressBarClassName={progressBarClassName}
               />
             ) : null}
-            <div className="flex flex-row flex-nowrap gap-2">
-              <span className="capitalize">{userName}</span> •{" "}
+            <div className="md:flex sm:flex-col md:flex-row flex-nowrap gap-2">
+              <span className="capitalize md:text-base sm:text-sm">{userName}</span> 
+              <div className="flex space-x-2">
+
+            
+              <p className="hidden sm:block">•{" "}</p>
               <LocalTime localTimeClass={localTimeClass} />
+              </div>
             </div>
           </div>
         </div>
