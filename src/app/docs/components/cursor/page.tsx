@@ -1,11 +1,12 @@
-import { basicUsageRawCode } from "@/components/demo-ui/cursor/code";
-import { CursorInstallationCode } from "@/components/demo-ui/cursor/installation";
-import { NavigationMenu } from "@/components/navigation-menu";
-import { CodeBlock } from "@/components/ui/code-block";
-import { PropTable } from "@/components/ui/prop-table";
 import { AlertTriangle } from "lucide-react";
-import { codeToHtml } from "shiki";
+import { CodeBlock } from "@/components/ui/code-block";
+import { Cursor } from "@/components/Cursor";
+import { CursorInstallationCode } from "@/components/demo-ui/cursor/installation";
 import { DemoCursor } from "@/components/demo-ui/cursor/demo";
+import { NavigationMenu } from "@/components/navigation-menu";
+import { PropTable } from "@/components/ui/prop-table";
+import { basicUsageRawCode } from "@/components/demo-ui/cursor/code";
+import { codeToHtml } from "shiki";
 
 // Define the PropDefinition type
 type PropDefinition = {
