@@ -1,7 +1,6 @@
 "use client";
 
 import HeroSection from "@/components/landing/hero";
-import { LandingFooter } from "@/components/landing/landing-footer";
 import { useLenis } from "@/hooks/use-lenis";
 
 export default function Home() {

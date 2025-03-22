@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import NextTopLoader from 'nextjs-toploader';
 import { Providers } from "@/components/provider";
 import Script from "next/script";
 
@@ -21,6 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased bg-zinc-100 dark:bg-[#0C0E10] transition-theme">
+        <NextTopLoader 
+          color="#892aca"
+          showSpinner={false}
+          height={3}
+          shadow="0 0 10px #892aca,0 0 5px #892aca"
+        />
         <Providers>
           <main>{children}</main>
           <Script

@@ -2,7 +2,8 @@ import { AlertTriangle } from "lucide-react";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Cursor } from "@/components/Cursor";
 import { CursorInstallationCode } from "@/components/demo-ui/cursor/installation";
-import { DemoCursor } from "@/components/demo-ui/cursor/demo";
+import { Cursor as DemoCursor } from "@/components/demo-ui/cursor/demo";
+import { Denk_One } from "next/font/google";
 import { NavigationMenu } from "@/components/navigation-menu";
 import { PropTable } from "@/components/ui/prop-table";
 import { basicUsageRawCode } from "@/components/demo-ui/cursor/code";
@@ -33,7 +34,8 @@ export default async function CursorPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="px-4 py-8">
+      <DemoCursor cursorClass="border-purple-500" />
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12">
           <section>
@@ -46,7 +48,6 @@ export default async function CursorPage() {
               effect based on the type of element being hovered over.
             </p>
           </section>
-          <DemoCursor cursorClass="border-purple-500 hidden md:inline-block" />
           <hr className="border-t border-gray-200 dark:border-gray-700" />
 
           <section>

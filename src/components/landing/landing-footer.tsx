@@ -2,7 +2,7 @@ import { Heading } from "../heading";
 import Link from "next/link";
 export const LandingFooter = () => {
   return (
-    <div className=" text-white min-h-[300px] flex flex-col items-center justify-center px-4  text-center bg-gradient-to-b from-background/95 to-background">
+    <div className=" text-white min-h-[300px] flex flex-col items-center justify-center px-4  text-center ">
       <Link
         href="mailto:your-email@example.com"
         className="inline-block bg-gray-300 dark:bg-gray-700 text-foreground px-3 py-1 rounded-full text-sm font-medium mb-6 cursor-pointer"

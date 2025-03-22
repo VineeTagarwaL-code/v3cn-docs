@@ -2,89 +2,92 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 type cursorProp = {
   cursorClass?: string;
 };
-export const DemoCursor = ({ cursorClass }: cursorProp) => {
+export const Cursor = ({ cursorClass }: cursorProp) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [trailerType, setTrailertype] = useState("default");
+  const [isVisible, setIsVisible] = useState(false);
+  const [trailerType, setTrailerType] = useState("default");
   const [isInteracting, setIsInteracting] = useState(false);
-  const [isClicked, SetIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-  const cursorRef = useRef(null);
-  const animateTrailer = (e: any) => {
-    const x =
-      e.clientX - (cursorRef.current as unknown as HTMLElement).offsetWidth/2 ;
-    const y =
-      e.clientY -
-      (cursorRef.current as unknown as HTMLElement).offsetHeight/2;
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const SIDEBAR_WIDTH = 285; // Width of sidebar to adjust cursor position
 
+  // Update cursor position
+  const updateCursorPosition = (e: MouseEvent) => {
+    if (!cursorRef.current) return;
+    
+    // Subtract the sidebar width from the x position
+    const x = e.clientX - SIDEBAR_WIDTH;
+    const y = e.clientY - 40; // to adjust cursor position
+    
     setPosition({ x, y });
-
-    const keyframes = {
-      transform: `translate(${x}px, ${y}px) scale(${isInteracting ? 3 : 1})`,
-    };
-
-    (cursorRef.current as unknown as HTMLElement)?.animate(keyframes, {
-      duration: 100,
-      fill: "forwards",
-    });
   };
-  const getTrailerClass = (type: any) => {
-    switch (type) {
-      case "video":
-        return "fa-solid fa-play";
-      default:
-        return "ri-arrow-right-up-line";
-    }
-  };
+
   useEffect(() => {
-    const handleMouseMove = (e: any) => {
-      const interactable = e.target.closest(".interactable");
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isVisible) setIsVisible(true);
+      
+      const interactable = (e.target as HTMLElement).closest(".interactable");
       const interacting = interactable !== null;
-
-      animateTrailer(e);
-
-      setTrailertype(interacting ? interactable.dataset.type : "");
+      
+      updateCursorPosition(e);
+      
+      setTrailerType(interacting ? (interactable as HTMLElement).dataset.type || "" : "");
       setIsInteracting(interacting);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-
-    // Set initial position to current mouse position
-    const initialPosition = (e: MouseEvent) => {
-      setPosition({
-        x: e.clientX - (cursorRef.current as unknown as HTMLElement).offsetWidth / 2,
-        y: e.clientY - (cursorRef.current as unknown as HTMLElement).offsetHeight / 2
-      });
-      window.removeEventListener("mousemove", initialPosition);
+    const handleMouseLeave = () => {
+      setIsVisible(false);
     };
-    window.addEventListener("mousemove", initialPosition, { once: true });
+
+    const handleMouseEnter = () => {
+      setIsVisible(true);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    document.body.addEventListener("mouseleave", handleMouseLeave);
+    document.body.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      document.body.removeEventListener("mouseleave", handleMouseLeave);
+      document.body.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [isInteracting]);
+  }, [isVisible]);
 
   useEffect(() => {
-    window.addEventListener("click", (event: any) => {
-      SetIsClicked(true);
+    const handleClick = () => {
+      setIsClicked(true);
       setTimeout(() => {
-        SetIsClicked(false);
+        setIsClicked(false);
       }, 100);
-    });
+    };
+
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
   }, []);
+
   return (
     <>
       <motion.div
         whileTap={{ scale: 0.9 }}
         id="trailer"
-        style={{ top: `${position.y}px`, left: `${position.x}px` }}
+        style={{
+          top: position.y,
+          left: position.x,
+          opacity: isVisible ? 1 : 0,
+        }}
         className={cn(
-          "bg-transparent rounded-full fixed z-50 pointer-events-none border-[3px] border-slate-500 border-solid w-10 h-10 transition-all",
+          "bg-transparent rounded-full fixed z-50 pointer-events-none border-[3px] border-slate-500 border-solid w-10 h-10 transition-transform duration-100",
           cursorClass,
           isClicked && "w-8 h-8"
         )}

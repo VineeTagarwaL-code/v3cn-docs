@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const gradientStyles = {
   backgroundGradient: "linear-gradient(355deg, #A8A8A8 20.37%, #FFFFFF 81.25%)",
@@ -36,11 +37,13 @@ export const Card = ({
     <div className="flex justify-between items-start w-full">
       <h1 className="font-medium text-white text-lg">{title}</h1>
     </div>
+    <Link href="/docs/installation">
     <button
       className="z-[10] flex items-center gap-1 p-2 px-3 border border-[#5c58673d] rounded-2xl w-fit font-medium text-white hover:text-gray-300 text-sm"
       style={{ background: gradientStyles.buttonGradient }}
     >
       {buttonText}
     </button>
+    </Link>
   </div>
 );

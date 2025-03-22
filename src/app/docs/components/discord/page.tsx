@@ -1,9 +1,9 @@
-import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
+import { CodeBlock } from "@/components/ui/code-block";
 import { Discord } from "@/components/demo-ui/discord/demo";
 import { DiscordInstallationCode } from "@/components/demo-ui/discord/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
 import PropItem from "@/components/prop";
-import { CodeBlock } from "@/components/ui/code-block";
+import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
 import { codeToHtml } from "shiki/bundle/full";
 
 const propItemData: {
@@ -55,32 +55,32 @@ export default async function DiscordPresencePage() {
     theme: "min-dark",
   });
   return (
-    <div className="container py-8">
+    <div className="container px-4 sm:px-6 py-8 max-w-full mx-auto overflow-hidden">
       <div className="flex flex-col lg:flex-row gap-8">
-        <main className="flex-1 space-y-12">
+        <main className="flex-1 space-y-12 overflow-x-auto">
           {/* Title */}
           <section>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Discord Presence
             </h1>
             <p className="text-muted-foreground/90 leading-relaxed">
               The DiscordPresence displays a rich Discord presence for a given
               user, showing their current activity such as listening to Spotify,
               playing a game, or their online status. This component integrates
-              well with React & Next.Js applications and requires the user’s
+              well with React & Next.Js applications and requires the user's
               Discord ID to function.
             </p>
           </section>
 
           {/* Playground */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4" id="playground">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4" id="playground">
               Playground
             </h2>
-            <div className=" border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
+            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <Discord
                 userId="1018532712455352330"
-                userName="VineeTagarwaL-code"
+                userName="Vineet"
                 activityDetailClass="dark:text-cyan-300"
                 activityDescriptionClass="dark:text-[#ffbe6f]"
                 progressBarClassName="dark:bg-[#ffbe6f]"
@@ -93,10 +93,12 @@ export default async function DiscordPresencePage() {
 
           {/* Installation */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4" id="installation">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4" id="installation">
               Installation
             </h2>
-            <DiscordInstallationCode/>
+            <div className="overflow-x-auto">
+              <DiscordInstallationCode/>
+            </div>
           </section>
 
           <hr className="border-t border-gray-200 dark:border-gray-700" />
@@ -109,17 +111,18 @@ export default async function DiscordPresencePage() {
               </h2>
 
               {/* Default Usage */}
-              <div className="space-y-4 md:p-4">
+              <div className="space-y-4 md:p-4 overflow-x-auto">
                 <h3 className="ml-2 text-md font-medium">Default Usage</h3>
                 <CodeBlock html={basicUsageCode} />
               </div>
               <div className="bg-yellow-50 dark:bg-yellow-950/50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
-                <div className="flex items-start gap-4">
+                <div className="flex flex-col sm:flex-row items-start gap-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 50 640 512"
                     width="40"
                     height="20"
+                    className="flex-shrink-0"
                   >
                     <path
                       fill="white"
@@ -127,11 +130,11 @@ export default async function DiscordPresencePage() {
                     />
                   </svg>
 
-                  <p>
+                  <p className="text-sm sm:text-base">
                     Join this discord server to make your presence appear{" "}
                     <a
                       href="https://discord.gg/lanyard"
-                      className="underline cursor-pointer text-blue-400"
+                      className="underline cursor-pointer text-blue-400 break-words"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -140,15 +143,15 @@ export default async function DiscordPresencePage() {
                   </p>
                 </div>
               </div>
-              <div className="flex justify-center border-t  border-gray-200 w-40 mx-auto" />
-              <h2 className=" p-2 text-lg " id="props">
+              <div className="flex justify-center border-t border-gray-200 w-40 mx-auto" />
+              <h2 className="p-2 text-lg" id="props">
                 Props
               </h2>
-              <div className="flex flex-col gap-6 border rounded-lg    ">
+              <div className="flex flex-col gap-6 border rounded-lg overflow-x-auto">
                 <h2 className="bg-zinc-800 py-2 px-2">
                   Discord Component Properties
                 </h2>
-                <div className="ml-4">
+                <div className="ml-4 pr-4 pb-4">
                   {propItemData.map((item, index) => (
                     <PropItem
                       key={index}
@@ -156,7 +159,7 @@ export default async function DiscordPresencePage() {
                       type={item.type}
                       description={item.description}
                     />
-                  ))}{" "}
+                  ))}
                 </div>
               </div>
             </div>
@@ -164,7 +167,7 @@ export default async function DiscordPresencePage() {
         </main>
 
         {/* Right-side navigation */}
-        <aside className="w-64 shrink-0">
+        <aside className="w-full lg:w-64 shrink-0 mt-8 lg:mt-0">
           <div className="sticky top-24">
             <NavigationMenu />
           </div>
