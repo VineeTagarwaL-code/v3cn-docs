@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Providers } from "@/components/provider";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -22,6 +23,11 @@ export default function RootLayout({
       <body className="antialiased bg-zinc-100 dark:bg-[#0C0E10] transition-theme">
         <Providers>
           <main>{children}</main>
+          <Script
+            defer
+            src="https://stats.vineet.pro/script.js"
+            data-website-id="5aa79a6c-9caf-4649-a641-512c273fbe98"
+          ></Script>
         </Providers>
       </body>
     </html>
