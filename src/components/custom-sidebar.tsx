@@ -18,14 +18,14 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
         <MySidebar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
         <div
           className={cn(
-            " w-full rounded-2xl p-6  flex flex-col",
+            "w-full rounded-2xl flex flex-col",
             "transition-transform duration-300 ease-in-out",
             openSideBar ? "translate-x-[270px]" : "translate-x-0",
             "md:translate-x-0"
           )}
         >
           <div className="max-w-[1200px] mx-auto w-full">
-            <div className="flex flex-row items-center gap-2 mb-4 mt-1 -mx-3 md:mb-6 md:mt-2 md:mx-0">
+            <div className="flex flex-row p-6 items-center gap-2 mb-4 mt-1 -mx-3 md:mb-6 md:mt-2 md:mx-0">
               <Button
                 variant="ghost"
                 size="icon"
