@@ -14,7 +14,7 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarContext.Provider value={{ openSideBar, setOpenSideBar }}>
-      <div className="p-2 md:p-4 flex min-h-screen h-screen overflow-hidden">
+      <div className="md:p-4 flex min-h-screen h-screen overflow-hidden">
         <MySidebar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
         <div
           className={cn(

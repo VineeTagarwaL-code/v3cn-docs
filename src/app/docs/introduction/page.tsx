@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12 space-y-16">
+    <section className="container max-w-6xl mx-auto px-4 py-12 space-y-16">
       {/* Hero Section */}
       <div className="flex flex-col gap-6 items-start">
         <h1 className="text-5xl font-bold tracking-tight">
@@ -35,7 +35,7 @@ export default function Home() {
             V3CN
           </span>
         </h1>
-        <p className="text-2xl max-w-2xl dark:text-gray-300">
+        <p className="text-2xl max-w-2xl dark:text-gray-300 text-wrap">
           A modern component library designed to simplify your development
           workflow
         </p>
