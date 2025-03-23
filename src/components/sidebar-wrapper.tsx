@@ -119,11 +119,11 @@ export function MySidebar({
       >
         <Link href="/" className="flex flex-row items-center gap-1 justify-start">
           <Image
-            src="/icons/myicon.png"
-            alt="@karrixthediv"
+            src="/image/logo.webp"
+            alt="V3CN"
             width={50}
             height={50}
-            className=""
+            className="mt-1"
           />
           <h1 className="text-2xl">V3CN</h1>
         </Link>
@@ -213,7 +213,7 @@ export function MySidebar({
               <Github className="w-4 h-4" />
             </Button>
           </Link>
-          <Link href="mailto:karrixlee1231@gmail.com" target="_blank">
+          <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=vineetagarwal.now@gmail.com" target="_blank">
             <Button
               variant="ghost"
               size="icon"

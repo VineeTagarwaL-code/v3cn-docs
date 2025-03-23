@@ -119,7 +119,7 @@ const Discord: React.FC<TDiscord> = ({
             ) : null}
             <div className="md:flex sm:flex-col md:flex-row flex-nowrap gap-2">
               <span className="capitalize md:text-base sm:text-sm">{userName}</span> 
-              <div className="flex space-x-2">
+              <div className="flex sm:space-x-2">
 
             
               <p className="hidden sm:block">•{" "}</p>
