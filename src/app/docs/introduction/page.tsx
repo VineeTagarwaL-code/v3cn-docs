@@ -31,7 +31,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="flex flex-col gap-6 items-start">
         <h1 className="text-5xl font-bold tracking-tight">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400">
+          <span className="bg-clip-text text-transparent bg-gradient-to-t from-purple-200 to-purple-800">
             V3CN
           </span>
         </h1>

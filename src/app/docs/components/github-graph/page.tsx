@@ -64,7 +64,7 @@ export default async function GithubGraphPage() {
             <h2 className="text-2xl font-semibold mb-4" id="playground">
               Playground
             </h2>
-            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
+            <div className="border flex-wrap border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg  h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <DemoGithubGraph
                 username="VineeTagarwaL-code"
                 blockMargin={2}

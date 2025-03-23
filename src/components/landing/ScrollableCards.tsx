@@ -113,7 +113,7 @@ export const ScrollableCards = () => {
                     alt="mockup-2"
                     width={600}
                     height={400}
-                    className="w-fit pr-8 h-full"
+                    className="w-auto pr-8 h-full"
                   />
                 </motion.div>
                 <motion.div

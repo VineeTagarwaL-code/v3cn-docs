@@ -76,7 +76,7 @@ export const HeroContent = () => {
         <Button
           size="lg"
           variant="outline"
-          className="border-purple-500/20  hover:from-purple-600 hover:to-pink-600 text-sm md:text-base py-2 md:py-3 h-11 md:h-12 px-5 min-w-[180px]"
+          className="border-purple-500/20  hover:from-purple-600 hover:to-pink-600 text-sm md:text-base py-2 md:py-3 h-11 md:h-12 px-7 min-w-[180px]"
         >
           <Star className="mr-2 h-4 w-4" />
           {stars} Stars on GitHub

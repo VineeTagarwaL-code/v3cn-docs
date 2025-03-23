@@ -27,8 +27,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="space-y-4">
-      <div className="flex gap-6 justify-start items-start flex-col mb-10 ">
+    <section className="space-y-4 px-6">
+      <div className="flex gap-6 justify-start items-start flex-col mb-10  ">
         <h1 className="text-4xl tracking-wide">Installation</h1>
         <span className="text-xl dark:text-gray-300">
           To start using our components follow the steps below
