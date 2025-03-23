@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="container max-w-6xl mx-auto px-4 py-12 space-y-16">
+    <section className="container sm:max-w-6xl max-w-sm mx-auto px-4 py-12 space-y-16">
       {/* Hero Section */}
       <div className="flex flex-col gap-6 items-start">
         <h1 className="text-5xl font-bold tracking-tight">
@@ -364,10 +364,10 @@ export default function App() {
             After installation, you can import and use components directly in
             your application:
           </p>
-          <div className="my-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
-            <pre>
+          <div className="my-4 p-2 sm:p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
+            <pre className="overflow-x-auto md:overflow-x-visible max-w-full whitespace-pre text-gray-800 dark:text-gray-300">
               <code>{`// Import the Component
-import { Cursor } from "@/components/ui/cursor.tsx";
+import { Cursor } from "@components/ui/cursor.tsx";
  
 // Pass custom styles easily
 <Cursor cursorClass="border-purple-500 hidden md:inline-block" />;`}</code>
