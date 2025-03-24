@@ -29,7 +29,7 @@ Use our custom utility
 ```bash
 npx v3cn add <component_name>
 ```
-or you can visit https://v3cn.me
+or you can visit https://v3cn.vineet.pro
 
 ## Authors
 - VineetAgarwal
