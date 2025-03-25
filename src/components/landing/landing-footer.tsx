@@ -4,7 +4,7 @@ export const LandingFooter = () => {
   return (
     <div className=" text-white min-h-[300px] flex flex-col items-center justify-center px-4  text-center ">
       <Link
-        href="mailto:your-email@example.com"
+        href="mailto:vineetagarwal.now@gmail.com"
         className="inline-block bg-gray-300 dark:bg-gray-700 text-foreground px-3 py-1 rounded-full text-sm font-medium mb-6 cursor-pointer"
       >
         <span className="text-foreground ">Contact</span>
