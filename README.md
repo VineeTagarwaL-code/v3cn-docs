@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/ConcertPal/extension-backend">
+  <a href="https://github.com/VineeTagarwaL-code/v3cn-docs">
     <img src="https://github.com/user-attachments/assets/607c3243-77c3-4745-90f9-5b375013d970" alt="Logo" width="100px" >
   </a>
 <br/>
@@ -8,14 +8,14 @@
    Next Gen UI library to enrich your portfolios
   </p>
   <p align="center">
-    <a href="https://github.com/ConcertPal/extension-backend/actions/workflows/ci.yml">
-      <img src="https://github.com/ConcertPal/extension-backend/actions/workflows/ci.yml/badge.svg" alt="CI Status">
+    <a href="https://github.com/VineeTagarwaL-code/v3cn-docs/actions/workflows/ci.yml">
+      <img src="https://github.com/VineeTagarwaL-code/v3cn-docs/actions/workflows/ci.yml/badge.svg" alt="CI Status">
     </a>
-    <a href="https://github.com/ConcertPal/extension-backend/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/ConcertPal/extension-backend" alt="License">
+    <a href="https://github.com/VineeTagarwaL-code/v3cn-docs/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/VineeTagarwaL-code/v3cn-docs" alt="License">
     </a>
-    <a href="https://github.com/ConcertPal/extension-backend/graphs/contributors">
-      <img src="https://img.shields.io/github/contributors/ConcertPal/extension-backend" alt="Contributors">
+    <a href="https://github.com/VineeTagarwaL-code/v3cn-docs/graphs/contributors">
+      <img src="https://img.shields.io/github/contributors/VineeTagarwaL-code/v3cn-docs" alt="Contributors">
     </a>
   </p>
 </p>
@@ -89,4 +89,4 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Contribution Graph
 
-![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=ConcertPal&theme=github-compact)
+![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=VineeTagarwaL-code&theme=github-compact)
