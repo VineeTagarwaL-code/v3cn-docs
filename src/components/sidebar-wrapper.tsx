@@ -105,8 +105,16 @@ export function MySidebar({
           'md:min-w-[250px]'
         )}
       >
-        <Link href="/" className="flex flex-row items-center gap-1 justify-start">
-          <Image src="/image/logo.webp" alt="V3CN" width={50} height={50} className="mt-1" />
+        <Link href="/" className="flex flex-row items-center gap-3 justify-start">
+          <div className="flex items-center justify-start bg-gray-900 h-10 w-10 rounded-lg p-0">
+            <Image
+              src="/image/logo.webp"
+              alt="V3CN"
+              width={100}
+              height={100}
+              className="object-contain"
+            />
+          </div>
           <h1 className="text-2xl">V3CN</h1>
         </Link>
         <div
