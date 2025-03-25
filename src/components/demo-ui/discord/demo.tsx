@@ -1,9 +1,12 @@
 "use client";
- 
-import React, { useEffect, useState } from "react";
-import { cn } from "@/utils/cn";
+
 import * as ProgressPrimitive from "@radix-ui/react-progress";
+
+import React, { useEffect, useState } from "react";
+
 import Image from "next/image";
+import { cn } from "@/utils/cn";
+
 type TDiscord = {
   userId: string;
   userName: string;
@@ -53,7 +56,7 @@ type TSpotifyData = {
   };
   track_id: string;
 };
- 
+
 type TActivityDetail = {
   detail: string;
   description: string;
@@ -78,7 +81,7 @@ const Discord: React.FC<TDiscord> = ({
     detail: "",
     description: "",
   });
- 
+
   const [progress, setProgress] = useState<number>(0);
   function musicProgress(spotify: Pick<TSpotifyData, "timestamps">) {
     let totalTime = spotify.timestamps.end - spotify.timestamps.start;
@@ -93,7 +96,7 @@ const Discord: React.FC<TDiscord> = ({
     musicProgress,
     setActivityDetails,
   });
- 
+
   return (
     <div className="my-6">
       {isLoading ? (
@@ -117,13 +120,13 @@ const Discord: React.FC<TDiscord> = ({
                 progressBarClassName={progressBarClassName}
               />
             ) : null}
-            <div className="md:flex sm:flex-col md:flex-row flex-nowrap gap-2">
-              <span className="capitalize md:text-base sm:text-sm">{userName}</span> 
-              <div className="flex sm:space-x-2">
-
-            
-              <p className="hidden sm:block">•{" "}</p>
-              <LocalTime localTimeClass={localTimeClass} />
+            <div className="flex gap-2">
+              <span className="capitalize md:text-base sm:text-sm">
+                {userName}
+              </span>
+              <div className="flex gap-1">
+                <p className="sm:block">•</p>
+                <LocalTime localTimeClass={localTimeClass} />
               </div>
             </div>
           </div>
@@ -144,7 +147,7 @@ const AcitvityInfo = ({
   return (
     <div className="flex flex-col gap-1">
       <span className={cn("text-base font-semibold mb-1", activityDetailClass)}>
-        {activityDetais.detail}
+        {activityDetais.detail.length > 15 ? activityDetais.detail.slice(0, 15) + "..." : activityDetais.detail}
       </span>
       <span className={cn("text-sm", activityDescriptionClass)}>
         {activityDetais.description}
@@ -152,7 +155,7 @@ const AcitvityInfo = ({
     </div>
   );
 };
- 
+
 type TUseDiscord = {
   userId: string;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -160,7 +163,7 @@ type TUseDiscord = {
   musicProgress: (spotify: Pick<TSpotifyData, "timestamps">) => void;
   setActivityDetails: React.Dispatch<React.SetStateAction<TActivityDetail>>;
 };
- 
+
 const useDiscord = ({
   userId,
   setIsLoading,
@@ -186,7 +189,7 @@ const useDiscord = ({
           listening_to_spotify: boolean;
           spotify: TSpotifyData;
         } = json.d;
- 
+
         if (opCode === 1) {
           let heartbeatInterval: NodeJS.Timer | number =
             data.heartbeat_interval;
@@ -196,7 +199,7 @@ const useDiscord = ({
               d: { subscribe_to_id: userId },
             })
           );
- 
+
           if (heartbeatInterval) {
             heartbeatInterval = setInterval(() => {
               lanyard?.send(
@@ -251,7 +254,7 @@ const useDiscord = ({
           } else {
             let user = data;
             let largeImage = `https://cdn.discordapp.com/avatars/${user.discord_user.id}/${user.discord_user?.avatar}.png?size=512`;
- 
+
             setActivityImage({
               largeActivityImage: largeImage,
               smallActivityImage: largeImage,
@@ -262,12 +265,12 @@ const useDiscord = ({
               user.discord_status.charAt(0).toUpperCase() +
               user.discord_status.slice(1);
             status = status === "Dnd" ? "Do Not Disturb" : status;
- 
+
             setActivityDetails({
               detail: user.discord_user.username,
               description: status,
             });
- 
+
             setIsLoading(false);
           }
         }
@@ -308,7 +311,7 @@ const ImageCont: React.FC<TImageCont> = ({
           alt="Activity Image"
         />
       )}
- 
+
       {!activityImage.isSpotifyPlaying && activityImage.isActivity && (
         <Image
           src={activityImage.smallActivityImage}
@@ -324,7 +327,7 @@ const ImageCont: React.FC<TImageCont> = ({
     </div>
   );
 };
- 
+
 type TLocalTime = {
   localTimeClass?: string;
 };
@@ -332,22 +335,22 @@ const LocalTime: React.FC<TLocalTime> = ({ localTimeClass }: TLocalTime) => {
   const [localTime, setLocalTime] = useState<string>(
     new Date().toLocaleTimeString()
   );
- 
+
   const setLocalTimeState = () => {
     setLocalTime(new Date().toLocaleTimeString());
   };
- 
+
   useEffect(() => {
     if (typeof window === "undefined") return;
- 
+
     const intervalId = window.setInterval(setLocalTimeState, 1000); // Update local time every second
- 
+
     return () => clearInterval(intervalId);
   }, []);
- 
+
   return <span className={localTimeClass}>{localTime}</span>;
 };
- 
+
 type progressProps = {
   progressBarClassName?: string;
   value?: number;
@@ -373,11 +376,11 @@ const Progress = React.forwardRef<
     />
   </ProgressPrimitive.Root>
 ));
- 
+
 Progress.displayName = "Progress";
- 
+
 export default Progress;
- 
+
 /**
  *
  * @description Clean skeleton component for discordPresence
@@ -397,5 +400,5 @@ const DiscordSkeleton: React.FC = () => {
     </div>
   );
 };
- 
+
 export { Discord };
