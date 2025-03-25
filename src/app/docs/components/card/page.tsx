@@ -1,11 +1,12 @@
-import { basicUsageRawCode } from "@/components/demo-ui/card/code";
-import { NavigationMenu } from "@/components/navigation-menu";
-import { CodeBlock } from "@/components/ui/code-block";
-import { PropTable } from "@/components/ui/prop-table";
 import { AlertTriangle } from "lucide-react";
-import { codeToHtml } from "shiki";
 import { Card } from "@/components/demo-ui/card/demo";
 import { CardInstallationCode } from "@/components/demo-ui/card/installation";
+import { CodeBlock } from "@/components/ui/code-block";
+import { NavigationMenu } from "@/components/navigation-menu";
+import { PropTable } from "@/components/ui/prop-table";
+import { SectionWrapper } from "@/components/section-wrapper";
+import { basicUsageRawCode } from "@/components/demo-ui/card/code";
+import { codeToHtml } from "shiki";
 
 // Define the PropDefinition type
 type PropDefinition = {
@@ -45,7 +46,7 @@ export default async function CardPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <SectionWrapper>
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12">
           <section>
@@ -113,6 +114,6 @@ export default async function CardPage() {
           </div>
         </aside>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }

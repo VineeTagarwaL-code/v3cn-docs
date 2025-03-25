@@ -6,6 +6,7 @@ import { Cursor as DemoCursor } from "@/components/demo-ui/cursor/demo";
 import { Denk_One } from "next/font/google";
 import { NavigationMenu } from "@/components/navigation-menu";
 import { PropTable } from "@/components/ui/prop-table";
+import { SectionWrapper } from "@/components/section-wrapper";
 import { basicUsageRawCode } from "@/components/demo-ui/cursor/code";
 import { codeToHtml } from "shiki";
 
@@ -34,7 +35,7 @@ export default async function CursorPage() {
   });
 
   return (
-    <div className="px-4 py-8">
+    <SectionWrapper>
       <DemoCursor cursorClass="border-purple-500" />
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12">
@@ -104,6 +105,6 @@ export default async function CursorPage() {
           </div>
         </aside>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }

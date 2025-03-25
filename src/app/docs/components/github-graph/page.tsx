@@ -1,11 +1,12 @@
-import { GithubGraphInstallationCode } from "@/components/demo-ui/github-graph/installation";
-import { DemoGithubGraph } from "@/components/demo-ui/github-graph/demo";
-import { NavigationMenu } from "@/components/navigation-menu";
-import { CodeBlock } from "@/components/ui/code-block";
-import { PropTable } from "@/components/ui/prop-table";
 import { AlertTriangle } from "lucide-react";
-import { codeToHtml } from "shiki";
+import { CodeBlock } from "@/components/ui/code-block";
+import { DemoGithubGraph } from "@/components/demo-ui/github-graph/demo";
+import { GithubGraphInstallationCode } from "@/components/demo-ui/github-graph/installation";
+import { NavigationMenu } from "@/components/navigation-menu";
+import { PropTable } from "@/components/ui/prop-table";
+import { SectionWrapper } from "@/components/section-wrapper";
 import { basicUsageRawCode } from "@/components/demo-ui/github-graph/code";
+import { codeToHtml } from "shiki";
 
 // Define the PropDefinition type
 type PropDefinition = {
@@ -48,7 +49,7 @@ export default async function GithubGraphPage() {
 
 
   return (
-    <div className="container ">
+   <SectionWrapper>
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12">
           <section>
@@ -124,6 +125,6 @@ export default async function GithubGraphPage() {
           </div>
         </aside>
       </div>
-    </div>
+      </SectionWrapper> 
   );
 }

@@ -3,6 +3,7 @@ import { Discord } from "@/components/demo-ui/discord/demo";
 import { DiscordInstallationCode } from "@/components/demo-ui/discord/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
 import PropItem from "@/components/prop";
+import { SectionWrapper } from "@/components/section-wrapper";
 import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
 import { codeToHtml } from "shiki/bundle/full";
 
@@ -55,7 +56,7 @@ export default async function DiscordPresencePage() {
     theme: "min-dark",
   });
   return (
-    <div className="container px-4 sm:px-6 py-8 max-w-full mx-auto overflow-hidden">
+    <SectionWrapper>
       <div className="flex flex-col lg:flex-row gap-8">
         <main className="flex-1 space-y-12 overflow-x-auto">
           {/* Title */}
@@ -173,6 +174,6 @@ export default async function DiscordPresencePage() {
           </div>
         </aside>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
