@@ -21,7 +21,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-[90%] md:max-w-5xl mx-auto px-2 md:px-4 py-12 md:py-20">
         <HeroContent />
         <ScrollableCards />
-        <Feedback tweetIds={feedbackTweets} />
+        {/* <Feedback tweetIds={feedbackTweets} /> */}
         <LandingFooter />
       </div>
     </div>

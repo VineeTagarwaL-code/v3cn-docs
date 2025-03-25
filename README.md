@@ -5,15 +5,9 @@
 <br/>
   <h3 align="center">V3cn</h3>
   <p align="center" >
-   Next Gen UI library to enrich your portfolios
+    A collection of unique components that make your website stand out.
   </p>
   <p align="center">
-    <a href="https://github.com/VineeTagarwaL-code/v3cn-docs/actions/workflows/ci.yml">
-      <img src="https://github.com/VineeTagarwaL-code/v3cn-docs/actions/workflows/ci.yml/badge.svg" alt="CI Status">
-    </a>
-    <a href="https://github.com/VineeTagarwaL-code/v3cn-docs/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/VineeTagarwaL-code/v3cn-docs" alt="License">
-    </a>
     <a href="https://github.com/VineeTagarwaL-code/v3cn-docs/graphs/contributors">
       <img src="https://img.shields.io/github/contributors/VineeTagarwaL-code/v3cn-docs" alt="Contributors">
     </a>

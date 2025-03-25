@@ -1,45 +1,41 @@
-import { Github } from "lucide-react";
-import Link from "next/link";
-import { Metadata } from "next";
-import { SectionWrapper } from "@/components/section-wrapper";
-import { TweetComponent } from "@/components/tweet";
+import { Github } from 'lucide-react';
+import Link from 'next/link';
+import { Metadata } from 'next';
+import { SectionWrapper } from '@/components/section-wrapper';
+import { TweetComponent } from '@/components/tweet';
 export const metadata: Metadata = {
-  title: "Introduction",
+  title: 'Introduction',
   description:
-    "V3CN is a modern React component library that helps you build the best UI for your web applications.",
+    'V3CN is a modern React component library that helps you build the best UI for your web applications.',
   keywords: [
-    "React",
-    "Next.js",
-    "Shadcn UI",
-    "NextUI",
-    "UI Library",
-    "Components",
-    "TypeScript",
-    "Component Library",
-    "Motion",
-    "Framer Motion",
-    "Tailwind CSS",
-    "Frontend Development",
-    "Web Development",
-    "Design System",
+    'React',
+    'Next.js',
+    'Shadcn UI',
+    'NextUI',
+    'UI Library',
+    'Components',
+    'TypeScript',
+    'Component Library',
+    'Motion',
+    'Framer Motion',
+    'Tailwind CSS',
+    'Frontend Development',
+    'Web Development',
+    'Design System',
   ],
-  authors: [
-    { name: "Vineet Agarwal", url: "https://github.com/vineetagarwal-code" },
-  ],
+  authors: [{ name: 'Vineet Agarwal', url: 'https://github.com/vineetagarwal-code' }],
 };
 
 export default function Home() {
   return (
-    <SectionWrapper >
+    <SectionWrapper>
       {/* Hero Section */}
       <div className="flex flex-col gap-6 items-start">
         <h1 className="text-5xl font-bold tracking-tight">
-          <span className=" text-purple-400">
-            V3CN
-          </span>
+          <span className=" text-purple-400">V3CN</span>
         </h1>
         <p className="text-lg md:flex-nowrap  dark:text-gray-400 text-wrap">
-         A collection of unique components that make your website stand out.
+          A collection of unique components that make your website stand out.
         </p>
         <div className="flex flex-wrap gap-4 pt-1">
           <Link
@@ -58,15 +54,13 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col gap-6 max-w-[750px] text-gray-700 dark:text-zinc-300 mt-10">
-
         <p className="leading-relaxed">
-          Last year around this time, I made my portfolio website. I was excited and a bit nervous to share it with the world.
-          I posted it on X and the people went berserk. It got 15k+ views in 24 hours. People loved it. All of a sudden, I was flooded with messages.
-          Asking me to make components out of it. So here I am, making it true.
+          Last year around this time, I made my portfolio website. I was excited and a bit nervous
+          to share it with the world. I posted it on X and the people went berserk. It got 15k+
+          views in 24 hours. People loved it. All of a sudden, I was flooded with messages. Asking
+          me to make components out of it. So here I am, making it true.
         </p>
-
-      <TweetComponent id="1779960061952950393" />
-
+        {/* <TweetComponent id="1779960061952950393" /> */}
       </div>
     </SectionWrapper>
   );
