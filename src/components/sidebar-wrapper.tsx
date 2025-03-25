@@ -15,6 +15,7 @@ import { ClockIcon, type ClockIconHandle } from "./pqoqubbw/clock";
 import { MoonIcon, MoonIconHandle } from "./pqoqubbw/moon";
 import { ModeToggle } from "./toggle-theme";
 import {  } from "lucide-react";
+import { CommandMenu } from "./command-menu";
 
 
 interface NavButtonProps {
@@ -145,7 +146,7 @@ export function MySidebar({
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
             ⌘ K
           </div>
-          {/* <CommandMenu open={openCommand} onOpenChange={setOpenCommand} /> */}
+          <CommandMenu open={openCommand} onOpenChange={setOpenCommand} />
         </div>
 
         <div className="flex flex-col">
