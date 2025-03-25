@@ -60,7 +60,7 @@ export default function Home() {
           views in 24 hours. People loved it. All of a sudden, I was flooded with messages. Asking
           me to make components out of it. So here I am, making it true.
         </p>
-        {/* <TweetComponent id="1779960061952950393" /> */}
+        <TweetComponent id="1779960061952950393" />
       </div>
     </SectionWrapper>
   );
