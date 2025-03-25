@@ -1,7 +1,7 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
 
 import  { Activity, ActivityCalendar } from "react-activity-calendar";
+import { useCallback, useEffect, useState } from "react";
 
 type GithubGraphProps = {
   username: string;
@@ -58,7 +58,7 @@ export const DemoGithubGraph = ({
   );
 };
 async function fetchContributionData(username: string): Promise<Activity[]> {
-  let response = await fetch(`https://github.vineet.tech/api/${username}`);
+  let response = await fetch(`https://github.vineet.pro/api/${username}`);
   let responseBody = await response.json();
 
   if (!response.ok) {
