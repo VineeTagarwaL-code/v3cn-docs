@@ -1,11 +1,12 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { Check, ChevronDown, ChevronUp, Copy } from "lucide-react";
+
 import { Button } from "./button";
-import { Copy, Check, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
 import { ScrollArea } from "./scroll-area";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 interface CodeBlockProps {
   html: string;
@@ -41,7 +42,7 @@ export function CodeBlock({
   const showExpandButton = maxHeight && expandedHeight;
 
   return (
-    <div className={cn("relative group", className)}>
+    <div className={cn("relative group w-full max-w-[calc(100vw-2rem)] overflow-x-hidden", className)}>
       {/* Copy button */}
       <Button
         onClick={handleCopy}
@@ -87,7 +88,7 @@ export function CodeBlock({
       >
         <ScrollArea
           className={cn(
-            "h-full",
+            "h-full overflow-y-scroll",
             showExpandButton
               ? isExpanded
                 ? "overflow-auto"
@@ -96,8 +97,12 @@ export function CodeBlock({
           )}
         >
           <div
-            className="p-5 text-sm leading-[1.6rem] bg-zinc-900 dark:bg-zinc-950 rounded-lg [&>pre]:!bg-transparent [&>pre]:!p-0 [&>pre]:whitespace-pre-wrap [&>pre]:break-words [&_.line-number]:pr-4 [&_.line-number]:text-zinc-500 [&_.line-number]:border-r [&_.line-number]:border-zinc-700 [&_.line-number]:mr-4"
+            className="p-5 text-sm leading-[1.6rem] bg-zinc-900 dark:bg-zinc-950 rounded-lg [&>pre]:!bg-transparent [&>pre]:!p-0 [&>pre]:whitespace-pre-wrap [&>pre]:break-words [&_.line-number]:pr-4 [&_.line-number]:text-zinc-500 [&_.line-number]:border-r [&_.line-number]:border-zinc-700 [&_.line-number]:mr-4 overflow-x-auto max-w-full"
             dangerouslySetInnerHTML={{ __html: html }}
+            style={{
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word'
+            }}
           />
         </ScrollArea>
       </motion.div>
