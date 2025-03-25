@@ -1,12 +1,15 @@
 "use client";
-import { cn } from "../utils/cn";
+
 import React, {
   createContext,
-  useState,
   useContext,
-  useRef,
   useEffect,
+  useRef,
+  useState,
 } from "react";
+
+import Image from "next/image";
+import { cn } from "../utils/cn";
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
@@ -139,7 +142,8 @@ const Card = () => {
         <CardContainer className=" cursor-pointer">
           <div className="px-8 py-7 max-w-[400px] border-solid gap-5 bg-black flex flex-col justify-start item-center border-2  rounded-2xl">
             <CardItem>
-              <img
+              <Image
+
                 src={"/V.png"}
                 alt={"platform"}
                 width={400}
