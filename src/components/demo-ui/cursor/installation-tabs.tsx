@@ -1,11 +1,12 @@
 "use client";
 
+import { Step, Steps } from "@/components/ui/steps";
+
+import { CodeBlock } from "@/components/ui/code-block";
+import { CodeSnippet } from "@/components/ui/code-snippet";
+import { PackageManagerTabs } from "@/components/ui/package-manager-tabs";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { PackageManagerTabs } from "@/components/ui/package-manager-tabs";
-import { CodeBlock } from "@/components/ui/code-block";
-import { Step,Steps } from "@/components/ui/steps";
-import { CodeSnippet } from "@/components/ui/code-snippet";
 
 interface TabOption {
   id: "cli" | "manual";
@@ -113,11 +114,13 @@ export function InstallationTabs({
             >
               <div className="text-sm text-muted-foreground">
                 Import and use the component in your project:
-                <CodeSnippet
-                  code={importCode}
-                  layoutId={`${layoutIdPrefix}-import-code`}
-                  className="mt-2"
-                />
+                <div className="overflow-x-auto max-w-full">
+                  <CodeSnippet
+                    code={importCode}
+                    layoutId={`${layoutIdPrefix}-import-code`}
+                    className="mt-2 min-w-0 break-words whitespace-pre-wrap"
+                  />
+                </div>
               </div>
             </Step>
           </Steps>

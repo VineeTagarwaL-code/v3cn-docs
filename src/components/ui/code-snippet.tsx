@@ -1,9 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { Check, Copy } from "lucide-react";
+
 import { Button } from "./button";
-import { Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CodeSnippetProps {
@@ -11,7 +13,7 @@ interface CodeSnippetProps {
   className?: string;
   layoutId?: string;
 }
-1
+
 export function CodeSnippet({ code, className, layoutId }: CodeSnippetProps) {
   const [copied, setCopied] = React.useState(false);
 
@@ -29,12 +31,12 @@ export function CodeSnippet({ code, className, layoutId }: CodeSnippetProps) {
     <motion.div
       layoutId={layoutId}
       className={cn(
-        "relative rounded-lg border bg-primary text-primary-foreground dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 dark:border dark:border-zinc-700/10 dark:text-zinc-200",
+        "relative rounded-lg border bg-primary text-primary-foreground dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 dark:border dark:border-zinc-700/10 dark:text-zinc-200 max-w-full",
         className
       )}
     >
-      <pre className="overflow-x-auto p-4 text-sm leading-[1.6rem]">
-        <code>{code}</code>
+      <pre className="overflow-x-auto p-4 text-sm leading-[1.6rem] whitespace-pre-wrap break-all">
+        <code className="block w-full">{code}</code>
       </pre>
 
       <Button
