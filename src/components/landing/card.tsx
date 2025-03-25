@@ -37,12 +37,13 @@ export const Card = ({
     <div className="flex justify-between items-start w-full">
       <h1 className="font-medium text-white text-lg">{title}</h1>
     </div>
-    <Link href="/docs/installation">
+    <Link href="/docs/installation" className="z-[10]"
+      >
     <button
       className="z-[10] flex items-center gap-1 p-2 px-3 border border-[#5c58673d] rounded-2xl w-fit font-medium text-white hover:text-gray-300 text-sm"
       style={{ background: gradientStyles.buttonGradient }}
     >
-      {buttonText}
+     {buttonText}
     </button>
     </Link>
   </div>
