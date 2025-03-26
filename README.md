@@ -62,12 +62,12 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 
 ### Pull Requests
 
-1. Fork the repo and create your branch from `main`.
-2. If you've added code that should be tested, add tests.
-3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
-6. Issue that pull request!
+1. Fork the repository on GitHub and clone it to your local machine.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Make your Changes
+4. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+5. Push to the Branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
 
 ### Any contributions you make will be under the GNU General Public License v3.0
 
