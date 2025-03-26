@@ -53,7 +53,7 @@ export const HeroContent = () => {
         <span className="block text-2xl md:text-6xl  lg:text-7xl  bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent pb-1 md:pb-2">
           Make your website stand out
         </span>
-        <span className="block text-white text-2xl md:text-6xl  lg:text-7xl">Beautiful & Unique UIs</span>
+        <span className="block  text-2xl md:text-6xl  lg:text-7xl">Beautiful & Unique UIs</span>
       </h1>
 
       <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-muted-foreground">

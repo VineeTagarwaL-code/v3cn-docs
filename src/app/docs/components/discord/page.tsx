@@ -6,44 +6,48 @@ import PropItem from "@/components/prop";
 import { SectionWrapper } from "@/components/section-wrapper";
 import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
 import { codeToHtml } from "shiki/bundle/full";
+import { PropTable } from "@/components/ui/prop-table";
 
-const propItemData: {
-  name: string;
+// Define the PropDefinition type
+type PropDefinition = {
+  prop: string;
   type: string;
-  description: string;
   default?: string;
-}[] = [
+  description: string;
+};
+
+const DiscordPresenceProps: PropDefinition[] = [
   {
-    name: "userId",
+    prop: "userId",
     type: "string",
     description: "The unique identifier for the Discord user.",
   },
   {
-    name: "userName",
+    prop: "userName",
     type: "string	",
     description: "The display name of the Discord user.",
   },
   {
-    name: "activityDescriptionClass",
+    prop: "activityDescriptionClass",
     type: "string",
     description: "CSS class for styling the activity description.",
   },
   {
-    name: "activityImageClassName",
+    prop: "activityImageClassName",
     type: "string",
     description: "CSS class for styling the activity image.",
   },
   {
-    name: "activityDetailClass",
+    prop: "activityDetailClass",
     type: "string",
     description: "CSS class for styling the activity details.",
   }, {
-    name: "progressBarClassName",
+    prop: "progressBarClassName",
     type: "string",
     description: "CSS class for styling the progress bar (used for Spotify playback).",
   },
   {
-    name: "localTimeClass",
+    prop: "localTimeClass",
     type: "string",
     description: "CSS class for styling the local time display.",
   },
@@ -78,7 +82,7 @@ export default async function DiscordPresencePage() {
             <h2 className="text-xl sm:text-2xl font-semibold mb-4" id="playground">
               Playground
             </h2>
-            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
+            <div className="border border-gray-400 bg-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <Discord
                 userId="1018532712455352330"
                 userName="Vineet"
@@ -149,19 +153,10 @@ export default async function DiscordPresencePage() {
                 Props
               </h2>
               <div className="flex flex-col gap-6 border rounded-lg overflow-x-auto">
-                <h2 className="bg-zinc-800 py-2 px-2">
-                  Discord Component Properties
-                </h2>
-                <div className="ml-4 pr-4 pb-4">
-                  {propItemData.map((item, index) => (
-                    <PropItem
-                      key={index}
-                      name={item.name}
-                      type={item.type}
-                      description={item.description}
-                    />
-                  ))}
-                </div>
+                
+               <div className="grid gap-6">
+              <PropTable title="<Discord Presence />" props={DiscordPresenceProps} />
+              </div>
               </div>
             </div>
           </section>

@@ -63,7 +63,7 @@ export default async function CardPage() {
             <h2 className="text-2xl font-semibold mb-4" id="playground">
               Playground
             </h2>
-            <div className="border border-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[700px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
+            <div className="border border-gray-400 bg-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[700px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <Card />
             </div>
           </section>

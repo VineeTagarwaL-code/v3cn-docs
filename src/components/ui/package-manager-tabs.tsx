@@ -115,14 +115,14 @@ export function PackageManagerTabs({
 
       {/* Command display */}
       <div className="relative group">
-        <div className="p-5 text-sm font-mono leading-[1.6rem] bg-primary dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 dark:border dark:border-zinc-700/10 rounded-lg overflow-x-auto text-gray-100">
+        <div className="p-5 text-sm font-mono leading-[1.6rem] text-gray-800 dark:text-white  bg-gray-200 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 dark:border dark:border-zinc-700/10 rounded-lg overflow-x-auto ">
           {getCommand(selected)}
         </div>
         <Button
           onClick={handleCopy}
           variant="ghost"
           size="icon"
-          className="opacity-0 group-hover:opacity-100 transition-opacity absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 text-xs text-white/80 hover:text-white hover:bg-transparent"
+          className="dark:opacity-0 group-hover:opacity-100 transition-opacity absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 text-xs text-gray-950 dark:text-white/80 dark:hover:text-white hover:bg-transparent"
         >
           <AnimatePresence mode="wait" initial={false}>
             {copied ? (
