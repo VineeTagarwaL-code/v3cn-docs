@@ -13,6 +13,7 @@ import {
   Moon,
   MousePointer2,
   SaveOff,
+  SquareChevronRight,
 } from "lucide-react";
 import {
   CommandDialog,
@@ -115,6 +116,10 @@ export function CommandMenu({
           >
             <DownloadCloudIcon className="mr-2 h-4 w-4" />
             Installation
+          </CommandItem>
+          <CommandItem onSelect={() => runCommand(() => router.push("/docs/cli"))}>
+            <SquareChevronRight className="mr-2 h-4 w-4" />
+            CLI
           </CommandItem>
         </CommandGroup>
       </CommandList>

@@ -11,6 +11,8 @@ import {
   Github,
   Mail,
   MousePointer2,
+  SquareChevronRight,
+  Command,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -149,6 +151,12 @@ export function MySidebar({
             path="/docs/installation"
             icon={<DownloadCloudIcon className="w-4 h-4 mr-2" />}
             label="Installation"
+          />
+          <NavButton
+            path="/docs/cli"
+            icon={<SquareChevronRight className="w-4 h-4 mr-2" />}
+            label="CLI"
+            isNew={true}
           />
         </div>
         <div className="flex flex-col">
