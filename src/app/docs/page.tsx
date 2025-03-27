@@ -10,5 +10,5 @@ export default function Home() {
     router.push("/docs/introduction");
   }, [router]);
 
-  return <section></section>;
+  return <></>;
 }

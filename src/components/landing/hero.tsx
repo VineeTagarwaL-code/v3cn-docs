@@ -1,12 +1,13 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { FileText, Star } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+
 import { Button } from '../ui/button';
 import { Card } from './card';
+import Image from 'next/image';
+import Link from 'next/link';
 import { LogoBadge } from './LogoBadge';
 
 export const Hero = () => {
@@ -75,7 +76,7 @@ export const Hero = () => {
           <span className="block text-2xl md:text-6xl lg:text-7xl">Beautiful & Unique UIs</span>
         </h1>
 
-        <p className="mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg md:text-xl">
+        <p className="mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg md:text-xl text-center">
           A collection of unique components that make your website stand out. Crafted for speed,
           flexibility, and seamless design.
         </p>
