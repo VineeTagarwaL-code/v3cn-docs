@@ -165,7 +165,7 @@ export const Hero = () => {
                     alt="mockup"
                     width={600}
                     height={400}
-                    className="top-[0 left-0 absolute w-auto h-[485px]"
+                    className="top-[0 left-0 absolute w-auto h-[488px]"
                   />
                   <motion.div
                     style={{
