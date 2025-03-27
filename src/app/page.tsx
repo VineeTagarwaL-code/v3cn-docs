@@ -24,7 +24,7 @@ export default function Home() {
         }}
       >
         <Hero />
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-md:px-4 max-w-5xl">
           <Feedback tweetIds={feedbackTweets} />
         </div>
         <LandingFooter />
