@@ -52,7 +52,7 @@ export function PackageManagerTabs({
         pnpm: "pnpm dlx",
         npm: "npx",
         yarn: "yarn",
-        bun: "bunx --bun",
+        bun: "bun x --bun",
       },
       add: {
         pnpm: "pnpm add",
