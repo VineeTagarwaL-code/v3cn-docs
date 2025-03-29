@@ -63,7 +63,7 @@ export default async function CardPage() {
           <section>
             <div className="w-full text-2xl font-semibold mb-4 flex justify-between items-center gap-2" id="playground">
              <span>Playground</span>
-              <OpenInV0Button url="https://v3cn.vineet.pro/r/card" />
+              <OpenInV0Button url="https://v3cn.vineet.pro/r/card-demo" />
             </div>
             <div className="border border-gray-400 bg-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[700px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <Card />

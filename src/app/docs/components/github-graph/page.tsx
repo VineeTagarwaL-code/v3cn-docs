@@ -71,7 +71,7 @@ export default async function GithubGraphPage() {
           <section className="overflow-y-scroll">
           <div className="w-full text-2xl font-semibold mb-4 flex justify-between items-center gap-2" id="playground">
              <span>Playground</span>
-              <OpenInV0Button url="https://v3cn.vineet.pro/r/github" />
+              <OpenInV0Button url="https://v3cn.vineet.pro/r/github-demo" />
             </div>
             <div className="flex justify-center items-center bg-gray-200 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950 border border-gray-400 dark:border-zinc-700 rounded-lg max-md:max-w-[93vw] h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden max-md:overflow-x-scroll">
 
