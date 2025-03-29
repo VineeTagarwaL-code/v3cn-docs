@@ -1,7 +1,7 @@
 "use client"
 
 import { GithubGraph } from "@/registry/v3cn/github/github";
-// import { GithubGraph } from "@/components/github-graph";
+// import { GithubGraph } from "@/components/github";
 
 const GithubGraphDemo = () => {
   return (
