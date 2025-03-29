@@ -3,6 +3,7 @@ import { Card } from "@/components/demo-ui/card/demo";
 import { CardInstallationCode } from "@/components/demo-ui/card/installation";
 import { CodeBlock } from "@/components/ui/code-block";
 import { NavigationMenu } from "@/components/navigation-menu";
+import { OpenInV0Button } from "@/components/open-v0";
 import { PropTable } from "@/components/ui/prop-table";
 import { SectionWrapper } from "@/components/section-wrapper";
 import { basicUsageRawCode } from "@/components/demo-ui/card/code";
@@ -60,9 +61,10 @@ export default async function CardPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4" id="playground">
-              Playground
-            </h2>
+            <div className="w-full text-2xl font-semibold mb-4 flex justify-between items-center gap-2" id="playground">
+             <span>Playground</span>
+              <OpenInV0Button url="https://v3cn.vineet.pro/r/3d-card-demo" />
+            </div>
             <div className="border border-gray-400 bg-gray-200 flex justify-center items-center dark:border-zinc-700 rounded-lg overflow-hidden h-[700px] dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950">
               <Card />
             </div>

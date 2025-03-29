@@ -11,7 +11,7 @@
         "name": "github-graph-demo",
         "type": "registry:component",
         "path": "components/v3cn/github-demo/demo.tsx",
-        "content": "\"use client\"\n\nimport { useState } from \"react\";\nimport { GithubGraph } from \"@/components/github\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <GithubGraph\n      username=\"vineetagarwal-code\"\n      blockMargin={2}\n     />\n  )\n}\nexport { GithubGraphDemo };"
+        "content": "\"use client\"\n\nimport { GithubGraph } from \"@/components/github\"\n\nconst GithubGraphDemo = () => {\n  return (\n    <div className=\"flex justify-center items-center min-h-screen w-full p-4\">\n      <GithubGraph username=\"vineetagarwal-code\" blockMargin={2} />\n    </div>\n  )\n}\nexport { GithubGraphDemo }"
       }
     ]
 }

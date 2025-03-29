@@ -3,6 +3,7 @@ import { CodeBlock } from "@/components/ui/code-block";
 import { DemoGithubGraph } from "@/components/demo-ui/github-graph/demo";
 import { GithubGraphInstallationCode } from "@/components/demo-ui/github-graph/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
+import { OpenInV0Button } from "@/components/open-v0";
 import { PropTable } from "@/components/ui/prop-table";
 import { SectionWrapper } from "@/components/section-wrapper";
 import { basicUsageRawCode } from "@/components/demo-ui/github-graph/code";
@@ -68,9 +69,10 @@ export default async function GithubGraphPage() {
           </section>
 
           <section className="overflow-y-scroll">
-            <h2 className="mb-4 font-semibold text-2xl" id="playground">
-              Playground
-            </h2>
+          <div className="w-full text-2xl font-semibold mb-4 flex justify-between items-center gap-2" id="playground">
+             <span>Playground</span>
+              <OpenInV0Button url="https://v3cn.vineet.pro/r/github-graph-demo" />
+            </div>
             <div className="flex justify-center items-center bg-gray-200 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950 border border-gray-400 dark:border-zinc-700 rounded-lg max-md:max-w-[93vw] h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden max-md:overflow-x-scroll">
 
               <DemoGithubGraph
