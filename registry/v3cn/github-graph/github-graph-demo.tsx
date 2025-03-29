@@ -5,10 +5,12 @@ import { GithubGraph } from "@/registry/v3cn/github-graph/github";
 
 const GithubGraphDemo = () => {
   return (
-    <GithubGraph
-      username="vineetagarwal-code"
-      blockMargin={2}
-    />
+    <div className="flex justify-center items-center h-screen">
+      <GithubGraph
+        username="vineetagarwal-code"
+        blockMargin={2}
+      />
+    </div>
   )
 }
 export { GithubGraphDemo };
