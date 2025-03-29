@@ -27,8 +27,8 @@ const DockProps: PropDefinition[] = [
   },
   {
     prop: "dockClass",
-    type: "string",
-    default: "null",
+    type: "string | undefined",
+    default: "undefined",
     description: "Additional CSS classes for styling the dock container.",
   },
 ];
@@ -48,8 +48,8 @@ const DockItemProps: PropDefinition[] = [
   },
   {
     prop: "itemClass",
-    type: "string",
-    default: "null",
+    type: "string | undefined",
+    default: "undefined",
     description: "Additional CSS classes for styling the dock item.",
   },
 ];

@@ -11,8 +11,8 @@ export function CodeDisplay({ html }: { html: string }) {
   );
 }
 
-export const basicUsageRawCode = `
-<DockContainer dockClass="custom-dock">
+export const basicUsageRawCode = 
+`<DockContainer dockClass="custom-dock">
   <DockItem label="Home">
       <Home />
   </DockItem>

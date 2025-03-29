@@ -1,68 +1,94 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../utils/cn';
 
 type DockProps = {
+  items: DockItemProps[];
   dockClass?: string;
-  children: React.ReactNode;
 };
 
 type DockItemProps = {
-  children: React.ReactNode;
+  id: number;
+  icon: React.ReactNode;
   label: string;
   itemClass?: string;
 };
 
-export const DockContainer: React.FC<DockProps> = ({ children, dockClass }) => {
+export const DockContainer: React.FC<DockProps> = ({ items, dockClass }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <div
       className={cn(
-        'p-4 bg-purple-100 dark:bg-purple-900/50 rounded-2xl shadow-lg flex gap-4 justify-center relative',
+        'p-4 bg-purple-100 dark:bg-purple-900/50 rounded-3xl shadow-2xl flex gap-3 justify-center relative backdrop-blur-lg border border-gray-300/20 dark:border-gray-600/20',
         dockClass
       )}
     >
-      {children}
+      {items.map((item, index) => (
+        <DockItem
+          key={item.id}
+          {...item}
+          index={index}
+          hoveredIndex={hoveredIndex}
+          setHoveredIndex={setHoveredIndex}
+        />
+      ))}
     </div>
   );
 };
 
-export const DockItem: React.FC<DockItemProps> = ({ children, label, itemClass }) => {
-  const [hovered, setHovered] = useState(false);
-  const itemRef = useRef<HTMLDivElement>(null);
+export const DockItem: React.FC<
+  DockItemProps & {
+    index: number;
+    hoveredIndex: number | null;
+    setHoveredIndex: (index: number | null) => void;
+  }
+> = ({ id, icon, label, index, hoveredIndex, setHoveredIndex, itemClass }) => {
+  const scaleValue =
+    hoveredIndex === index
+      ? 2.2
+      : hoveredIndex === index - 1 || hoveredIndex === index + 1
+      ? 1.6
+      : hoveredIndex === index - 2 || hoveredIndex === index + 2
+      ? 1.3
+      : 1;
 
   return (
-    <div className="relative flex flex-col items-center">
+    <motion.div
+      key={id}
+      className="relative flex flex-col items-center cursor-pointer"
+      onMouseEnter={() => setHoveredIndex(index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+    >
       <motion.div
-        ref={itemRef}
         className={cn(
-          'p-2 flex items-center justify-center text-2xs text-muted-foreground bg-purple-100 px-2 rounded-full dark:bg-purple-900/50 dark:text-purple-400 cursor-pointer transition-all',
+          'p-3 flex items-center justify-center text-4xl rounded-full',
           itemClass
         )}
-        initial={{ scale: 1 }}
-        animate={{ scale: hovered ? 1.5 : 1 }}
-        transition={{ type: 'spring', stiffness: 300 }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        style={{ transformOrigin: 'bottom center' }}
+        animate={{ scale: scaleValue }}
+        transition={{ type: 'spring', stiffness: 150, damping: 15 }}
       >
-        {children}
+        {icon}
       </motion.div>
 
-      {hovered && (
+      {hoveredIndex === index && (
         <motion.div
-          className="absolute bottom-full mb-3 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-sm px-3 py-1 rounded-lg shadow-lg"
+          className="absolute bottom-full mb-12 px-3 py-1 text-[13px] text-white bg-black/80 backdrop-blur-lg rounded-lg shadow-lg border border-white/20"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
         >
           {label}
         </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
-// Default export for easier import
 const DockNavigation = { DockContainer, DockItem };
+
 export default DockNavigation;

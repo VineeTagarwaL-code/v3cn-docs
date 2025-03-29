@@ -100,42 +100,56 @@ export function InstallationTabs({
           <Steps>
             <Step
               step={1}
-              title="Create a `cn.ts` File in the `utils` Folder"
-              description="Add the following code to the newly created file."
+              title="Install Dependencies"
+              description="Install the required dependencies"
               isCompleted={activeStep > 1}
               isActive={activeStep === 1}
               onClick={() => setActiveStep(1)}
+            >
+              <PackageManagerTabs
+                command=""
+                variant="add"
+                layoutId={`${layoutIdPrefix}-package-manager`}
+              />
+            </Step>
+            <Step
+              step={2}
+              title="Create a `cn.ts` File in the `utils` Folder"
+              description="Add the following code to the newly created file."
+              isCompleted={activeStep > 2}
+              isActive={activeStep === 2}
+              onClick={() => setActiveStep(2)}
             >
               <CodeBlock html={cnHtml} maxHeight={100} expandedHeight={200} />
             </Step>
 
             <Step
-              step={2}
+              step={3}
               title="Set Up `tailwind.config.ts`"
               description="Add this config to enable Tailwind and custom animations."
-              isCompleted={activeStep > 2}
-              isActive={activeStep === 2}
-              onClick={() => setActiveStep(2)}
+              isCompleted={activeStep > 3}
+              isActive={activeStep === 3}
+              onClick={() => setActiveStep(3)}
             >
               <CodeBlock html={tailwindHtml} maxHeight={300} expandedHeight={500} />
             </Step>
             <Step
-              step={3}
+              step={4}
               title="Add Component Code"
               description="Copy and paste the following code into your project"
-              isCompleted={activeStep > 2}
-              isActive={activeStep === 2}
-              onClick={() => setActiveStep(2)}
+              isCompleted={activeStep > 4}
+              isActive={activeStep === 4}
+              onClick={() => setActiveStep(4)}
             >
               <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
             </Step>
             <Step
-              step={4}
+              step={5}
               title="Ready to Use"
               description="Import and use the Card component in your project:"
-              isCompleted={activeStep > 4}
-              isActive={activeStep === 4}
-              onClick={() => setActiveStep(4)}
+              isCompleted={activeStep > 5}
+              isActive={activeStep === 5}
+              onClick={() => setActiveStep(5)}
             >
               <CodeSnippet
                 code={importCode}
