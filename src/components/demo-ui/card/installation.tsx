@@ -1,22 +1,23 @@
 import { InstallationTabs } from "@/components/demo-ui/card/installation-tabs";
 import { codeToHtml } from "shiki";
 
-const installationCode = `
-"use client";
-import { cn } from "../utils/cn";
+const installationCode = `"use client";
+
 import React, {
   createContext,
-  useState,
   useContext,
-  useRef,
   useEffect,
+  useRef,
+  useState,
 } from "react";
+
+import { cn } from "@/lib/utils";
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
 >(undefined);
 
-const CardContainer = ({
+export const CardContainer = ({
   children,
   className,
   containerClassName,
@@ -34,15 +35,15 @@ const CardContainer = ({
       containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
     const y = (e.clientY - top - height / 2) / 25;
-    containerRef.current.style.transform = \`rotateY($\{x}deg) rotateX($\{y}deg)\`;
+    containerRef.current.style.transform = \`rotateY(\${x}deg) rotateX(\${y}deg)\`;
   };
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = () => {
     setIsMouseEntered(true);
     if (!containerRef.current) return;
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = () => {
     if (!containerRef.current) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = "rotateY(0deg) rotateX(0deg)";
@@ -106,7 +107,7 @@ export const CardItem = ({
   const handleAnimations = () => {
     if (!ref.current) return;
     if (isMouseEntered) {
-      ref.current.style.transform = \`translateX($\{translateX}px) translateY($\{translateY}px) translateZ($\{translateZ}px) rotateX($\{rotateX}deg) rotateY($\{rotateY}deg) rotateZ($\{rotateZ}deg)\`;
+      ref.current.style.transform = \`translateX(\${translateX}px) translateY(\${translateY}px) translateZ(\${translateZ}px) rotateX(\${rotateX}deg) rotateY(\${rotateY}deg) rotateZ(\${rotateZ}deg)\`;
     } else {
       ref.current.style.transform =
         "translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
@@ -131,55 +132,16 @@ export const useMouseEnter = () => {
     throw new Error("useMouseEnter must be used within a MouseEnterProvider");
   }
   return context;
-};
+};`;
 
-/**
- * @description CardItem component
- */
-const Card = () => {
-  return (
-    <div className="flex justify-center items-center h-fit py-7  w-full px-2 ">
-      <div className="relative cursor-pointer animate-float  md:block mr-8">
-        <CardContainer className=" cursor-pointer">
-          <div className="px-8 py-7 max-w-[400px] border-solid gap-5 bg-black flex flex-col justify-start item-center border-2  rounded-2xl">
-            <CardItem>
-              <img
-                src={"/V.png"}
-                alt={"platform"}
-                width={400}
-                height={400}
-                className="rounded-[3rem]"
-              />
-            </CardItem>
-
-            <div className="px-4 flex flex-col justify-center items-start gap-5">
-              <h1 className="text-4xl  text-white font-bold">V3cn</h1>
-
-              <h4 className="text-lg text-white">
-                Here you will get components which you wont get anywhere.
-              </h4>
-
-              <p className="text-purple-400">Made by Vineet</p>
-            </div>
-          </div>
-        </CardContainer>
-      </div>
-    </div>
-  );
-};
-
-export { Card };
-
-`;
-
-const cnCode=`import { clsx, type ClassValue } from "clsx";
+const cnCode = `import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
  
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(...inputs));
 }`;
 
-const tailwindConfigCode=`/** @type {import('tailwindcss').Config} */
+const tailwindConfigCode = `/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -208,8 +170,6 @@ module.exports = {
   plugins: [],
 };`;
 
-    
-
 export async function CardInstallationCode() {
   const html = await codeToHtml(installationCode, {
     lang: "bash",
@@ -233,7 +193,7 @@ export async function CardInstallationCode() {
       layoutIdPrefix="card"
       cliCommand="v3cn add card"
       shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/3d-card'"
-      importCode="import { Card  } from '@/components/card';"
+      importCode="import { CardContainer, CardItem } from '@/components/card';"
     />
   );
 }
