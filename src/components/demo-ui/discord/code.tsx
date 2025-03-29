@@ -420,17 +420,22 @@ const DiscordSkeleton: React.FC = () => {
  
 export { Discord };`;
 
-export const basicUsageRawCode = `// Import the Component
-import { Discord } from "@/components/ui/discord";
- 
-// Pass custom styles easily
- 
-<Discord
-  userId="1018532712455352330"
-  userName="vineet"
-  activityDetailClass="dark:text-cyan-300"
-  activityDescriptionClass="dark:text-[#ffbe6f]"
-  progressBarClassName="dark:bg-[#ffbe6f]"
-  localTimeClass="dark:text-green-500"
-/>;
+export const basicUsageRawCode = `"use client";
+
+import  { DiscordComponent } from "@/components/discord";
+
+export default function Home() {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <DiscordComponent
+       userId="1018532712455352330"
+       userName="vineet"
+       activityDetailClass="dark:text-cyan-300"
+       activityDescriptionClass="dark:text-[#ffbe6f]"
+       progressBarClassName="dark:bg-[#ffbe6f]"
+       localTimeClass="dark:text-green-500"
+      />
+    </div>
+  );
+}
 `;
