@@ -192,7 +192,7 @@ export async function CardInstallationCode() {
       tailwindHtml={tailwindHtml}
       layoutIdPrefix="card"
       cliCommand="v3cn add card"
-      shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/3d-card'"
+      shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/card'"
       importCode="import { CardContainer, CardItem } from '@/components/card';"
     />
   );
