@@ -1,13 +1,15 @@
 {
     "$schema": "https://ui.shadcn.com/schema/registry-item.json",
     "name": "cursor-demo",
-    "type": "registry:example",
+    "type": "registry:component",
     "description": "Example of the custom cursor component with interactive hover effects.",
     "registryDependencies": [
       "https://v3cn.vineet.pro/r/cursor"
     ],
     "files": [
       {
+        "name": "cursor-demo",
+        "type": "registry:component",
         "path": "components/demo-ui/cursor/demo.tsx",
         "content": "\"use client\";\n\nimport { Cursor } from \"@/components/cursor\";\n\nconst CursorDemo = () => {\n  return <Cursor cursorClass=\"border-purple-500 hidden md:inline-block\" />;\n};\n\nexport { CursorDemo };"
       }

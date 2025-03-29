@@ -1,13 +1,15 @@
 {
     "$schema": "https://ui.shadcn.com/schema/registry-item.json",
     "name": "discord-presence-demo",
-    "type": "registry:example",
+    "type": "registry:component",
     "description": "Example of the Discord presence component with custom styling.",
     "registryDependencies": [
       "https://v3cn.vineet.pro/r/discord-presence"
     ],
     "files": [
       {
+        "name": "discord-presence-demo",
+        "type": "registry:component",
         "path": "components/demo-ui/discord/demo.tsx",
         "content": "\"use client\";\n\nimport { Discord } from \"@/components/ui/discord\";\n\nconst DiscordDemo = () => {\n  return (\n    <Discord\n      userId=\"1018532712455352330\"\n      userName=\"vineet\"\n      activityDetailClass=\"dark:text-cyan-300\"\n      activityDescriptionClass=\"dark:text-[#ffbe6f]\"\n      progressBarClassName=\"dark:bg-[#ffbe6f]\"\n      localTimeClass=\"dark:text-green-500\"\n    />\n  );\n};\n\nexport { DiscordDemo };",
         "target": "components/demo-ui/discord/demo.tsx"
