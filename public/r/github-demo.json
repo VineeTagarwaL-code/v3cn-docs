@@ -1,18 +1,18 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "github-graph-demo",
+  "name": "github-demo",
   "type": "registry:example",
   "title": "GitHub Graph Demo",
   "description": "Example of the GitHub contribution graph component with custom styling.",
   "registryDependencies": [
-    "https://v3cn.vineet.pro/r/github-graph"
+    "https://v3cn.vineet.pro/r/github-demo"
   ],
   "files": [
     {
-      "path": "registry/v3cn/github-graph/github-graph-demo.tsx",
+      "path": "registry/v3cn/github/github-demo.tsx",
       "content": "\"use client\"\n\nimport { GithubGraph } from \"@/registry/v3cn/github-graph/github\";\n// import { GithubGraph } from \"@/components/github-graph\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <div className=\"flex justify-center items-center h-screen\">\n      <GithubGraph\n        username=\"vineetagarwal-code\"\n        blockMargin={2}\n      />\n    </div>\n  )\n}\nexport { GithubGraphDemo };\n",
       "type": "registry:example",
-      "target": "components/github-graph-demo.tsx"
+      "target": "components/github-demo.tsx"
     }
   ]
 }

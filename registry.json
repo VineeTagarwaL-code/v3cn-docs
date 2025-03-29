@@ -4,31 +4,31 @@
   "homepage": "https://v3cn.com",
   "items": [
     {
-      "name": "github-graph",
+      "name": "github",
       "type": "registry:component",
       "title": "GitHub Graph",
       "description": "A GitHub component for displaying contribution graph with custom styling.",
       "files": [
         {
-          "path": "registry/v3cn/github-graph/github.tsx",
+          "path": "registry/v3cn/github/github.tsx",
           "type": "registry:component",
           "target": "components/github.tsx"
         }
       ]
     },
     {
-      "name": "github-graph-demo",
+      "name": "github-demo",
       "type": "registry:example",
       "title": "GitHub Graph Demo",
       "registryDependencies": [
-        "https://v3cn.vineet.pro/r/github-graph"
+        "https://v3cn.vineet.pro/r/github-demo"
       ],
       "description": "Example of the GitHub contribution graph component with custom styling.",
       "files": [
         {
-          "path": "registry/v3cn/github-graph/github-graph-demo.tsx",
+          "path": "registry/v3cn/github/github-demo.tsx",
           "type": "registry:example",
-          "target": "components/github-graph-demo.tsx"
+          "target": "components/github-demo.tsx"
         }
       ]
     },
@@ -59,31 +59,31 @@
       ]
     },
     {
-      "name": "3d-card",
+      "name": "card",
       "type": "registry:component",
-      "title": "3D Card",
-      "description": "A component for displaying 3D Card.",
+      "title": "Card",
+      "description": "A component for displaying Card.",
       "files": [
         {
-          "path": "registry/v3cn/3d-card/3d-card.tsx",
+          "path": "registry/v3cn/card/card.tsx",
           "type": "registry:component",
-          "target": "components/3d-card.tsx"
+          "target": "components/card.tsx"
         }
       ]
     },
     {
-      "name": "3d-card-demo",
+      "name": "card-demo",
       "type": "registry:example",
-      "title": "3D Card Demo",
+      "title": "Card Demo",
       "registryDependencies": [
-        "https://v3cn.vineet.pro/r/3d-card"
+        "https://v3cn.vineet.pro/r/card"
       ],
-      "description": "Example of the 3D Card component.",
+      "description": "Example of the Card component.",
       "files": [
         {
-          "path": "registry/v3cn/3d-card/3d-card-demo.tsx",
+          "path": "registry/v3cn/card/card-demo.tsx",
           "type": "registry:example",
-          "target": "components/3d-card-demo.tsx"
+          "target": "components/card-demo.tsx"
         }
       ]
     }
