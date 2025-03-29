@@ -76,7 +76,7 @@ export const Hero = () => {
           <span className="block text-2xl md:text-6xl lg:text-7xl">Beautiful & Unique UIs</span>
         </h1>
 
-        <p className="mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg md:text-xl text-center">
+        <p className="mx-auto max-w-2xl px-3 text-muted-foreground text-base sm:text-lg md:text-xl text-center">
           A collection of unique components that make your website stand out. Crafted for speed,
           flexibility, and seamless design.
         </p>
