@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "v3cn.vineet.pro",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
 
