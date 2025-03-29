@@ -23,7 +23,8 @@
       "files": [
         {
           "path": "registry/v3cn/github-graph/github-graph-demo.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/github-graph-demo.tsx"
         }
       ]
     }

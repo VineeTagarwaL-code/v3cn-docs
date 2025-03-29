@@ -7,8 +7,9 @@
   "files": [
     {
       "path": "registry/v3cn/github-graph/github-graph-demo.tsx",
-      "content": "\"use client\"\n\nimport { GithubGraph } from \"@/registry/v3cn/github-graph/github-graph\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <GithubGraph\n      username=\"vineetagarwal-code\"\n      blockMargin={2}\n      lightColorPalette={[\"#1e1e2f\", \"#5a3e7a\", \"#7e5aa2\", \"#a87cc3\", \"#d9a9e6\"]}\n      darkColorPalette={[\"#1e1e2f\", \"#5a3e7a\", \"#7e5aa2\", \"#a87cc3\", \"#d9a9e6\"]}\n    />\n  )\n}\nexport { GithubGraphDemo };\n",
-      "type": "registry:component"
+      "content": "\"use client\"\n\nimport { GithubGraph } from \"@/registry/v3cn/github-graph/github-graph\";\n// import { GithubGraph } from \"@/components/github-graph\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <GithubGraph\n      username=\"vineetagarwal-code\"\n      blockMargin={2}\n      lightColorPalette={[\"#1e1e2f\", \"#5a3e7a\", \"#7e5aa2\", \"#a87cc3\", \"#d9a9e6\"]}\n      darkColorPalette={[\"#1e1e2f\", \"#5a3e7a\", \"#7e5aa2\", \"#a87cc3\", \"#d9a9e6\"]}\n    />\n  )\n}\nexport { GithubGraphDemo };\n",
+      "type": "registry:component",
+      "target": "components/github-graph-demo.tsx"
     }
   ]
 }
