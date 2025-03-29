@@ -132,7 +132,7 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
     try {
       responseBody = await response.json();
     } catch (parseError) {
-      throw new Error("Failed to parse response data");
+       throw new Error("Failed to parse response data", { cause: parseError as Error });
     }
 
     if (!responseBody.data) {
@@ -143,10 +143,10 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
   } catch (error) {
     if (error instanceof Error) {
       console.error("Error fetching GitHub contributions:", error.message);
-      throw new Error(\`Failed to fetch GitHub contributions: \${error.message}\`);
+        return [];
     }
     console.error("An unexpected error occurred while fetching GitHub contributions");
-    throw new Error("An unexpected error occurred while fetching GitHub contributions");
+     return [];
   }
 }`;
 
