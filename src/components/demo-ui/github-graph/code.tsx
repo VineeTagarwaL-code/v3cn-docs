@@ -12,13 +12,20 @@ export function CodeDisplay({ html }: { html: string }) {
   );
 }
 
-export const basicUsageRawCode = `// Import the Component 
-import { GithubGraph } from "@/components/GithubGraph";
- 
-// Use the Component with custom props
-<GithubGraph
-  username="vineetagarwal-code" // your github username
-  blockMargin={2}
-  colorPallete={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
-/>;`
+export const basicUsageRawCode = `"use client"
+
+import { useState } from "react";
+import { GithubGraph } from "@/components/github";
+
+const GithubGraphDemo = () => {
+  return (
+    <GithubGraph
+      username="vineetagarwal-code"
+      blockMargin={2}
+      colorPallete={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
+    />
+  )
+}
+export { GithubGraphDemo };
+`
 

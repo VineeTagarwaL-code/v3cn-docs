@@ -32,10 +32,16 @@ const GithubGraphProps: PropDefinition[] = [
       "Margin between blocks in the contribution graph.",
   },
   {
-    prop: "colorPalette",
+    prop: "lightColorPalette",
     type: "string[]",
     default: '["#ebedf0", "#c6e48b", "#7bc96f", "#239a3b", "#196127"]',
     description: "Custom color scheme for the light theme.",
+  },
+  {
+    prop: "darkColorPalette",
+    type: "string[]",
+    default: '["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]',
+    description: "Custom color scheme for the dark theme.",
   },
 ];
 
@@ -70,7 +76,7 @@ export default async function GithubGraphPage() {
               <DemoGithubGraph
                 username="VineeTagarwaL-code"
                 blockMargin={2}
-                // colorPallete={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
+                darkColorPalette={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
               />
               </div>
           </section>
