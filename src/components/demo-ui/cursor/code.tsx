@@ -11,5 +11,20 @@ export function CodeDisplay({ html }: { html: string }) {
     </ScrollArea>
   );
 }
-export const basicUsageRawCode = `<Cursor cursorClass="border-purple-500 hidden md:inline-block" />`
+export const basicUsageRawCode = `"use client";
 
+import { Cursor } from "@/components/cursor";
+
+// Add this in App.tsx
+export default function Home() {
+  return (
+    <>
+      <Cursor />
+      <div className="flex justify-center items-center h-screen">
+        <h1>Hello</h1>
+        <p>This is a demo</p>
+      </div>
+    </>
+  );
+}
+`
