@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-};
 
+  async rewrites() {
+    return [
+      {
+        source: '/r/:path',
+        destination: '/r/:path.json',
+      },
+    ];
+  },
+};
 export default nextConfig;

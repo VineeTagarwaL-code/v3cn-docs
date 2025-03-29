@@ -40,7 +40,7 @@
     "nextjs-toploader": "^3.7.15",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
-    "react-activity-calendar": "^2.7.8",
+    "react-activity-calendar": "^2.7.10",
     "react-dom": "^19.0.0",
     "react-tweet": "^3.2.2",
     "shadcn": "^2.4.0-canary.6",

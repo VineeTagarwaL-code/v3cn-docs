@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "v3cn",
+  "homepage": "https://v3cn.com",
+  "items": [
+    {
+      "name": "github graph",
+      "type": "registry:component",
+      "title": "GitHub",
+      "description": "A GitHub component for displaying repository information and stats.",
+      "files": [
+        {
+          "path": "registry/components/github.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
