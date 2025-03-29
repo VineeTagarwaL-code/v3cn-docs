@@ -18,7 +18,7 @@
     },
     {
       "name": "github-graph-demo",
-      "type": "registry:component",
+      "type": "registry:example",
       "title": "GitHub Graph Demo",
       "registryDependencies": [
         "https://v3cn.vineet.pro/r/github-graph"
@@ -27,7 +27,7 @@
       "files": [
         {
           "path": "registry/v3cn/github-graph/github-graph-demo.tsx",
-          "type": "registry:component",
+          "type": "registry:example",
           "target": "components/github-graph-demo.tsx"
         }
       ]
