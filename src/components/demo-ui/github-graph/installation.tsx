@@ -1,17 +1,18 @@
-import { codeToHtml } from "shiki";
+import { GithubGraph } from "@/components/ui/github";
 import { InstallationTabs } from "@/components/demo-ui/github-graph/installation-tabs";
+import { codeToHtml } from "shiki";
 
 const installationCode = `"use client";
+
+import  { Activity, ActivityCalendar } from "react-activity-calendar";
 import { useCallback, useEffect, useState } from "react";
- 
-import Calendar, { Activity, ActivityCalendar } from "react-activity-calendar";
- 
+
 type GithubGraphProps = {
   username: string;
   blockMargin?: number;
   colorPallete?: string[];
 };
- 
+
 export const GithubGraph = ({
   username,
   blockMargin,
@@ -19,26 +20,26 @@ export const GithubGraph = ({
 }: GithubGraphProps) => {
   const [contribution, setContribution] = useState<Activity[]>([]);
   const [loading, setIsLoading] = useState<boolean>(true);
- 
+
   const fetchData = useCallback(async () => {
     try {
       const contributions = await fetchContributionData(username);
       setContribution(contributions);
     } catch (error) {
-      throw Error("Error fetching contribution data");
+      throw new Error(\`Error fetching contribution data: \${error}\`);
     } finally {
       setIsLoading(false);
     }
   }, [username]);
- 
+
   useEffect(() => {
     fetchData();
   }, [fetchData]);
- 
+
   const label = {
-    totalCount: '\`{{count}} contributions in the last year\`',
+    totalCount: \`{{count}} contributions in the last year\`,
   };
- 
+
   return (
     <>
       <ActivityCalendar
@@ -60,15 +61,18 @@ export const GithubGraph = ({
     </>
   );
 };
+
 async function fetchContributionData(username: string): Promise<Activity[]> {
-  let response = await fetch(\`https://github.vineet.tech/api/\${username}\`);
-  let responseBody = await response.json();
- 
+  const response = await fetch(\`https://github.vineet.pro/api/\${username}\`);
+  const responseBody = await response.json();
+
   if (!response.ok) {
     throw Error("Erroring fetching contribution data");
   }
   return responseBody.data;
-}`;
+}
+
+export default GithubGraph;`;
 
 export async function GithubGraphInstallationCode() {
   const html = await codeToHtml(installationCode, {
