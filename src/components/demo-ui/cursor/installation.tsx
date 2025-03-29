@@ -3,62 +3,67 @@ import { codeToHtml } from "shiki";
 
 const installationCode = `
 "use client";
-import { cn } from "@/utils/cn";
-import { useState, useEffect, useRef } from "react";
+
+import { useEffect, useRef, useState } from "react";
+
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
-type cursorProp = {
+type CursorProps = {
   cursorClass?: string;
 };
 
-export const Cursor = ({ cursorClass }: cursorProp) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
+type Position = {
+  x: number;
+  y: number;
+};
+
+type TrailerType = "default" | "video";
+
+export const Cursor = ({ cursorClass }: CursorProps) => {
+  const [trailerType, setTrailerType] = useState<TrailerType>("default");
   const [isInteracting, setIsInteracting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
+  const position:Position = {
+    x: 0,
+    y: 0,
+  };
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  // Update cursor position
-  const updateCursorPosition = (e: MouseEvent) => {
+  const animateTrailer = (e: MouseEvent) => {
     if (!cursorRef.current) return;
-    
-    const x = e.clientX;
-    const y = e.clientY;
-    
-    setPosition({ x, y });
+
+    const x = e.clientX - cursorRef.current.offsetWidth / 2;
+    const y = e.clientY - cursorRef.current.offsetHeight / 2;
+
+    const keyframes = {
+      transform: \`translate(\${x}px, \${y}px) scale(\${isInteracting ? 3 : 1})\`,
+    };
+
+    cursorRef.current.animate(keyframes, {
+      duration: 100,
+      fill: "forwards",
+    });
   };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isVisible) setIsVisible(true);
-      
       const interactable = (e.target as HTMLElement).closest(".interactable");
       const interacting = interactable !== null;
-      
-      updateCursorPosition(e);
-      
+
+      animateTrailer(e);
+
+      setTrailerType(interacting ? (interactable as HTMLElement).dataset.type as TrailerType : "default");
       setIsInteracting(interacting);
     };
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    const handleMouseEnter = () => {
-      setIsVisible(true);
-    };
-
     window.addEventListener("mousemove", handleMouseMove);
-    document.body.addEventListener("mouseleave", handleMouseLeave);
-    document.body.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      document.body.removeEventListener("mouseleave", handleMouseLeave);
-      document.body.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [isVisible]);
+  }, [isInteracting]);
 
   useEffect(() => {
     const handleClick = () => {
@@ -76,22 +81,18 @@ export const Cursor = ({ cursorClass }: cursorProp) => {
   }, []);
 
   return (
-    <>
-      <motion.div
-        whileTap={{ scale: 0.9 }}
-        id="trailer"
-        style={{
-          transform: \`translate(\${position.x - (cursorRef.current?.offsetWidth || 20) / 2}px, \${position.y - (cursorRef.current?.offsetHeight || 20) / 2}px) scale(\${isInteracting ? 3 : 1})\`,
-          opacity: isVisible ? 1 : 0,
-        }}
-        className={cn(
-          "bg-transparent rounded-full fixed z-50 pointer-events-none border-[3px] border-slate-500 border-solid w-10 h-10 transition-transform duration-100",
-          isClicked && "w-8 h-8",
-          cursorClass
-        )}
-        ref={cursorRef}
-      ></motion.div>
-    </>
+    <motion.div
+      whileTap={{ scale: 0.9 }}
+      id="trailer"
+      style={{ top: \`\${position.y}px\`, left: \`\${position.x}px\` }}
+      className={cn(
+        "bg-transparent rounded-full fixed z-50 pointer-events-none border-[3px] border-slate-500 border-solid w-10 h-10 transition-all",
+        cursorClass,
+        isClicked && "w-8 h-8"
+      )}
+      data-type={trailerType}
+      ref={cursorRef}
+    />
   );
 };
 
