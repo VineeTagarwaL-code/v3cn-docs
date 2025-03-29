@@ -43,7 +43,7 @@
     "react-activity-calendar": "^2.7.10",
     "react-dom": "^19.0.0",
     "react-tweet": "^3.2.2",
-    "shadcn": "^2.4.0-canary.6",
+    "shadcn": "^2.4.0-canary.19",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"
   },
