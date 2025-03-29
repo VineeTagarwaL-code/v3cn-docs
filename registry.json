@@ -4,13 +4,97 @@
   "homepage": "https://v3cn.com",
   "items": [
     {
-      "name": "github graph",
+      "name": "github-graph",
       "type": "registry:component",
-      "title": "GitHub",
-      "description": "A GitHub component for displaying repository information and stats.",
+      "title": "GitHub Graph",
+      "description": "A GitHub component for displaying contribution graph with custom styling.",
       "files": [
         {
-          "path": "registry/components/github.tsx",
+          "path": "r/github-graph",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "github-graph-demo",
+      "type": "registry:component",
+      "title": "GitHub Graph Demo",
+      "description": "Example of the GitHub contribution graph component with custom styling.",
+      "files": [
+        {
+          "path": "r/github-graph-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cursor",
+      "type": "registry:component",
+      "title": "Custom Cursor",
+      "description": "A custom cursor component with interactive hover effects and animations.",
+      "files": [
+        {
+          "path": "r/cursor",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cursor-demo",
+      "type": "registry:component",
+      "title": "Cursor Demo",
+      "description": "Example of the custom cursor component with interactive hover effects.",
+      "files": [
+        {
+          "path": "r/cursor-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "3d-card",
+      "type": "registry:component",
+      "title": "3D Card",
+      "description": "A 3D card component with interactive hover effects and perspective transformations.",
+      "files": [
+        {
+          "path": "r/3d-card",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "3d-card-demo",
+      "type": "registry:component",
+      "title": "3D Card Demo",
+      "description": "Example of the 3D card component with interactive hover effects.",
+      "files": [
+        {
+          "path": "r/3d-card-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "discord-presence",
+      "type": "registry:component",
+      "title": "Discord Presence",
+      "description": "A Discord presence component that shows your Discord status, activity, and rich presence information with real-time updates.",
+      "files": [
+        {
+          "path": "r/discord-presence",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "discord-presence-demo",
+      "type": "registry:component",
+      "title": "Discord Presence Demo",
+      "description": "Example of the Discord presence component with custom styling.",
+      "files": [
+        {
+          "path": "r/discord-presence-demo",
           "type": "registry:component"
         }
       ]
