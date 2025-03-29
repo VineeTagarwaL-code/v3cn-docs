@@ -31,6 +31,32 @@
           "target": "components/github-graph-demo.tsx"
         }
       ]
+    },
+    {
+      "name": "discord-presence",
+      "type": "registry:component",
+      "title": "Discord Presence",
+      "description": "A component for displaying Discord presence.",
+      "files": [
+        {
+          "path": "registry/v3cn/discord-presence/discord-presence.tsx",
+          "type": "registry:component",
+          "target": "components/discord-presence.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cursor",
+      "type": "registry:component",
+      "title": "Cursor",
+      "description": "A component for displaying Cursor.",
+      "files": [
+        {
+          "path": "registry/v3cn/cursor/cursor.tsx",
+          "type": "registry:component",
+          "target": "components/cursor.tsx"
+        }
+      ]
     }
   ]
 }
