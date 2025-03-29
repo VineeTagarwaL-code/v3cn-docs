@@ -70,7 +70,7 @@ type TActivityDetail = {
   description: string;
 };
 
-export const DiscordComponent: React.FC<TDiscord> = ({
+export const Discord: React.FC<TDiscord> = ({
   userId,
   userName,
   activityDescriptionClass,
