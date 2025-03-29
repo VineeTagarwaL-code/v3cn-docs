@@ -101,7 +101,7 @@ module.exports = {
 };
 `;
 
-export async function DockInstallationCode(): Promise<JSX.Element> {
+export async function DockInstallationCode(): Promise<React.ReactNode> {
   const html = await codeToHtml(installationCode, {
     lang: "tsx",
     theme: "min-dark",

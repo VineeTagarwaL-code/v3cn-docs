@@ -6,7 +6,7 @@ import { Home, Settings, User, Bell, MessageSquare } from 'lucide-react';
 
 type DockItem = {
   id: number;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   label: string;
 };
 
