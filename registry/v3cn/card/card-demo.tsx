@@ -1,8 +1,9 @@
 "use client";
 
-import { CardContainer, CardItem } from "@/registry/v3cn/3d-card/3d-card";
+import { CardContainer, CardItem } from "@/registry/v3cn/card/card";
 
 import Image from "next/image";
+
 // import { CardContainer, CardItem } from "@/components/card";
 
 
