@@ -60,14 +60,14 @@
     },
     {
       "name": "card",
-      "type": "registry:component",
+      "type": "registry:block",
       "title": "Card",
       "description": "A component for displaying Card.",
       "files": [
         {
           "path": "registry/v3cn/card/card.tsx",
           "type": "registry:component",
-          "target": "components/card.tsx"
+          "target": "components/v3cn/card.tsx"
         }
       ]
     },

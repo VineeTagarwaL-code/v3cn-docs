@@ -5,7 +5,7 @@
   "title": "GitHub Graph Demo",
   "description": "Example of the GitHub contribution graph component with custom styling.",
   "registryDependencies": [
-    "https://v3cn.vineet.pro/r/github-demo"
+    "https://v3cn.vineet.pro/r/github"
   ],
   "files": [
     {
