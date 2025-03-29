@@ -4,7 +4,8 @@
     "type": "registry:component",
     "description": "A GitHub contribution graph component with customizable styling.",
     "dependencies": [
-      "react-activity-calendar"
+      "react-activity-calendar",
+      "next-themes"
     ],
     "files": [
       {
