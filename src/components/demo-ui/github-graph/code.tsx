@@ -13,7 +13,7 @@ export function CodeDisplay({ html }: { html: string }) {
 }
 
 export const basicUsageRawCode = `// Import the Component 
-   import { GithubGraph } from "@/components/GithubGraph";
+import { GithubGraph } from "@/components/GithubGraph";
  
 // Use the Component with custom props
 <GithubGraph

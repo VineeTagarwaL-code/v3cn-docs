@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Step, Steps } from "@/components/ui/steps";
+import { Step, Steps } from '@/components/ui/steps';
 
-import { CodeBlock } from "@/components/ui/code-block";
-import { CodeSnippet } from "@/components/ui/code-snippet";
-import { PackageManagerTabs } from "@/components/ui/package-manager-tabs";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { CodeBlock } from '@/components/ui/code-block';
+import { CodeSnippet } from '@/components/ui/code-snippet';
+import { PackageManagerTabs } from '@/components/ui/package-manager-tabs';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 interface TabOption {
-  id: "cli" | "manual";
+  id: 'cli' | 'manual';
   label: string;
 }
 
@@ -18,6 +18,7 @@ interface InstallationTabsProps {
   cliCommand: string;
   codeHtml: string;
   importCode: string;
+  shadcnCommand: string;
 }
 
 export function InstallationTabs({
@@ -25,20 +26,21 @@ export function InstallationTabs({
   cliCommand,
   codeHtml,
   importCode,
+  shadcnCommand,
 }: InstallationTabsProps) {
-  const [selected, setSelected] = useState<TabOption["id"]>("cli");
+  const [selected, setSelected] = useState<TabOption['id']>('cli');
   const [activeStep, setActiveStep] = useState(1);
 
   const options: TabOption[] = [
-    { id: "cli", label: "CLI" },
-    { id: "manual", label: "Manual" },
+    { id: 'cli', label: 'CLI' },
+    { id: 'manual', label: 'Manual' },
   ];
 
   return (
     <div className="space-y-4 px-2">
       {/* Tab buttons */}
       <div className="relative flex border-b border-gray-100 dark:border-zinc-700/50 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gray-100 dark:after:bg-zinc-700/50">
-        {options.map((option) => (
+        {options.map(option => (
           <button
             key={option.id}
             onClick={() => {
@@ -47,8 +49,8 @@ export function InstallationTabs({
             }}
             className={`relative pb-2 text-sm px-4 ${
               selected === option.id
-                ? "text-foreground"
-                : "text-muted-foreground hover:text-foreground/80 transition-all duration-300"
+                ? 'text-foreground'
+                : 'text-muted-foreground hover:text-foreground/80 transition-all duration-300'
             }`}
           >
             {option.label}
@@ -58,7 +60,7 @@ export function InstallationTabs({
                 className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground z-10"
                 initial={false}
                 transition={{
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 500,
                   damping: 30,
                 }}
@@ -70,12 +72,26 @@ export function InstallationTabs({
 
       {/* Tab content */}
       <div className="md:p-4">
-        {selected === "cli" ? (
-          <PackageManagerTabs
-            command={cliCommand}
-            variant="dlx"
-            layoutId={`${layoutIdPrefix}-package-manager`}
-          />
+        {selected === 'cli' ? (
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-2xl  text-gray-400 font-light">V3CN</h3>
+              <PackageManagerTabs
+                command={cliCommand}
+                variant="dlx"
+                layoutId={`${layoutIdPrefix}-package-manager`}
+              />
+            </div>
+
+            <div className="flex flex-col gap-4 text-gray-400">
+              <h3 className="text-2xl font-light">Shadcn</h3>
+              <PackageManagerTabs
+                command={shadcnCommand}
+                variant="dlx"
+                layoutId={`${layoutIdPrefix}-package-manager-shadcn`}
+              />
+            </div>
+          </div>
         ) : (
           <Steps>
             <Step

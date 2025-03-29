@@ -1,0 +1,18 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "github-graph-demo",
+    "type": "registry:component",
+    "description": "Example of the GitHub contribution graph component with custom styling.",
+    "registryDependencies": [
+      "https://v3cn.vineet.pro/r/github-graph"
+    ],
+    "files": [
+      {
+        "name": "github-graph-demo",
+        "type": "registry:component",
+        "path": "components/v3cn/github-demo/demo.tsx",
+        "content": "\"use client\";\n\nimport { GithubGraph } from \"@/components/GithubGraph\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <GithubGraph\n      username=\"vineetagarwal-code\"\n      blockMargin={2}\n      colorPallete={[\"#1e1e2f\", \"#5a3e7a\", \"#7e5aa2\", \"#a87cc3\", \"#d9a9e6\"]}\n    />\n  );\n};\n\nexport { GithubGraphDemo };",
+        "target": "components/v3cn/github-demo/demo.tsx"
+      }
+    ]
+}
