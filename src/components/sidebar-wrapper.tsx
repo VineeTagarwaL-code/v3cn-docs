@@ -13,6 +13,7 @@ import {
   MousePointer2,
   SquareChevronRight,
   Command,
+  Dock,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -198,6 +199,12 @@ export function MySidebar({
             icon={<CreditCard className="w-4 h-4 mr-2" />}
             isNew={true}
             label="Card"
+          />
+          <NavButton
+            path="/docs/components/dock-navigation"
+            icon={<Dock className="w-4 h-4 mr-2" />}
+            isNew={true}
+            label="Dock Navigation"
           />
         </div>
 
