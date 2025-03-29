@@ -1,78 +1,84 @@
+import { Activity } from "react-activity-calendar";
 import { GithubGraph } from "@/components/ui/github";
 import { InstallationTabs } from "@/components/demo-ui/github-graph/installation-tabs";
 import { codeToHtml } from "shiki";
 
-const installationCode = `"use client";
+const installationCode = `"use client"
 
-import  { Activity, ActivityCalendar } from "react-activity-calendar";
-import { useCallback, useEffect, useState } from "react";
+import { type Activity, ActivityCalendar } from "react-activity-calendar"
+import { useCallback, useEffect, useState } from "react"
 
 type GithubGraphProps = {
-  username: string;
-  blockMargin?: number;
-  colorPallete?: string[];
-};
+  username: string
+  blockMargin?: number
+  colorPalette?: string[]
+}
 
-export const GithubGraph = ({
-  username,
-  blockMargin,
-  colorPallete,
+export const GithubGraph = ({ 
+  username, 
+  blockMargin = 4, 
+  colorPalette = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
 }: GithubGraphProps) => {
-  const [contribution, setContribution] = useState<Activity[]>([]);
-  const [loading, setIsLoading] = useState<boolean>(true);
+  const [contribution, setContribution] = useState<Activity[]>([])
+  const [loading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
   const fetchData = useCallback(async () => {
     try {
-      const contributions = await fetchContributionData(username);
-      setContribution(contributions);
+      setIsLoading(true)
+      setError(null)
+      const contributions = await fetchContributionData(username)
+      setContribution(contributions)
     } catch (error) {
-      throw new Error(\`Error fetching contribution data: \${error}\`);
+      setError(error instanceof Error ? error.message : "Failed to fetch contribution data")
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, [username]);
+  }, [username])
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    fetchData()
+  }, [fetchData])
 
-  const label = {
-    totalCount: \`{{count}} contributions in the last year\`,
-  };
+  if (loading) {
+    return <div>Loading contribution data...</div>
+  }
+
+  if (error) {
+    return <div className="text-red-500">Error: {error}</div>
+  }
 
   return (
-    <>
-      <ActivityCalendar
-        data={contribution}
-        maxLevel={4}
-        blockMargin={blockMargin ?? 2}
-        loading={loading}
-        labels={label}
-        theme={{
-          dark: colorPallete ?? [
-            "#ebedf0",
-            "#9be9a8",
-            "#40c463",
-            "#30a14e",
-            "#216e39",
-          ],
-        }}
-      />
-    </>
-  );
-};
-
-async function fetchContributionData(username: string): Promise<Activity[]> {
-  const response = await fetch(\`https://github.vineet.pro/api/\${username}\`);
-  const responseBody = await response.json();
-
-  if (!response.ok) {
-    throw Error("Erroring fetching contribution data");
-  }
-  return responseBody.data;
+    <ActivityCalendar
+      data={contribution}
+      blockMargin={blockMargin}
+      theme={{
+        dark: colorPalette,
+      }}
+      labels={{
+        totalCount: \`{{count}} contributions in the last year\`,
+      }}
+    />
+  )
 }
 
-export default GithubGraph;`;
+async function fetchContributionData(username: string): Promise<Activity[]> {
+  try {
+    const response = await fetch(\`https://github.vineet.pro/api/\${username}\`)
+    
+    if (!response.ok) {
+      throw new Error( \`HTTP error! status: \${response.status}\`)
+    }
+    
+    const responseBody = await response.json()
+    return responseBody.data
+  } catch (err) {
+    console.log(err)
+    return [];
+  }
+}
+
+export default GithubGraph`;
 
 export async function GithubGraphInstallationCode() {
   const html = await codeToHtml(installationCode, {
