@@ -1,5 +1,3 @@
-import { Activity } from "react-activity-calendar";
-import { GithubGraph } from "@/components/ui/github";
 import { InstallationTabs } from "@/components/demo-ui/github-graph/installation-tabs";
 import { codeToHtml } from "shiki";
 

@@ -103,7 +103,7 @@ export function InstallationTabs({
               onClick={() => setActiveStep(1)}
             >
               <PackageManagerTabs
-                command="react-activity-calendar"
+                command=" next-themes react-activity-calendar"
                 variant="add"
                 layoutId={`${layoutIdPrefix}-package-manager`}
               />
