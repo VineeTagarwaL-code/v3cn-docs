@@ -1,5 +1,5 @@
-import { codeToHtml } from "shiki";
 import { InstallationTabs } from "@/components/demo-ui/discord/installation-tabs";
+import { codeToHtml } from "shiki";
 
 const installationCode = `
 "use client";
@@ -203,6 +203,7 @@ const cnHtml = await codeToHtml(cnCode, {
       nextConfigHtml={nextConfigHtml}
       layoutIdPrefix="discord-presence"
       cliCommand="v3cn add discord"
+      shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/discord-presence'"
       importCode="import { Discord  } from '@/components/discord';"
     />
   );

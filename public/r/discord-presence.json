@@ -4,8 +4,7 @@
     "type": "registry:component",
     "description": "A Discord presence component that shows your Discord status, activity, and rich presence information with real-time updates.",
     "dependencies": [
-      "@radix-ui/react-progress",
-      "next/image"
+      "@radix-ui/react-progress"
     ],
     "files": [
       {

@@ -108,6 +108,7 @@ export async function CursorInstallationCode() {
       codeHtml={html}
       layoutIdPrefix="Cursor Follower"
       cliCommand="v3cn add cursor"
+      shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/cursor'"
       importCode="import { Cursor  } from '@/components/cursor';"
     />
   );

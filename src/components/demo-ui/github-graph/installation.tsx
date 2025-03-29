@@ -92,6 +92,7 @@ export async function GithubGraphInstallationCode() {
       layoutIdPrefix="github-graph"
       cliCommand=" v3cn add github"
       importCode="import { GithubGraph } from '@/components/GithubGraph';"
+      shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/github-graph'"
     />
   );
 }
