@@ -417,7 +417,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(...inputs));
 }`;
 
-const nextConfigCode = `//rest of the settings
+ export const discordnextConfigCode = `//rest of the settings
 // add this in your image config object
  
 images: {
@@ -448,10 +448,10 @@ export async function DiscordInstallationCode() {
     theme: "min-dark",
   });
 
-  const nextConfigHtml = await codeToHtml(nextConfigCode, {
+  const nextConfigHtml = await codeToHtml(discordnextConfigCode, {
     lang: "bash",
     theme: "min-dark",
-  });  
+  });
   return (
     <InstallationTabs
       codeHtml={html}

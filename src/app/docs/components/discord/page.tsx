@@ -1,12 +1,14 @@
+import { AlertTriangle } from "lucide-react";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Discord } from "@/components/demo-ui/discord/demo";
 import { DiscordInstallationCode } from "@/components/demo-ui/discord/installation";
 import { NavigationMenu } from "@/components/navigation-menu";
 import PropItem from "@/components/prop";
+import { PropTable } from "@/components/ui/prop-table";
 import { SectionWrapper } from "@/components/section-wrapper";
 import { basicUsageRawCode } from "@/components/demo-ui/discord/code";
 import { codeToHtml } from "shiki/bundle/full";
-import { PropTable } from "@/components/ui/prop-table";
+import { discordnextConfigCode } from "@/components/demo-ui/discord/installation";
 
 // Define the PropDefinition type
 type PropDefinition = {
@@ -59,6 +61,11 @@ export default async function DiscordPresencePage() {
     lang: "tsx",
     theme: "min-dark",
   });
+
+  const nextConfigCode = await codeToHtml(discordnextConfigCode, {
+    lang: "tsx",
+    theme: "min-dark",
+  });
   return (
     <SectionWrapper>
       <div className="flex flex-col lg:flex-row gap-8">
@@ -103,6 +110,20 @@ export default async function DiscordPresencePage() {
             </h2>
             <div className="overflow-x-auto">
               <DiscordInstallationCode/>
+            </div>
+            <div className="overflow-x-auto">   
+            <div className="bg-yellow-50 dark:bg-yellow-950/50 p-4 border-yellow-500 border-l-4 rounded-r-lg my-6">
+                <div className="flex items-start gap-4">
+                  <AlertTriangle className="mt-1 w-6 h-6 text-yellow-500 shrink-0" />
+                  <div className="space-y-2">
+                    <p className="font-medium text-yellow-800 dark:text-yellow-200">
+                     Update your next config file
+                    </p>
+                  
+                  </div>
+                </div>
+              </div>
+            <CodeBlock html={nextConfigCode} maxHeight={300} expandedHeight={500} />
             </div>
           </section>
 
