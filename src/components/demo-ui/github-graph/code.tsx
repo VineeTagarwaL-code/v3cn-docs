@@ -22,7 +22,8 @@ const GithubGraphDemo = () => {
     <GithubGraph
       username="vineetagarwal-code"
       blockMargin={2}
-      colorPallete={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
+      lightColorPalette={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
+      darkColorPalette={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
     />
   )
 }

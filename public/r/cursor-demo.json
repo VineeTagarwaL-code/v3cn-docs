@@ -11,7 +11,7 @@
         "name": "cursor-demo",
         "type": "registry:component",
         "path": "components/demo-ui/cursor/demo.tsx",
-        "content": "\"use client\";\n\nimport { Cursor } from \"@/components/cursor\";\n\nconst CursorDemo = () => {\n  return <Cursor cursorClass=\"border-purple-500 hidden md:inline-block\" />;\n};\n\nexport { CursorDemo };"
+        "content": "use client;\n\nimport { Cursor } from \"@/components/cursor\";\n\nconst CursorDemo = () => {\n  return <Cursor cursorClass=\"border-purple-500 hidden md:inline-block\" />;\n};\n\nexport { CursorDemo };"
       }
     ]
 }

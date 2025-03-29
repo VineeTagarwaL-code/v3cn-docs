@@ -138,10 +138,10 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
   } catch (error) {
     if (error instanceof Error) {
       console.error("Error fetching GitHub contributions:", error.message);
-    } else {
-      console.error("An unexpected error occurred while fetching GitHub contributions");
+      throw new Error(`Failed to fetch GitHub contributions: ${error.message}`);
     }
-    return [];
+    console.error("An unexpected error occurred while fetching GitHub contributions");
+    throw new Error("An unexpected error occurred while fetching GitHub contributions");
   }
 }
 
