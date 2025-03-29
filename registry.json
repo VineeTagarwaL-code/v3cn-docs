@@ -33,15 +33,15 @@
       ]
     },
     {
-      "name": "discord-presence",
+      "name": "discord",
       "type": "registry:component",
       "title": "Discord Presence",
       "description": "A component for displaying Discord presence.",
       "files": [
         {
-          "path": "registry/v3cn/discord-presence/discord-presence.tsx",
+          "path": "registry/v3cn/discord/discord.tsx",
           "type": "registry:component",
-          "target": "components/discord-presence.tsx"
+          "target": "components/discord.tsx"
         }
       ]
     },

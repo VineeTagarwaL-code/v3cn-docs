@@ -459,7 +459,7 @@ export async function DiscordInstallationCode() {
       nextConfigHtml={nextConfigHtml}
       layoutIdPrefix="discord-presence"
       cliCommand="v3cn add discord"
-      shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/discord-presence'"
+      shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/discord'"
       importCode="import  { DiscordComponent } from '@/components/discord';"
     />
   );

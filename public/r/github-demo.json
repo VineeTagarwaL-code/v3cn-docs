@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/v3cn/github/github-demo.tsx",
-      "content": "\"use client\"\n\nimport { GithubGraph } from \"@/registry/v3cn/github-graph/github\";\n// import { GithubGraph } from \"@/components/github-graph\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <div className=\"flex justify-center items-center h-screen\">\n      <GithubGraph\n        username=\"vineetagarwal-code\"\n        blockMargin={2}\n      />\n    </div>\n  )\n}\nexport { GithubGraphDemo };\n",
+      "content": "\"use client\"\n\nimport { GithubGraph } from \"@/registry/v3cn/github/github\";\n// import { GithubGraph } from \"@/components/github-graph\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <div className=\"flex justify-center items-center h-screen\">\n      <GithubGraph\n        username=\"vineetagarwal-code\"\n        blockMargin={2}\n      />\n    </div>\n  )\n}\nexport { GithubGraphDemo };\n",
       "type": "registry:example",
       "target": "components/github-demo.tsx"
     }
