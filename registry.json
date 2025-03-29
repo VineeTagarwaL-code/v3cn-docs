@@ -4,7 +4,7 @@
   "homepage": "https://v3cn.com",
   "items": [
     {
-      "name": "github-graph",
+      "name": "github.tsx",
       "type": "registry:component",
       "title": "GitHub Graph",
       "description": "A GitHub component for displaying contribution graph with custom styling.",
