@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor",
+  "type": "registry:component",
+  "title": "Cursor",
+  "description": "A component for displaying Cursor.",
+  "files": [
+    {
+      "path": "registry/v3cn/cursor/cursor.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion } from \"framer-motion\";\n\ntype CursorProps = {\n  cursorClass?: string;\n};\n\ntype Position = {\n  x: number;\n  y: number;\n};\n\ntype TrailerType = \"default\" | \"video\";\n\nexport const Cursor = ({ cursorClass }: CursorProps) => {\n  const [trailerType, setTrailerType] = useState<TrailerType>(\"default\");\n  const [isInteracting, setIsInteracting] = useState(false);\n  const [isClicked, setIsClicked] = useState(false);\n\n  const position:Position = {\n    x: 0,\n    y: 0,\n  };\n  const cursorRef = useRef<HTMLDivElement>(null);\n\n  const animateTrailer = (e: MouseEvent) => {\n    if (!cursorRef.current) return;\n\n    const x = e.clientX - cursorRef.current.offsetWidth / 2;\n    const y = e.clientY - cursorRef.current.offsetHeight / 2;\n\n    const keyframes = {\n      transform: `translate(${x}px, ${y}px) scale(${isInteracting ? 3 : 1})`,\n    };\n\n    cursorRef.current.animate(keyframes, {\n      duration: 100,\n      fill: \"forwards\",\n    });\n  };\n\n  useEffect(() => {\n    const handleMouseMove = (e: MouseEvent) => {\n      const interactable = (e.target as HTMLElement).closest(\".interactable\");\n      const interacting = interactable !== null;\n\n      animateTrailer(e);\n\n      setTrailerType(interacting ? (interactable as HTMLElement).dataset.type as TrailerType : \"default\");\n      setIsInteracting(interacting);\n    };\n\n    window.addEventListener(\"mousemove\", handleMouseMove);\n\n    return () => {\n      window.removeEventListener(\"mousemove\", handleMouseMove);\n    };\n  }, [isInteracting]);\n\n  useEffect(() => {\n    const handleClick = () => {\n      setIsClicked(true);\n      setTimeout(() => {\n        setIsClicked(false);\n      }, 100);\n    };\n\n    window.addEventListener(\"click\", handleClick);\n\n    return () => {\n      window.removeEventListener(\"click\", handleClick);\n    };\n  }, []);\n\n  return (\n    <motion.div\n      whileTap={{ scale: 0.9 }}\n      id=\"trailer\"\n      style={{ top: `${position.y}px`, left: `${position.x}px` }}\n      className={cn(\n        \"bg-transparent rounded-full fixed z-50 pointer-events-none border-[3px] border-slate-500 border-solid w-10 h-10 transition-all\",\n        cursorClass,\n        isClicked && \"w-8 h-8\"\n      )}\n      data-type={trailerType}\n      ref={cursorRef}\n    />\n  );\n};\n",
+      "type": "registry:component",
+      "target": "components/cursor.tsx"
+    }
+  ]
+}
