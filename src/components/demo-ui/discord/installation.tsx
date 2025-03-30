@@ -1,5 +1,6 @@
-import { InstallationTabs } from "@/components/demo-ui/discord/installation-tabs";
-import { codeToHtml } from "shiki";
+import { codeToHtml } from 'shiki';
+import { InstallationTabs } from '@/components/installation-tabs';
+import { TDetails } from '@/types/types';
 
 const installationCode = `
 "use client";
@@ -103,7 +104,7 @@ export const Discord: React.FC<TDiscord> = ({
     setIsLoading,
     setActivityImage,
     musicProgress,
-    setActivityDetails,
+    setActivityDetails
   });
 
   return (
@@ -417,7 +418,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(...inputs));
 }`;
 
- export const discordnextConfigCode = `//rest of the settings
+export const discordnextConfigCode = `//rest of the settings
 // add this in your image config object
  
 images: {
@@ -440,23 +441,52 @@ images: {
 
 export async function DiscordInstallationCode() {
   const html = await codeToHtml(installationCode, {
-    lang: "bash",
-    theme: "min-dark",
+    lang: 'bash',
+    theme: 'min-dark',
   });
   const cnHtml = await codeToHtml(cnCode, {
-    lang: "bash",
-    theme: "min-dark",
+    lang: 'bash',
+    theme: 'min-dark',
   });
 
   const nextConfigHtml = await codeToHtml(discordnextConfigCode, {
-    lang: "bash",
-    theme: "min-dark",
+    lang: 'bash',
+    theme: 'min-dark',
   });
+
+  const discordDetails: TDetails = {
+    component: 'Discord',
+    packageInstallationStep: {
+      command: '@radix-ui/react-progress',
+    },
+    steps: [
+      {
+        title: 'Create a `cn.ts` File in the `utils` Folder',
+        description: 'Add the following code to the newly created file.',
+        html: cnHtml,
+        maxHeight: 100,
+        expandedHeight: 200,
+      },
+      {
+        title: 'Update next.config.ts Configuration',
+        description:
+          'Add the specified code snippet to your next.config.ts file for necessary configurations.',
+        html: nextConfigHtml,
+        maxHeight: 300,
+        expandedHeight: 500,
+      },
+      {
+        title: 'Add Component Code',
+        description: 'Copy and paste the following code into your project',
+        html: html,
+        maxHeight: 300,
+        expandedHeight: 500,
+      },
+    ],
+  };
   return (
     <InstallationTabs
-      codeHtml={html}
-      cnHtml={cnHtml}
-      nextConfigHtml={nextConfigHtml}
+      details={discordDetails}
       layoutIdPrefix="discord-presence"
       cliCommand="v3cn add discord"
       shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/discord'"

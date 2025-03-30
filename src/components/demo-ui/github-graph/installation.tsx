@@ -1,5 +1,6 @@
-import { InstallationTabs } from "@/components/demo-ui/github-graph/installation-tabs";
-import { codeToHtml } from "shiki";
+import { codeToHtml } from 'shiki';
+import { InstallationTabs } from '@/components/installation-tabs';
+import { TDetails } from '@/types/types';
 
 const installationCode = `"use client";
 
@@ -150,13 +151,29 @@ async function fetchContributionData(username: string): Promise<Activity[]> {
 
 export async function GithubGraphInstallationCode() {
   const html = await codeToHtml(installationCode, {
-    lang: "typescript",
-    theme: "min-dark",
+    lang: 'typescript',
+    theme: 'min-dark',
   });
+
+  const githubGraphDetails: TDetails = {
+    component: 'GithubGraph',
+    packageInstallationStep: {
+      command: 'next-themes react-activity-calendar',
+    },
+    steps: [
+      {
+        title: 'Add Component Code',
+        description: 'Copy and paste the following code into your project',
+        html: html,
+        maxHeight: 300,
+        expandedHeight: 500,
+      },
+    ],
+  };
 
   return (
     <InstallationTabs
-      codeHtml={html}
+      details={githubGraphDetails}
       layoutIdPrefix="github-graph"
       cliCommand=" v3cn add github"
       importCode="import { GithubGraph } from '@/components/GithubGraph';"

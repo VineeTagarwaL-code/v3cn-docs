@@ -7,6 +7,7 @@ import { CodeSnippet } from '@/components/ui/code-snippet';
 import { PackageManagerTabs } from '@/components/ui/package-manager-tabs';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { TDetails, TStep } from '@/types/types';
 
 interface TabOption {
   id: 'cli' | 'manual';
@@ -16,17 +17,27 @@ interface TabOption {
 interface InstallationTabsProps {
   layoutIdPrefix: string;
   cliCommand: string;
-  codeHtml: string;
   importCode: string;
   shadcnCommand: string;
+  details: TDetails;
 }
+
+/**
+ * Renders installation tabs for a component, allowing users to choose between CLI and manual installation methods.
+ *
+ * @param {string} layoutIdPrefix - Prefix for the layout ID used in framer-motion animations.
+ * @param {string} cliCommand - Command for installing the package via CLI.
+ * @param {string} importCode - Code snippet for importing the component.
+ * @param {string} shadcnCommand - Command for installing Shadcn dependencies.
+ * @param {TDetails} details - Object containing installation steps and component details.
+ */
 
 export function InstallationTabs({
   layoutIdPrefix,
   cliCommand,
-  codeHtml,
   importCode,
   shadcnCommand,
+  details,
 }: InstallationTabsProps) {
   const [selected, setSelected] = useState<TabOption['id']>('cli');
   const [activeStep, setActiveStep] = useState(1);
@@ -35,6 +46,10 @@ export function InstallationTabs({
     { id: 'cli', label: 'CLI' },
     { id: 'manual', label: 'Manual' },
   ];
+
+  const lastStep = details.packageInstallationStep
+    ? details.steps.length + 2
+    : details.steps.length + 1;
 
   return (
     <div className="space-y-4 px-2">
@@ -75,7 +90,7 @@ export function InstallationTabs({
         {selected === 'cli' ? (
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4">
-              <h3 className="text-2xl  text-gray-400 font-light">V3CN</h3>
+              <h3 className="text-2xl  text-muted-foreground font-light">V3CN</h3>
               <PackageManagerTabs
                 command={cliCommand}
                 variant="dlx"
@@ -83,7 +98,7 @@ export function InstallationTabs({
               />
             </div>
 
-            <div className="flex flex-col gap-4 text-gray-400">
+            <div className="flex flex-col gap-4 text-muted-foreground">
               <h3 className="text-2xl font-light">Shadcn</h3>
               <PackageManagerTabs
                 command={shadcnCommand}
@@ -94,42 +109,53 @@ export function InstallationTabs({
           </div>
         ) : (
           <Steps>
-            <Step
-              step={1}
-              title="Install Dependencies"
-              description="Install the required dependencies"
-              isCompleted={activeStep > 1}
-              isActive={activeStep === 1}
-              onClick={() => setActiveStep(1)}
-            >
-              <PackageManagerTabs
-                command=" next-themes react-activity-calendar"
-                variant="add"
-                layoutId={`${layoutIdPrefix}-package-manager`}
-              />
-            </Step>
+            {details.packageInstallationStep && (
+              <Step
+                step={1}
+                title="Install Dependencies"
+                description="Install the required dependencies"
+                isCompleted={activeStep > 1}
+                isActive={activeStep === 1}
+                onClick={() => setActiveStep(1)}
+              >
+                <PackageManagerTabs
+                  command={details.packageInstallationStep.command}
+                  variant="add"
+                  layoutId={`${layoutIdPrefix}-package-manager`}
+                />
+              </Step>
+            )}
+            {details?.steps.map((eachStep: TStep, index: number) => {
+              const step: number = details.packageInstallationStep ? index + 2 : index + 1;
+              return (
+                <Step
+                  key={step}
+                  step={step}
+                  title={eachStep.title}
+                  description={eachStep.description}
+                  isCompleted={activeStep > step}
+                  isActive={activeStep === step}
+                  onClick={() => setActiveStep(step)}
+                >
+                  <CodeBlock
+                    html={eachStep.html}
+                    maxHeight={eachStep.maxHeight ?? 100}
+                    expandedHeight={eachStep.expandedHeight ?? 300}
+                  />
+                </Step>
+              );
+            })}
 
             <Step
-              step={2}
-              title="Add Component Code"
-              description="Copy and paste the following code into your project"
-              isCompleted={activeStep > 2}
-              isActive={activeStep === 2}
-              onClick={() => setActiveStep(2)}
-            >
-              <CodeBlock html={codeHtml} maxHeight={300} expandedHeight={500} />
-            </Step>
-
-            <Step
-              step={3}
+              step={lastStep}
               title="Ready to Use"
-              description="You can now use the Github Graph component in your project"
-              isCompleted={activeStep > 3}
-              isActive={activeStep === 3}
-              onClick={() => setActiveStep(3)}
+              description={`You can now use the ${details.component} component in your project`}
+              isCompleted={activeStep > lastStep}
+              isActive={activeStep === lastStep}
+              onClick={() => setActiveStep(lastStep)}
             >
               <div className="text-sm text-muted-foreground">
-                Import and use the Github Graph component in your project:
+                Import and use the {details.component} component in your project:
                 <CodeSnippet
                   code={importCode}
                   layoutId={`${layoutIdPrefix}-import-code`}
