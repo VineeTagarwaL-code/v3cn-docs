@@ -92,7 +92,7 @@ export const Hero = () => {
               Browse Components
             </Button>
           </Link>
-          <Link href="/docs/installation">
+          <Link href="https://github.com/vineetagarwal-code/v3cn-docs">
             <Button
               size="lg"
               variant="outline"
