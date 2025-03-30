@@ -53,6 +53,8 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      <TweetComponent id="1906036813158138138" />
+
       <div className="flex flex-col gap-6 max-w-[750px] text-gray-700 dark:text-zinc-300 mt-10">
         <p className="leading-relaxed">
           Last year around this time, I made my portfolio website. I was excited and a bit nervous
@@ -61,6 +63,7 @@ export default function Home() {
           me to make components out of it. So here I am, making it true.
         </p>
         <TweetComponent id="1779960061952950393" />
+      
       </div>
     </SectionWrapper>
   );
