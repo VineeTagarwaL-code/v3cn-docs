@@ -82,7 +82,7 @@ export const Hero = () => {
         </p>
 
         <div className="flex sm:flex-row flex-col justify-center items-center gap-3 md:gap-4 mt-6 md:mt-8">
-          <Link href="/docs/installation">
+          <Link href="/docs/introduction">
             <Button
               size="lg"
               variant="outline"
