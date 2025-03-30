@@ -1,5 +1,6 @@
-import { InstallationTabs } from "@/components/demo-ui/card/installation-tabs";
-import { codeToHtml } from "shiki";
+import { codeToHtml } from 'shiki';
+import { TDetails } from '@/types/types';
+import { InstallationTabs } from '@/components/installation-tabs';
 
 const installationCode = `"use client";
 
@@ -172,24 +173,49 @@ module.exports = {
 
 export async function CardInstallationCode() {
   const html = await codeToHtml(installationCode, {
-    lang: "bash",
-    theme: "min-dark",
+    lang: 'bash',
+    theme: 'min-dark',
   });
 
   const cnHtml = await codeToHtml(cnCode, {
-    lang: "bash",
-    theme: "min-dark",
+    lang: 'bash',
+    theme: 'min-dark',
   });
 
   const tailwindHtml = await codeToHtml(tailwindConfigCode, {
-    lang: "bash",
-    theme: "min-dark",
-  });   
+    lang: 'bash',
+    theme: 'min-dark',
+  });
+
+  const cardDetails: TDetails = {
+    component: 'Card',
+    steps: [
+      {
+        title: 'Create a `cn.ts` File in the `utils` Folder',
+        description: 'Add the following code to the newly created file.',
+        html: cnHtml,
+        maxHeight: 100,
+        expandedHeight: 200,
+      },
+      {
+        title: 'Set Up `tailwind.config.ts`',
+        description: 'Add this config to enable Tailwind and custom animations.',
+        html: tailwindHtml,
+        maxHeight: 300,
+        expandedHeight: 500,
+      },
+      {
+        title: 'Add Component Code',
+        description: 'Copy and paste the following code into your project',
+        html: html,
+        maxHeight: 300,
+        expandedHeight: 500,
+      },
+    ],
+  };
   return (
     <InstallationTabs
-      codeHtml={html}
-      cnHtml={cnHtml}
-      tailwindHtml={tailwindHtml}
+      details={cardDetails}
       layoutIdPrefix="card"
       cliCommand="v3cn add card"
       shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/card'"

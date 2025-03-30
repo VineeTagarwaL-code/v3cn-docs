@@ -1,5 +1,6 @@
-import { InstallationTabs } from "./installation-tabs"
-import { codeToHtml } from "shiki";
+import { codeToHtml } from 'shiki';
+import { InstallationTabs } from '@/components/installation-tabs';
+import { TDetails } from '@/types/types';
 
 const installationCode = `
 "use client";
@@ -100,13 +101,28 @@ export const Cursor = ({ cursorClass }: CursorProps) => {
 
 export async function CursorInstallationCode() {
   const html = await codeToHtml(installationCode, {
-    lang: "bash",
-    theme: "min-dark",
+    lang: 'bash',
+    theme: 'min-dark',
   });
 
+  const cursorDetails: TDetails = {
+    component: 'Cursor',
+    packageInstallationStep: {
+      command: 'framer-motion',
+    },
+    steps: [
+      {
+        title: 'Add Component Code',
+        description: 'Copy and paste the following code into your project',
+        html: html,
+        maxHeight: 300,
+        expandedHeight: 500,
+      },
+    ],
+  };
   return (
     <InstallationTabs
-      codeHtml={html}
+      details={cursorDetails}
       layoutIdPrefix="Cursor Follower"
       cliCommand="v3cn add cursor"
       shadcnCommand="shadcn@latest add 'https://v3cn.vineet.pro/r/cursor'"
@@ -114,4 +130,3 @@ export async function CursorInstallationCode() {
     />
   );
 }
-
