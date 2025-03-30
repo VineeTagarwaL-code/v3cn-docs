@@ -139,8 +139,8 @@ export function InstallationTabs({
                 >
                   <CodeBlock
                     html={eachStep.html}
-                    maxHeight={eachStep.maxHeight || 100}
-                    expandedHeight={eachStep.expandedHeight || 300}
+                    maxHeight={eachStep.maxHeight ?? 100}
+                    expandedHeight={eachStep.expandedHeight ?? 300}
                   />
                 </Step>
               );
