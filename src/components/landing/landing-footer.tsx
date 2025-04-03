@@ -13,8 +13,8 @@ export const LandingFooter = () => {
         Get in Touch
       </h2>
       <p className="max-w-2xl text-gray-400 text-lg">
-        Want to chat? Just shoot me a dm{" "}
-        <Link href={"https://x.com/vineetwts"}>on twitter</Link>
+        Want to chat? Just shoot me a dm on{' '}
+        <Link href={"https://x.com/vineetwts"} className="underline hover:text-zinc-500">twitter</Link>
       </p>
       <Heading classname="my-8">V3CN</Heading>
     </div>
