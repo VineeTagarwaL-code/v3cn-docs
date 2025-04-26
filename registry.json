@@ -86,6 +86,22 @@
           "target": "components/card-demo.tsx"
         }
       ]
+    },{
+      "name": "action button",
+      "type": "registry:block",
+      "title": "Action Button",
+      "registryDependencies": [
+        "https://v3cn.vineet.pro/r/action-button"
+      ],
+      "description": "A component for displaying Action Button.",
+      "files": [
+        {
+          "path": "registry/v3cn/action-button/action-button.tsx",
+          "type": "registry:component",
+          "target": "components/actionButton.tsx"
+        }
+      ]
     }
+
   ]
 }
