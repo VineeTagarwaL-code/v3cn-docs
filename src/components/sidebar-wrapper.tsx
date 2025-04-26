@@ -199,6 +199,12 @@ export function MySidebar({
             isNew={true}
             label="Card"
           />
+          <NavButton
+            path="/docs/components/actionbutton"
+            icon={<Command className="w-4 h-4 mr-2" />}
+            isNew={true}
+            label="actionButton"
+          />
         </div>
 
         {/* footer */}
