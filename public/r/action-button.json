@@ -1,0 +1,16 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "action-button",
+    "type": "registry:component",
+    "title": "Action Button",
+    "description": "A call-to-action button with animated hover effect and icon.",
+    "files": [
+      {
+        "path": "registry/v3cn/action-button/action-button.tsx",
+        "content": "\"use client\";\nimport * as React from \"react\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\nimport { ArrowRight } from \"lucide-react\";\n\nconst ActionButtonVariants = cva(\n  \"relative overflow-hidden rounded-full text-sm font-semibold transition-all duration-300 group inline-flex items-center justify-center\",\n  {\n    variants: {\n      size: {\n        default: \"px-6 py-2 pr-12\",\n        sm: \"px-4 py-1.5 pr-10 text-sm\",\n        lg: \"px-8 py-3 pr-14 text-base\"\n      },\n      bgColor: {\n        default: \"bg-yellow-500\",\n        custom: \"\"\n      },\n      textColor: {\n        default: \"text-white\",\n        yellow: \"text-yellow-700\",\n        red: \"text-red-500\",\n        green: \"text-green-500\",\n        blue: \"text-blue-500\"\n      }\n    },\n    defaultVariants: {\n      size: \"default\",\n      bgColor: \"default\",\n      textColor: \"default\"\n    }\n  }\n);\n\nexport interface ActionButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof ActionButtonVariants> {\n  asChild?: boolean;\n  text?: string;\n}\n\nconst ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(\n  (\n    {\n      className,\n      size,\n      bgColor,\n      textColor,\n      asChild = false,\n      text = \"Start 14-day trial\",\n      ...props\n    },\n    ref\n  ) => {\n    const Comp = asChild ? Slot : \"button\";\n    return (\n      <Comp\n        className={cn(\n          ActionButtonVariants({ size, bgColor, textColor }),\n          \"group-focus:outline-none border-2 border-black\",\n          className\n        )}\n        ref={ref}\n        {...props}\n      >\n        <span className=\"relative z-10 transition-colors duration-300 text-black group-hover:text-white\">\n          {text}\n        </span>\n\n        <span className=\"absolute inset-[2px] z-0 bg-black scale-x-0 origin-right transition-all duration-500 ease-out group-hover:scale-x-100 group-hover:opacity-100 rounded-full\" />\n\n        <span className=\"absolute right-1 top-1/2 transform -translate-y-1/2 rounded-full bg-black p-1.5 w-7 h-7 flex items-center justify-center z-10\">\n          <ArrowRight\n            size={16}\n            className=\"text-white transition-transform duration-500 ease-out group-hover:rotate-[-45deg]\"\n          />\n        </span>\n      </Comp>\n    );\n  }\n);\n\nActionButton.displayName = \"TrialButton\";\n\nexport { ActionButton };",
+        "type": "registry:component",
+        "target": "components/action-button.tsx"
+      }
+    ]
+  }
+  
