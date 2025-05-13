@@ -86,6 +86,51 @@
           "target": "components/card-demo.tsx"
         }
       ]
+    },
+    {
+      "name": "flip-button",
+      "type": "registry:block",
+      "title": "Flip Button",
+      "description": "A button that flips on hover.",
+      "files": [
+        {
+          "path": "registry/v3cn/flip-button/flip-button.tsx",
+          "type": "registry:component",
+          "target": "components/v3cn/flip-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-button-demo",
+      "type": "registry:example",
+      "title": "Flip Button Demo.",
+      "registryDependencies": [
+        "https://v3cn.vineet.pro/r/flip-button"
+      ],
+      "description": "This is the button demo.",
+      "files": [
+        {
+          "path": "registry/v3cn/flip-button/flip-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/flip-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-button-demo2",
+      "type": "registry:example",
+      "title": "Flip Button Demo2.",
+      "registryDependencies": [
+        "https://v3cn.vineet.pro/r/flip-button"
+      ],
+      "description": "These are the configurations for the button comp.",
+      "files": [
+        {
+          "path": "registry/v3cn/flip-button/flip-button-demo2.tsx",
+          "type": "registry:example",
+          "target": "components/flip-button-demo2.tsx"
+        }
+      ]
     }
   ]
 }

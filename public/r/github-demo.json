@@ -5,12 +5,12 @@
   "title": "GitHub Graph Demo",
   "description": "Example of the GitHub contribution graph component with custom styling.",
   "registryDependencies": [
-    "https://v3cn.vineet.pro/r/github"
+    "https://v3cn.vineet.pro/r/github-demo"
   ],
   "files": [
     {
       "path": "registry/v3cn/github/github-demo.tsx",
-      "content": "\"use client\"\nimport { GithubGraph } from \"@/components/github\";\n\nconst GithubGraphDemo = () => {\n  return (\n    <div className=\"flex justify-center items-center h-screen\">\n      <GithubGraph\n        username=\"vineetagarwal-code\"\n        blockMargin={2}\n      />\n    </div>\n  )\n}\nexport { GithubGraphDemo };\n",
+      "content": "\"use client\"\r\n\r\nimport { GithubGraph } from \"@/registry/v3cn/github/github\";\r\n// import { GithubGraph } from \"@/components/github\";\r\n\r\nconst GithubGraphDemo = () => {\r\n  return (\r\n    <div className=\"flex justify-center items-center h-screen\">\r\n      <GithubGraph\r\n        username=\"vineetagarwal-code\"\r\n        blockMargin={2}\r\n      />\r\n    </div>\r\n  )\r\n}\r\nexport { GithubGraphDemo };\r\n",
       "type": "registry:example",
       "target": "components/github-demo.tsx"
     }

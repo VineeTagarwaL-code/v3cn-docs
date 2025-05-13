@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-button-demo",
+  "type": "registry:example",
+  "title": "Flip Button Demo.",
+  "description": "This is the button demo.",
+  "registryDependencies": [
+    "https://v3cn.vineet.pro/r/flip-button"
+  ],
+  "files": [
+    {
+      "path": "registry/v3cn/flip-button/flip-button-demo.tsx",
+      "content": "import FlipButton from \"@/registry/v3cn/flip-button/flip-button\";\r\n\r\nexport default function FlipButtonDemo() {\r\n    return (\r\n        <FlipButton className=\"text-white\">\r\n            Get One\r\n        </FlipButton>\r\n    )\r\n}",
+      "type": "registry:example",
+      "target": "components/flip-button-demo.tsx"
+    }
+  ]
+}
