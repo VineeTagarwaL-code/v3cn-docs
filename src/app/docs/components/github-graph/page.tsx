@@ -56,7 +56,7 @@ export default async function GithubGraphPage() {
 
 
   return (
-   <SectionWrapper>
+    <SectionWrapper>
       <div className="flex lg:flex-row flex-col gap-8">
         <main className="flex-1 space-y-12">
           <section>
@@ -68,9 +68,9 @@ export default async function GithubGraphPage() {
             </p>
           </section>
 
-          <section className="overflow-y-scroll">
-          <div className="w-full text-2xl font-semibold mb-4 flex justify-between items-center gap-2" id="playground">
-             <span>Playground</span>
+          <section className="overflow-auto">
+            <div className="w-full text-2xl font-semibold mb-4 flex justify-between items-center gap-2" id="playground">
+              <span>Playground</span>
               <OpenInV0Button url="https://v3cn.vineet.pro/r/github-demo" />
             </div>
             <div className="flex justify-center items-center bg-gray-200 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950 border border-gray-400 dark:border-zinc-700 rounded-lg max-md:max-w-[93vw] h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden max-md:overflow-x-scroll">
@@ -80,7 +80,7 @@ export default async function GithubGraphPage() {
                 blockMargin={2}
                 darkColorPalette={["#1e1e2f", "#5a3e7a", "#7e5aa2", "#a87cc3", "#d9a9e6"]}
               />
-              </div>
+            </div>
           </section>
           <hr className="border-gray-200 dark:border-gray-700 border-t" />
 
@@ -88,7 +88,7 @@ export default async function GithubGraphPage() {
             <h2 className="mb-4 font-semibold text-2xl" id="installation">
               Installation
             </h2>
-            <GithubGraphInstallationCode/>
+            <GithubGraphInstallationCode />
           </section>
 
           <hr className="border-gray-200 dark:border-gray-700 border-t" />
@@ -134,6 +134,7 @@ export default async function GithubGraphPage() {
           </div>
         </aside>
       </div>
-      </SectionWrapper> 
+    </SectionWrapper>
   );
 }
+
